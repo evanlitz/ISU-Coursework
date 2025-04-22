@@ -1,0 +1,15 @@
+4/10/2025:
+Implemented the Object.h instance class, rolling all of the dice except damage. Created the factory method createInstance in ItemAttributes. Also have basic rendering
+of the object symbols implemented besides its color. 
+
+4/11/2025:
+Object color rendering is working. Started on MonsterAttributes factory method with new attributes of monster.
+
+4/13/2025:
+Monster creation is done with new features and complete color implementation. 
+
+4/14/2025:
+Dungeon is functional and all bugs have been fixed. Project is complete.
+
+4/16/2025:
+Creating the README and tarballing for submission.

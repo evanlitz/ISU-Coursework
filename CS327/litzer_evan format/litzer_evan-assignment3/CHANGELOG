@@ -1,0 +1,17 @@
+2/12/2025
+Started work on the map generation method. Also created the two different distance maps for both tunneling and nontunneling monsters.
+Created the distance map printing method to output the maps for testing.
+
+2/14/2025
+Developed a parameter syster to differentiate between tunneling and non-tunneling monsters through a boolean parameter.
+Created the two moves arrays for the djikistras algorithm to find new points around the current position.
+Created the point struct to represent a point in djikistra's algortihm.
+Made the visited array and began work on 
+
+2/15/2025
+Djikstra's algorithm is complete, though there are some edge cases to handle. 
+Weight assigning is mostly correct though, as I updated the hardness assignment.
+
+2/16/2025
+Tunneling map is complete, non-tunneling is also complete. Did the loadDungeon case for when a file is loaded and 
+needs distance mapping. Project is done.

@@ -1,0 +1,15 @@
+3/28/2025
+Started to change my code from C to C++, created all of the baseline header files that will be used later on. I also began fazing out the passed in parameters for the functions and instead using more object oriented programming.
+Created the main function that declares a dungeon d and then runs its game loop.
+
+3/29/2025
+Dungeon is fully functional in C++ for its base qualities, not for the new assignment requirements. Still some bugs but I am working on it.
+
+3/30/2025
+Bugs for the normal dungeon functionality have been fixed, began working on input for the fog and teleportation base layer.
+
+4/1/2025
+The fog functionality is completely finished, and the boolean is stored in dungeon.
+
+4/2/2025
+Teleportation is done and assignment is ready to submit. Bug checking is continued, but I think I am done here.
