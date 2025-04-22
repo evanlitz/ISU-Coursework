@@ -1,0 +1,15 @@
+2/5/2025
+Started work on the saveDungeon method. I am working on methods that will convert to big endian for 32 and 16 bit types instead of using the endian library
+import as reccomended. Created the hardness array for the dungeon. 
+
+2/6/2025
+saveDungeon should now be working. Created more params for the file to track when generating a dungeon in order to store the information. Started on the loadDungeon method. Might be having some fwrite problems, but I cannot tell yet.
+
+2/9/2025
+loadDungeon has been created in a rough draft form. Currently having bit rwading malfunctions where numRooms is set to 65535. Need to reform the rooms array in the file as it is global. Also need to pass in totalRooms correctly. Had to seperate staircases into their own structs (up and down) due to iteration issues. 
+
+2/11/2025
+loadDungeon is now printing a dungeon map, but it isn't correct. The paths are being printed as rooms. I need to fix this, along with making sure the player character position is correct and in a room or path. 
+
+2/12/2025
+loadDungeon is now printing the correct dungeon formations, which have been tested with each of the test dungeons. Created isInRoom helper function. Dungeon path is correctly set, and the room array is cleared before being repopulated. I am worried about the constraints for the dungeon and how it interferes with the loading of the dungeons, but that is a problem for the future assignments.

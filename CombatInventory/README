@@ -1,0 +1,43 @@
+@author Evan Litzer
+4/16/2025
+MonsterDefs
+
+Commands:
+make
+// The make file gives me warnings for using size_t in for loops with integers. I have just ignored them, and if you run make again it will work
+./dungeon
+
+Note: I do not have any of the combat or object-pickup features implemented yet. I was too focused with getting color and the factory methods working. 
+Next week it will be a struggle to implement all of those systems at once, but that's a problem for future me.
+
+Object.h:
+Represents an instantiated dungeon item within the game. All of the objects are created through the ItemAttributes templates and exists in a certain position in the dungeon when it is generated. 
+Only stores concrete values for use during gameplay. Includes member variable strings name, type, and description along with integers color, weight, hit, dodge, defense, speed, attr, and value. Also
+includes the damage dice to be rolled during combat, the integer x and y coordinates, and the artifact boolean that tracks if it is unique.
+The constructor initializes the object fields from either passed in values or defaults to empty strings, 0s, and position set to -1.
+
+ItemAttributes.h:
+The createInstance() factory method instantiates an object from the ItemAttributes template. This converts the template data that was parsed in into an in-game, usable object instance.
+Ensures all dice are rolled besides damage. Randomizes stats for items and makes necesscary items unique. I have it in the itemAttributes class to make it simpler and more organized.
+
+generateObjects():
+This method spawns the objects in the dungeon based on the parsed in item templates. First clears all objects when the dungeon is regenerated or game starts, then it places up to numObjects amount of objects in the dungeon.
+Then it randomly selects an object description from the parsed object templates and always ensures if an object is unique or if the rarity and object placement rate is valid throguh using the random library.
+Objects are created with createInstance and their position is randomized while in bounds.
+Then if the object creation is valid, it is pushed into the objects vector array. usedArtifacts tracks unique objects and if they have been placed yet.
+
+rendering:
+attron and attroff are used for color of monsters and objects, both in pretty identical loops. I have the colors stored in pairs through COLOR_PAIR(obj.color). 
+I have necesscary checks for when a monster or object is found.
+
+Monster Generation & MonsterAttributes.h:
+createMonsters hard code has been updated to include the real parsed monsted definition in the dungeon. Does it through the monster factory method in monsterAttributes.
+The createInstance method in the MonsterAttributes header file rools the speed and hp dice through the dice header class and assigns the appropaite integer value to the monster.
+It parses the bits of the loadMonsterType function to determine if it is telepathic, smart, etc as according to the assignment and ensures the monster's stored booelan characteristics 
+matches that. Then it creates the monster and returns the monster with its attributes in the constructor.
+
+Other things:
+Objects array now stores the different objects of the dungeon. numObjects is also being set, right now I just set it to 10 to make sure it is in line with the assignment. usedArtifacts tracks if a unique object has been placed yet.
+main.cpp has been edited to make sure the monster and item templates have been loaded in before creating the dungeon.
+Object also has a getSymbol method that assigns the correct symbol for the object based on the parsed template or what the assignment instructs.
+I did not do the monster multiple color feature, I really only completed what was absolutely necesscary. Note that I am not using SHeaffer's code.

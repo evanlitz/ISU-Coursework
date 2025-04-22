@@ -1,0 +1,53 @@
+Commands: 
+./dungeon and gcc -o dungeon.c -Wall -Wextra -pedantic
+usleep is currently set to 10! maxTurns to 1000!
+
+This installment of the project focuses on monster movement and behavior, along with player movement and behavior (though much more shallow for now).
+It begins with the monster struct alteration, which now includes speed, type, symbol, alive, and lastSeen X and Y values.
+Another struct created is the new PriorityQueue, which is an array of Events with size maxTurns declared by the user.
+Jumping to the main function, numMonsters is set to 10 by default, but the user input arguments is checked for a --nummon integer that then sets the var.
+Then the monsters array is set with size numMonsters. Then the createMonsters function is called with dungeonMap, monsters, numMonsters, and hardness.
+In createMonsters, the array is iterated through and the monsterType is randomized with a random byte representing characteristics.
+Then the monster's position is randomly assigned through the dungeon array, and the tunnel boolean is set based on the 4th bit. 
+Then the monster struct is fully initalized, including the position, speed, type, alive, and the initial lastSeenX and Y.
+The symbol is also initialized based on the randomly generated monsterType based on the assignment requirements.
+The priority queue is initialized with size 0, before the first event is set for the PC as index -1 and pushed onto the game's priority queue for the first turn.
+Whenever it is the PC's turn in the priority queue, boolean pcTurn is set to true. 
+Then the numMonsters are iterated through, with the turns being set based on the speed of the monsters and the events are pushed onto the priority queue.
+Then the game begins with the priority queue, as a while loop that check when it is empty is iterated on, checking if the gameTime exceeds the amount of set maximum turns.
+gameTime is set to the turnTime of the current event that is popped from the priority queue.
+In the pop function, the event from the priority queue is popped based on earliest turnTime, since it is a minHeap. The root is then replaced with the last element and the size is decreased. 
+Finally the min-Heap heapifies down and the removed event from the root is returned as top.
+If the current turn is identified as the PCTurn, then movePlayer is called.
+In movePlayer, the possible movements are represented in the x and y movement arrays with [-1, 0, 1] combinations.
+Then a random move is chosen and the checkX and checkY are set to the random offset plus the player's current position.
+The checkX and checkY character combo is checked in the dungeon for monsters, and if there is one, then the player kills the monster and its position is set to a room character. 
+Then the checkX and checkY are confirmed to be in bounds, and if hardness is not 0, then the wall character is set to a path character and its hardness to 0.
+Then the current player position is set to the saved and past in pcLastTile, the pcLastTile is updated to the current check position, and the player position is set to the checkX and Y with its character represented as '@'.
+The distance maps are then updated with the pcTurn.
+If it is a monster turn, then the moveMonster function is called.
+In moveMonster, its aliveness is checked, and if it is false then the function terminates with no action.
+Then the monster's bits are checked for telepathic, intelligent, and tunneling characteristics, along with erratic that has a 50 percent chance of executing and making the monster move drunkenly.
+If the 1/2 chance is executed, then the erratic movement is given 16 chances to find a random move that will randomly move the monster.
+If the hardness of the check position is 0, then the erratic monster moves to that position and the monster's position is updated, along with the dungeon.
+The game ends if the check position is equal to the player position.
+Otherwise if tunneling is set to true, then the rock's hardness is subtracted by 85, and if its hardness is <= 0, then the monster's position is set to the check position, dungeon is updated, and the game win condition is checked again.
+If the monster is not telepathic, then the dungeon is searched through to check if the monster sees the player character. This is done through Bresenham;s line algorithm that checks visibility that is only reached through corridors and room chars. If the PC char is reached, then seePC is set to true and lastSeenX and Y are set to player position.
+Otherwise if the monster is telepathic, then the seePC bool is set to true and the lastSeenX and Y are set to player position.
+newX and newY ints are set to the monster's position for now, then the telepathic bool is checked.
+If the monster is intelligent, not telepathic, and has seen the player, then the getIntelligentPostion method is called with the last seen player position passed into the function, along with its tunnel bool.
+In this method,  the distanceMap based on the tunnel bool is called and the distanceMap is set with nextX and nextY pointers being set to x and y.
+Then the best path to the player is found through distance iteration and the position that is the first of the pathgen is set to the nextX and nextY pointers passed into the method.
+If the monster is not telepathic and not intelligent, it only moves if it sees the player character currently, and the moveStraightLine method is called that moves the monsters directly in the X or Y position of the PC.
+If the monster is telepathic and intelligent, then the getIntelligentPosition is called with the playerX and playerY values as the goal.
+If the monster is telepathic and not intelligent, then it moves in a syraight line towards the player position.
+These methods are called to update newX and newY values that are then used in the final check for movement.
+If the hardness of the set newY and newX is bigger than 0 and the monster is a tunneling monster, then the hardness is subtracted by 85 and is then checked for being <= 0. If it is, then the monster moves to the next position and the char is set to a corridor char, moving the monster closer to the player through the rock.
+If the monster is not a tunneling monster, then it stays still if the newX and newY are set to a wall.
+If the hardness of the new position is 0, then the monster simply moves to the square in the grid.
+Finally, the win condition of monster reaching the player is checked once more, before the function returns.
+Back to the main function, an aliveMonsters value is set to 0, and the monsters array is iterated through that adds one to aliveMonsters. If this value is 0 after this, then the win condition for the PC is met.
+Speed is then determined if it is a player or monster character, and the entity's next turn is calculated using it.
+How the turn system works is that 1000/speed is added to the current turn, which is eventually reached as the event is repushed into the priority queue. 
+The dungeon is printed and the usleep value is set to add time between printing.
+Finally, if the pq queue somehow ever becomes empty, the player wins.

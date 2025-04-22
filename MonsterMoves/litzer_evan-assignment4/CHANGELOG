@@ -1,0 +1,18 @@
+2/27/2025
+Added more to the monster structs based on the PDF and created the PQ basic structure for the turn-based system of the game.
+Finished the movePlayer function, and handled the --nummon argument for the number of monsters inputted.
+
+2/28/2025
+The priority queue system is mostly done, I had to use the internet for some of the methods of push, pop, and swap. Monster array and createMonster have been updated with updated struct information.
+
+3/1/2025
+Started on moveMonster, handling intelligent and telepathic checks for the monsters and associated behavior. 
+
+3/2/2025
+The code is somewhat running, but there are many bugs with moveMonster behavior. Currently working on it more, but tunneling is a major issue.
+
+3/4/2025
+moveMonster is done outside of a couple of bugs. Today I worked on all of the win condition regarding players and monsters along with collisions.
+
+3/5/2025
+Testing all edge cases and potential situations that could occur, but the game is mostly done! Submitting!
