@@ -1,0 +1,60 @@
+-- @author Evan Litzer
+-- 4/30/2025
+-- DIY: Health Regeneration, dodge/hit/weight/defense implementations in combat, CASINO.
+
+-- Commands:
+-- make
+-- // RUN MAKE TWICE
+-- // The make file gives me warnings for using size_t in for loops with integers. I have just ignored them, and if you run make again it will work
+-- ./dungeon
+
+-- Casino Commands:
+-- ^: Indicates casino, press ^ when on the tile to then enter the casino.
+--     - One per floor, never in the user''s starting room. Then menu appears with a list of commands to play the games or exit the casino.
+
+-- Regeneration:
+-- The user and monsters will only regenerate health when their hp is lower than their maximum hp. There is only a 1/3 chance per turn that regeneration will occur even with the hp check being confirmed.
+-- The regeneration is a randomly chosen value between 1 and 7 percent of the character's max HP. 
+
+-- Defense:
+-- All characters spawn with a default defense value equal to 1. This is only applicable to the player character, as when a monster attacks (moves onto player tile), the player defense value will subtract the monster's attack by its numeric value.
+-- Defense can be calculated by iterating through the items in the user's inventory/equipment and calculating the sum added to their defense value.
+
+-- Dodge:
+-- Dodge is very similar to defense in terms of calculation through items and its default value set to 5 in the character file.
+-- When the monster moves onto a player's tile in moveMonster(), the dodge affects the accuracy of the monster attacking the user.
+-- The dodgeChance is the percentage that the user dodges the monster's attack, and if the randomly generated 1-100 number is lower than the chance, the monster's attach will miss.
+
+-- Hit:
+-- I changed the meaning of hit. I now have it as the critical hit chance of the player, where their rolled attack value will double if it computes. It is almost identical to the dodge calculation,
+-- where the hit value represents the chance that the attack becomes critical, and the randomly generated 1-100 number is targeted to be lower than the chance.
+
+-- Weight:
+-- The weight of all of the user's items is calculated through the PC class in the getModifiedWeight function. Weight does not affect speed, but rather dodge and speed.
+-- The weight affect formulas on dodge and speed are respectively: 3.0 - (totalWeight / 30.0) and 5.0 - (totalWeight / 20.0), which are subtracted from the actual user dodge/speed values. 
+
+-- Casino:
+-- One casino is placed on every floor of the dungeon, and never in the user's starting spawn room. The casino symbol is '^'.
+-- When the user enters the casino by pressing '^' on top of the casino symbol, they are prompted with the casino lobby menu. They can press 1-5 to select a casino game, or the escape key to leave the casino.
+-- There is no gold currency that the casino tracks, just stat/attribute additions/negations that will hurt or help the player. That was the theme of the casino, it's supposed to be selling your soul to the devil of greed.
+
+-- Slot Machine:
+-- The user spins the slot machine. The rewards vary on how many matching symbols appear in the three slots. I used ChatGPT for the slot machine spinning animations. 
+-- The user may spin the slot machine as many times as they want, but they could possibly die due to the -20 hp debuff that is applied when they lose. 
+
+-- Chest Roulette:
+-- The user selects 1 of 3 chests. One of them contains a reward that boosts their stats, one contains nothing, and one contains a stat negation that will hurt the player.
+-- The casino prompts the user by allowing them to use arrow keys to select a chest and press enter, in which the rest of the game then runs.
+
+-- Russian Roulette:
+-- My favorite game, I juiced up all of the rewards as death is always on the line here. ChatGPT made a really cool ASCII ghost design and revolver spinning animation.
+-- The user has a 1 in 6 chance for the revolver to kill them. If it does not, then they get a huge reward. I also have some ghost dialogue as well.
+
+-- Scratch Off:
+-- There is a 5x5 grid that represents the scratch off ticket. The user then selects five tiles to then reveal. The rewards vary by how many tiles are reveleaed to be matching.
+-- The user also gets punished if they do not get 3 matching items through an hp subtraction, which I also check for death.
+
+-- Wheel of Misfortune:
+-- The user spins a wheel that randomly selects an effect that helps or negates the user. I created a spinning animation that slows down the wheel iteration until a tile is chosen.
+-- Then I handle for the different cases, which includes a sloth explaining the terms and conditions of the wheel very very slowly. There are also user stat effects that then apply.
+

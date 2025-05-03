@@ -1,0 +1,574 @@
+g++ -Wall -Wextra -std=c++17 -c RealDungeon.cpp -o RealDungeon.o
+In file included from Dungeon.h:7,
+                 from RealDungeon.cpp:8:
+Monster.h: In constructor ‘Monster::Monster(int, int, int, int, int, Dice, int)’:
+Monster.h:12:10: warning: ‘Monster::damage’ will be initialized after [-Wreorder]
+   12 |     Dice damage ;
+      |          ^~~~~~
+Monster.h:11:9: warning:   ‘int Monster::color’ [-Wreorder]
+   11 |     int color ;
+      |         ^~~~~
+Monster.h:14:5: warning:   when initialized here [-Wreorder]
+   14 |     Monster(int x = 0, int y = 0, int speed = 10, int type = 0, int hp = 0, Dice damage = Dice(), int color = 0)
+      |     ^~~~~~~
+Monster.h: In constructor ‘Monster::Monster(int, int, char, int, int, bool, int, Dice, int)’:
+Monster.h:12:10: warning: ‘Monster::damage’ will be initialized after [-Wreorder]
+   12 |     Dice damage ;
+      |          ^~~~~~
+Monster.h:11:9: warning:   ‘int Monster::color’ [-Wreorder]
+   11 |     int color ;
+      |         ^~~~~
+Monster.h:20:5: warning:   when initialized here [-Wreorder]
+   20 |     Monster(int x, int y, char symbol, int type, int speed, bool tunnel, int hp, Dice damage, int color)
+      |     ^~~~~~~
+In file included from Dungeon.h:16,
+                 from RealDungeon.cpp:8:
+MonsterAttributes.h: In member function ‘void MonsterAttributes::print()’:
+MonsterAttributes.h:31:27: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+   31 |         for (int i = 0; i < colors.size(); i++)
+      |                         ~~^~~~~~~~~~~~~~~
+MonsterAttributes.h:34:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+   34 |             if (i < colors.size() - 1) std::cout << " ";
+      |                 ~~^~~~~~~~~~~~~~~~~~~
+MonsterAttributes.h:40:27: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+   40 |         for (int i = 0; i < abilities.size(); i++)
+      |                         ~~^~~~~~~~~~~~~~~~~~
+MonsterAttributes.h:43:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+   43 |             if (i < abilities.size() - 1) std::cout << " ";
+      |                 ~~^~~~~~~~~~~~~~~~~~~~~~
+MonsterAttributes.h: In member function ‘int MonsterAttributes::loadMonsterType() const’:
+MonsterAttributes.h:100:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  100 |     for (int i = 0 ; i < abilities.size(); i++)
+      |                      ~~^~~~~~~~~~~~~~~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h: At global scope:
+Casino.h:227:15: error: ISO C++ forbids declaration of ‘clear’ with no type [-fpermissive]
+  227 |         clear();
+      |               ^
+Casino.h:228:18: error: expected identifier before numeric constant
+  228 |         mvprintw(0, 0, "Your picks:");
+      |                  ^
+Casino.h:228:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:228:37: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  228 |         mvprintw(0, 0, "Your picks:");
+      |                                     ^
+Casino.h:229:9: error: expected unqualified-id before ‘for’
+  229 |         for (int i = 0; i < gridSize; i++) {
+      |         ^~~
+Casino.h:229:25: error: ‘i’ does not name a type
+  229 |         for (int i = 0; i < gridSize; i++) {
+      |                         ^
+Casino.h:229:39: error: ‘i’ does not name a type
+  229 |         for (int i = 0; i < gridSize; i++) {
+      |                                       ^
+Casino.h:238:18: error: expected identifier before numeric constant
+  238 |         mvprintw(8 + gridRows, 0, "Press any key to reveal the rest...");
+      |                  ^
+Casino.h:238:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:238:72: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  238 |         mvprintw(8 + gridRows, 0, "Press any key to reveal the rest...");
+      |                                                                        ^
+Casino.h:238:9: error: ‘int Casino::mvprintw(int)’ cannot be overloaded with ‘int Casino::mvprintw(int)’
+  238 |         mvprintw(8 + gridRows, 0, "Press any key to reveal the rest...");
+      |         ^~~~~~~~
+Casino.h:228:9: note: previous declaration ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+In file included from PC.h:5,
+                 from Dungeon.h:8,
+                 from RealDungeon.cpp:8:
+Casino.h:239:9: error: ‘stdscr’ is not a type
+  239 |         getch();
+      |         ^~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h:240:15: error: ISO C++ forbids declaration of ‘clear’ with no type [-fpermissive]
+  240 |         clear();
+      |               ^
+Casino.h:240:9: error: ‘int Casino::clear()’ cannot be overloaded with ‘int Casino::clear()’
+  240 |         clear();
+      |         ^~~~~
+Casino.h:227:9: note: previous declaration ‘int Casino::clear()’
+  227 |         clear();
+      |         ^~~~~
+Casino.h:242:18: error: expected identifier before numeric constant
+  242 |         mvprintw(0, 0, "Results:");
+      |                  ^
+Casino.h:242:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:242:34: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  242 |         mvprintw(0, 0, "Results:");
+      |                                  ^
+Casino.h:242:9: error: ‘int Casino::mvprintw(int)’ cannot be overloaded with ‘int Casino::mvprintw(int)’
+  242 |         mvprintw(0, 0, "Results:");
+      |         ^~~~~~~~
+Casino.h:228:9: note: previous declaration ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:243:9: error: expected unqualified-id before ‘for’
+  243 |         for (int i = 0; i < gridSize; i++) {
+      |         ^~~
+Casino.h:243:25: error: ‘i’ does not name a type
+  243 |         for (int i = 0; i < gridSize; i++) {
+      |                         ^
+Casino.h:243:39: error: ‘i’ does not name a type
+  243 |         for (int i = 0; i < gridSize; i++) {
+      |                                       ^
+Casino.h:249:18: error: expected identifier before numeric constant
+  249 |         mvprintw(8 + gridRows, 0, "You revealed %d matching symbols.", highest);
+      |                  ^
+Casino.h:249:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:249:79: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  249 |         mvprintw(8 + gridRows, 0, "You revealed %d matching symbols.", highest);
+      |                                                                               ^
+Casino.h:249:9: error: ‘int Casino::mvprintw(int)’ cannot be overloaded with ‘int Casino::mvprintw(int)’
+  249 |         mvprintw(8 + gridRows, 0, "You revealed %d matching symbols.", highest);
+      |         ^~~~~~~~
+Casino.h:228:9: note: previous declaration ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:252:9: error: expected unqualified-id before ‘if’
+  252 |         if (highest == 5)
+      |         ^~
+Casino.h:264:9: error: expected unqualified-id before ‘else’
+  264 |         else if (highest == 4) {
+      |         ^~~~
+Casino.h:284:11: error: expected unqualified-id before ‘else’
+  284 |         } else if (highest == 3) {
+      |           ^~~~
+Casino.h:288:9: error: expected unqualified-id before ‘else’
+  288 |         else if (highest == 2)
+      |         ^~~~
+Casino.h:292:11: error: expected unqualified-id before ‘else’
+  292 |         } else {
+      |           ^~~~
+Casino.h:298:9: error: expected unqualified-id before ‘if’
+  298 |         if (player.hp <= 0 || player.maxHP <= 0) {
+      |         ^~
+Casino.h:310:18: error: expected identifier before numeric constant
+  310 |         mvprintw(12 + gridRows, 0, "Current HP: %d / %d", player.hp, player.maxHP);
+      |                  ^~
+Casino.h:310:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:310:82: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  310 |         mvprintw(12 + gridRows, 0, "Current HP: %d / %d", player.hp, player.maxHP);
+      |                                                                                  ^
+Casino.h:310:9: error: ‘int Casino::mvprintw(int)’ cannot be overloaded with ‘int Casino::mvprintw(int)’
+  310 |         mvprintw(12 + gridRows, 0, "Current HP: %d / %d", player.hp, player.maxHP);
+      |         ^~~~~~~~
+Casino.h:228:9: note: previous declaration ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:311:18: error: expected identifier before numeric constant
+  311 |         mvprintw(13 + gridRows, 0, "Damage: %d + %dd%d", player.damage.base, player.damage.dice, player.damage.sides);
+      |                  ^~
+Casino.h:311:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:311:117: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  311 |         mvprintw(13 + gridRows, 0, "Damage: %d + %dd%d", player.damage.base, player.damage.dice, player.damage.sides);
+      |                                                                                                                     ^
+Casino.h:311:9: error: ‘int Casino::mvprintw(int)’ cannot be overloaded with ‘int Casino::mvprintw(int)’
+  311 |         mvprintw(13 + gridRows, 0, "Damage: %d + %dd%d", player.damage.base, player.damage.dice, player.damage.sides);
+      |         ^~~~~~~~
+Casino.h:228:9: note: previous declaration ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:312:18: error: expected identifier before numeric constant
+  312 |         mvprintw(15 + gridRows, 0, "Press any key to return...");
+      |                  ^~
+Casino.h:312:18: error: expected ‘,’ or ‘...’ before numeric constant
+Casino.h:312:64: error: ISO C++ forbids declaration of ‘mvprintw’ with no type [-fpermissive]
+  312 |         mvprintw(15 + gridRows, 0, "Press any key to return...");
+      |                                                                ^
+Casino.h:312:9: error: ‘int Casino::mvprintw(int)’ cannot be overloaded with ‘int Casino::mvprintw(int)’
+  312 |         mvprintw(15 + gridRows, 0, "Press any key to return...");
+      |         ^~~~~~~~
+Casino.h:228:9: note: previous declaration ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+In file included from PC.h:5,
+                 from Dungeon.h:8,
+                 from RealDungeon.cpp:8:
+Casino.h:313:9: error: ‘stdscr’ is not a type
+  313 |         getch();
+      |         ^~~~~
+Casino.h:313:9: error: ‘int Casino::wgetch(int)’ cannot be overloaded with ‘int Casino::wgetch(int)’
+  313 |         getch();
+      |         ^~~~~
+Casino.h:239:9: note: previous declaration ‘int Casino::wgetch(int)’
+  239 |         getch();
+      |         ^~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h:314:6: error: expected ‘;’ after class definition
+  314 |     }
+      |      ^
+      |      ;
+Casino.h:225:41: error: ‘matches’ was not declared in this scope
+  225 |         int highest = *std::max_element(matches, matches + 5);
+      |                                         ^~~~~~~
+Casino.h:225:50: error: ‘matches’ was not declared in this scope
+  225 |         int highest = *std::max_element(matches, matches + 5);
+      |                                                  ^~~~~~~
+Casino.h: In static member function ‘static void Casino::enterCasino(PC&)’:
+Casino.h:21:19: error: cannot call member function ‘int Casino::clear()’ without object
+   21 |             clear();
+      |                   ^
+Casino.h:22:60: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [31])’
+   22 |             mvprintw(0, 0, "Welcome to the Dungeon Casino!");
+      |                                                            ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:23:50: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [21])’
+   23 |             mvprintw(2, 0, "1. Play Slot Machine");
+      |                                                  ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:24:52: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [23])’
+   24 |             mvprintw(3, 0, "2. Play Chest Roulette");
+      |                                                    ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:25:54: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [25])’
+   25 |             mvprintw(4, 0, "3. Play Russian Roulette");
+      |                                                      ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:26:57: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [28])’
+   26 |             mvprintw(5, 0, "4. Play Dungeon Scratch-Off");
+      |                                                         ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:27:66: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [37])’
+   27 |             mvprintw(6, 0, "5. Play Spin the Wheel of Misfortune");
+      |                                                                  ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:28:46: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [17])’
+   28 |             mvprintw(7, 0, "ESC. Exit Casino");
+      |                                              ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+In file included from PC.h:5,
+                 from Dungeon.h:8,
+                 from RealDungeon.cpp:8:
+Casino.h:31:22: error: cannot call member function ‘int Casino::wgetch(int)’ without object
+   31 |             int ch = getch();
+      |                      ^~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h:33:17: error: ‘playSlotMachine’ was not declared in this scope
+   33 |                 playSlotMachine(player);
+      |                 ^~~~~~~~~~~~~~~
+Casino.h:41:17: error: ‘playRussianRoulette’ was not declared in this scope; did you mean ‘playTrapRoulette’?
+   41 |                 playRussianRoulette(player);
+      |                 ^~~~~~~~~~~~~~~~~~~
+      |                 playTrapRoulette
+Casino.h:49:17: error: ‘playWheelOfMisfortune’ was not declared in this scope
+   49 |                 playWheelOfMisfortune(player);
+      |                 ^~~~~~~~~~~~~~~~~~~~~
+Casino.h: In static member function ‘static void Casino::playTrapRoulette(PC&)’:
+Casino.h:59:19: error: cannot call member function ‘int Casino::clear()’ without object
+   59 |             clear();
+      |                   ^
+Casino.h:60:43: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [14])’
+   60 |             mvprintw(0, 0, "Trap Roulette");
+      |                                           ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:61:60: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [31])’
+   61 |             mvprintw(2, 0, "Three chests lie before you...");
+      |                                                            ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:62:104: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [75])’
+   62 |             mvprintw(3, 0, "Use the left and right arrow keys to pick a chest. Press ENTER to open it.");
+      |                                                                                                        ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:68:47: error: no matching function for call to ‘Casino::mvprintw(int&, int&, const char [10])’
+   68 |                 mvprintw(y,     x, "+-------+");
+      |                                               ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:69:47: error: no matching function for call to ‘Casino::mvprintw(int, int&, const char [10])’
+   69 |                 mvprintw(y + 1, x, "|       |");
+      |                                               ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:70:55: error: no matching function for call to ‘Casino::mvprintw(int, int&, const char [11], int)’
+   70 |                 mvprintw(y + 2, x, "|   %d   |", i + 1);
+      |                                                       ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 4 provided
+Casino.h:71:47: error: no matching function for call to ‘Casino::mvprintw(int, int&, const char [10])’
+   71 |                 mvprintw(y + 3, x, "|       |");
+      |                                               ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:72:47: error: no matching function for call to ‘Casino::mvprintw(int, int&, const char [10])’
+   72 |                 mvprintw(y + 4, x, "+-------+");
+      |                                               ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:75:53: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [8])’
+   75 |                     mvprintw(y + 5, x + 1, "  ^ You");
+      |                                                     ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+In file included from PC.h:5,
+                 from Dungeon.h:8,
+                 from RealDungeon.cpp:8:
+Casino.h:80:22: error: cannot call member function ‘int Casino::wgetch(int)’ without object
+   80 |             int ch = getch();
+      |                      ^~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h:91:15: error: cannot call member function ‘int Casino::clear()’ without object
+   91 |         clear();
+      |               ^
+Casino.h:92:61: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [22], int)’
+   92 |         mvprintw(0, 0, "You chose chest %d...", selected + 1);
+      |                                                             ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 4 provided
+Casino.h:94:36: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [11])’
+   94 |         mvprintw(2, 0, "Opening...");
+      |                                    ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:104:67: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [30])’
+  104 |                     mvprintw(4, 0, "You feel tougher! +5 Defense!");
+      |                                                                   ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:108:65: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [28])’
+  108 |                     mvprintw(4, 0, "You feel healthier! +10 HP!");
+      |                                                                 ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:112:66: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [29])’
+  112 |                     mvprintw(4, 0, "You feel quicker! +15 Dodge!");
+      |                                                                  ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:116:68: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [31])’
+  116 |                     mvprintw(4, 0, "You feel immortal! +20 Max HP!");
+      |                                                                    ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:121:64: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [35])’
+  121 |             mvprintw(4, 0, "Nothing inside... maybe next time.");
+      |                                                                ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:126:62: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [25])’
+  126 |                     mvprintw(4, 0, "Armor break! -5 Defense!");
+      |                                                              ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:130:55: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [18])’
+  130 |                     mvprintw(4, 0, "Poisoned! -10 HP!");
+      |                                                       ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:135:60: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [23])’
+  135 |                     mvprintw(4, 0, "Clumsy now! -15 Dodge!");
+      |                                                            ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:139:58: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [21])’
+  139 |                     mvprintw(4, 0, "Drained! -20 Max HP!");
+      |                                                          ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:146:70: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [20], int&, int&)’
+  146 |         mvprintw(6, 0, "Current HP: %d / %d", player.hp, player.maxHP);
+      |                                                                      ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 5 provided
+Casino.h:147:79: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [24], int&, int&)’
+  147 |         mvprintw(7, 0, "Defense: %d   Dodge: %d", player.defense, player.dodge);
+      |                                                                               ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 5 provided
+Casino.h:148:52: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [27])’
+  148 |         mvprintw(9, 0, "Press any key to return...");
+      |                                                    ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+In file included from PC.h:5,
+                 from Dungeon.h:8,
+                 from RealDungeon.cpp:8:
+Casino.h:149:9: error: cannot call member function ‘int Casino::wgetch(int)’ without object
+  149 |         getch();
+      |         ^~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h: In static member function ‘static void Casino::playScratchOff(PC&)’:
+Casino.h:153:15: error: cannot call member function ‘int Casino::clear()’ without object
+  153 |         clear();
+      |               ^
+Casino.h:154:45: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [20])’
+  154 |         mvprintw(0, 0, "Dungeon Scratch-Off");
+      |                                             ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:155:52: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [27])’
+  155 |         mvprintw(2, 0, "Pick 5 tiles to scratch...");
+      |                                                    ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:172:19: error: cannot call member function ‘int Casino::clear()’ without object
+  172 |             clear();
+      |                   ^
+Casino.h:173:49: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [20])’
+  173 |             mvprintw(0, 0, "Dungeon Scratch-Off");
+      |                                                 ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:174:61: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [32])’
+  174 |             mvprintw(2, 0, "Pick 5 tiles to scratch (1-25):");
+      |                                                             ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:180:65: error: no matching function for call to ‘Casino::mvprintw(int&, int&, const char [7], const char*)’
+  180 |                     mvprintw(row, col, "[ %s ]", grid[i].c_str());
+      |                                                                 ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 4 provided
+Casino.h:182:54: error: no matching function for call to ‘Casino::mvprintw(int&, int&, const char [6], int)’
+  182 |                     mvprintw(row, col, "[%2d]", i + 1);
+      |                                                      ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 4 provided
+Casino.h:189:68: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [27])’
+  189 |             mvprintw(10 + gridRows, 0, "Enter tile number (1-25): ");
+      |                                                                    ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:196:35: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  196 |                 for (int s = 0; s < symbols.size(); s++) {
+      |                                 ~~^~~~~~~~~~~~~~~~
+Casino.h:205:15: error: ‘else’ without a previous ‘if’
+  205 |             } else {
+      |               ^~~~
+Casino.h:208:72: error: no matching function for call to ‘Casino::mvprintw(int, int, const char [27])’
+  208 |                 mvprintw(10 + gridRows, 0, "Enter tile number (1-25): ");
+      |                                                                        ^
+Casino.h:228:9: note: candidate: ‘int Casino::mvprintw(int)’
+  228 |         mvprintw(0, 0, "Your picks:");
+      |         ^~~~~~~~
+Casino.h:228:9: note:   candidate expects 1 argument, 3 provided
+Casino.h:214:39: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  214 |                     for (int s = 0; s < symbols.size(); s++) {
+      |                                     ~~^~~~~~~~~~~~~~~~
+Casino.h:152:36: warning: unused parameter ‘player’ [-Wunused-parameter]
+  152 |     static void playScratchOff(PC& player) {
+      |                                ~~~~^~~~~~
+Casino.h: In function ‘void playWheelOfMisfortune(PC&)’:
+Casino.h:414:31: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  414 |             for (int j = 0; j < outcomes.size(); j++) {
+      |                             ~~^~~~~~~~~~~~~~~~~
+Casino.h:416:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  416 |                 if (j == i % outcomes.size()) {
+      |                     ~~^~~~~~~~~~~~~~~~~~~~~~
+Casino.h: At global scope:
+Casino.h:606:1: error: expected declaration before ‘}’ token
+  606 | };
+      | ^
+RealDungeon.cpp: In member function ‘void Dungeon::createMonsters(int)’:
+RealDungeon.cpp:486:60: warning: suggest parentheses around ‘&&’ within ‘||’ [-Wparentheses]
+  486 |             (monsterX == player.x && monsterY == player.y) &&
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+  487 |             tries < 100
+      |             ~~~~~~~~~~~                                     
+RealDungeon.cpp: In member function ‘void Dungeon::movePlayer(int, int)’:
+RealDungeon.cpp:928:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<Object>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  928 |     for (int i = 0 ; i < objects.size() ; i++)
+      |                      ~~^~~~~~~~~~~~~~~~
+RealDungeon.cpp:867:10: warning: unused variable ‘targetTile’ [-Wunused-variable]
+  867 |     char targetTile = dungeonMap[targetY][targetX];
+      |          ^~~~~~~~~~
+RealDungeon.cpp: In member function ‘void Dungeon::runGameLoop(int, char**)’:
+RealDungeon.cpp:1747:13: warning: unused variable ‘aliveMonsters’ [-Wunused-variable]
+ 1747 |         int aliveMonsters = std::count_if(monsters.begin(), monsters.end(),
+      |             ^~~~~~~~~~~~~
+In file included from RealDungeon.cpp:17:
+Casino.h: At global scope:
+Casino.h:524:17: warning: ‘void playSlotMachine(PC&)’ defined but not used [-Wunused-function]
+  524 |     static void playSlotMachine(PC& player) {
+      |                 ^~~~~~~~~~~~~~~
+Casino.h:395:17: warning: ‘void playWheelOfMisfortune(PC&)’ defined but not used [-Wunused-function]
+  395 |     static void playWheelOfMisfortune(PC& player) {
+      |                 ^~~~~~~~~~~~~~~~~~~~~
+Casino.h:318:17: warning: ‘void playRussianRoulette(PC&)’ defined but not used [-Wunused-function]
+  318 |     static void playRussianRoulette(PC& player) {
+      |                 ^~~~~~~~~~~~~~~~~~~
+make: *** [Makefile:16: RealDungeon.o] Error 1
