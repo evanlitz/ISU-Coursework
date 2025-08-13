@@ -1,0 +1,44 @@
+// @author Evan Litzer
+//Modify Records Script 1
+MATCH (s:Student {ssn: "144673371"})
+SET s.name = "Scott"
+
+//Modify Records Script 2
+MATCH (s:Student {ssn: "144673371"})
+SET s.major = "Computer Science"
+
+//Modify Records Script 3
+MATCH (:Student)-[r:Registers]->(:Course)
+WHERE r.regtime = "Summer2024"
+DELETE r
+
+//Modify Records Script 4
+MATCH (dept:Department {name: "Applied Mathematics"})-[:Administers]->(deg:Degree)
+OPTIONAL MATCH (deg)<-[rel1]-()
+OPTIONAL MATCH (deg)-[rel2]->()
+DELETE rel1, rel2
+WITH dept, deg  
+OPTIONAL MATCH (dept)<-[rel3]-()
+OPTIONAL MATCH (dept)-[rel4]->()
+DELETE rel3, rel4
+WITH deg, dept  
+DELETE deg, dept
+
+//Modify Records Script 5
+CALL {
+  MATCH (c:Course)
+  WITH c.level AS level, c.department_code AS dept_code, MIN(TOINTEGER(c.number)) AS min_num
+  RETURN COLLECT({level: level, department_code: dept_code, min_num: min_num}) AS keep_list
+}
+MATCH (c:Course)
+WITH c, TOINTEGER(c.number) AS num, c.level AS level, c.department_code AS dept_code, keep_list
+WHERE NOT EXISTS {
+  // If this course is the one to keep, skip it
+  UNWIND keep_list AS keep
+  WITH keep, c, num, level, dept_code
+  WHERE keep.level = level AND keep.department_code = dept_code AND keep.min_num = num
+  RETURN 1
+}
+OPTIONAL MATCH (c)-[r]-()
+DELETE r
+DELETE c

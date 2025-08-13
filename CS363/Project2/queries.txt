@@ -1,0 +1,127 @@
+// @author Evan Litzer
+//Query Script 1
+MATCH (s:Student {name: "Amy"})
+RETURN s.c_addr AS campus_address
+
+//Query Script 2
+MATCH (s:Student {name: "Gail"})-[:Major]->(d:Degree)
+RETURN d.name AS major_name, d.level AS major_level
+
+//Query Script 3
+MATCH (d:Department {name: "Computer Science"})-[:Offers]->(c:Course)
+RETURN c.number, c.name
+ORDER BY c.number
+
+//Query Script 4
+MATCH (s:Student)-[r:Registers]->(:Course)
+WHERE r.regtime = "Fall2022"
+RETURN DISTINCT s.name
+
+//Query Script 5
+MATCH (d:Department {name: "Computer Science"})-[:Administers]->(deg:Degree)
+RETURN deg.name, deg.level
+ORDER BY deg.level
+
+//Query Script 6
+MATCH (s:Student)-[:Minors]->(:Degree)
+RETURN s.snum, s.name
+ORDER BY s.snum
+
+//Query Script 7
+MATCH (s:Student)-[:Majors]->(deg:Degree)
+WHERE deg.level IN ["MS", "PhD"]
+MATCH (s)-[:Registers]->(c:Course {name: "Database"})
+RETURN s.name, s.snum
+ORDER BY s.snum
+
+//Query Script 8
+MATCH (s:Student)
+WHERE s.name CONTAINS "n" OR s.name CONTAINS "N"
+RETURN s.name, s.snum, s.ssn
+ORDER BY s.snum
+
+//Query Script 9
+MATCH (s:Student)
+WHERE s.name >= "Amy" AND s.name <= "Nicole"
+RETURN s.name, s.snum, s.ssn
+ORDER BY s.name
+
+//Query Script 10
+MATCH (c:Course)
+OPTIONAL MATCH (s:Student)-[:REGISTERED]->(c)
+RETURN c.number, c.name, COUNT(s) AS student_count
+ORDER BY c.number
+
+//Query Script 11
+CALL {
+  MATCH (s:Student)-[:Majors]->(d:Degree)
+  WHERE d.name = "Software Engineering" AND s.gender = "F"
+  RETURN DISTINCT s.snum AS snum
+
+  UNION
+
+  MATCH (s:Student)-[:Minors]->(d:Degree)
+  WHERE d.name = "Software Engineering" AND s.gender = "F"
+  RETURN DISTINCT s.snum AS snum
+}
+RETURN COUNT(*) AS female_count
+
+//Query Script 12
+MATCH (s:Student)-[:Majors]->(d:Degree)
+WITH d.name AS degree_name, d.level AS degree_level, COUNT(s) AS major_count
+WITH degree_name, degree_level, major_count
+ORDER BY major_count ASC
+WITH COLLECT({degree_name: degree_name, degree_level: degree_level, major_count: major_count}) AS degrees
+WITH degrees, degrees[0].major_count AS min_count
+UNWIND degrees AS d
+WITH d
+WHERE d.major_count = min_count
+RETURN d.degree_name, d.degree_level, d.major_count
+ORDER BY d.degree_name
+
+//Query Script 13
+MATCH (s:Student)-[r]->(d:Degree)
+WHERE type(r) IN ["Majors", "Minors"]
+WITH d.name AS degree_name, d.level AS degree_level, COUNT(DISTINCT s) AS student_count
+WITH degree_name, degree_level, student_count
+ORDER BY student_count ASC
+WITH COLLECT({degree_name: degree_name, degree_level: degree_level, student_count: student_count}) AS degrees
+WITH degrees, degrees[0].student_count AS min_count
+UNWIND degrees AS d
+WITH d
+WHERE d.student_count = min_count
+RETURN d.degree_name, d.degree_level, d.student_count
+ORDER BY d.degree_name
+
+//Query Script 14
+MATCH (:Student)-[r:Registers]->(c:Course)
+WHERE r.regtime <> "Current" AND r.grade IS NOT NULL
+RETURN c.number, c.name, AVG(toFloat(r.grade)) AS average_grade
+ORDER BY c.number
+
+//Query Script 15
+MATCH (dept:Department)-[:Administers]->(deg:Degree)
+WHERE dept.college = "LAS"
+MATCH (s:Student)-[r]->(deg)
+WHERE type(r) IN ["Majors", "Minors"] AND s.gender = "F"
+RETURN COUNT(DISTINCT s) AS female_count
+
+//Query Script 16
+MATCH (s:Student)-[r]->(d:Degree)
+WHERE type(r) IN ["Majors", "Minors"]
+WITH d.name AS degree_name, d.level AS degree_level,
+     SUM(CASE WHEN s.gender = "M" THEN 1 ELSE 0 END) AS male_count,
+     SUM(CASE WHEN s.gender = "F" THEN 1 ELSE 0 END) AS female_count
+WHERE male_count > female_count
+RETURN degree_name, degree_level, male_count, female_count
+
+//Query Script 17
+MATCH (lisa:Student {name: "Lisa"}), (cs:Department {name: "Computer Science"})
+MATCH p = shortestPath((lisa)-[*]-(cs))
+RETURN p
+
+//Query Script 18
+MATCH (lisa:Student {name: "Lisa"})--(adjacent)
+RETURN DISTINCT labels(adjacent) AS node_type, adjacent
+
+
