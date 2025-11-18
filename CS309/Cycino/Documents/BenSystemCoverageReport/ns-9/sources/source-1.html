@@ -1,0 +1,320 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Evaluator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.Games.poker</a>
+</div>
+
+<h1>Coverage Summary for Class: Evaluator (coms309.Cycino.Games.poker)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Evaluator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (7/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    68.9%
+  </span>
+  <span class="absValue">
+    (51/74)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.9%
+  </span>
+  <span class="absValue">
+    (83/108)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.Games.poker;
+&nbsp;
+&nbsp;import coms309.Cycino.Enums;
+&nbsp;import coms309.Cycino.Games.GameLogic.Card;
+&nbsp;import coms309.Cycino.Games.GameLogic.PlayerHands;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+<b class="nc">&nbsp;public class Evaluator {</b>
+&nbsp;
+&nbsp;    public static double evaluate(PlayerHands hands){
+<b class="fc">&nbsp;        Map&lt;String,Object&gt; flush = checkFlush(hands);</b>
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; straight = straight(hands);</b>
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; multi = checkMult(hands);</b>
+&nbsp;
+<b class="fc">&nbsp;        Set&lt;Double&gt; v = new HashSet&lt;&gt;();</b>
+<b class="fc">&nbsp;        if(straight.get(&quot;value&quot;) != null)</b>
+<b class="fc">&nbsp;            v.add((double) straight.get(&quot;value&quot;));</b>
+<b class="pc">&nbsp;        if(multi.get(&quot;value&quot;) != null)</b>
+<b class="fc">&nbsp;            v.add((double) multi.get(&quot;value&quot;));</b>
+<b class="pc">&nbsp;        if(flush.get(&quot;value&quot;) != null)</b>
+<b class="nc">&nbsp;            v.add((double) flush.get(&quot;value&quot;));</b>
+&nbsp;
+<b class="fc">&nbsp;        double high = 0;</b>
+<b class="fc">&nbsp;        for(double d: v){</b>
+<b class="pc">&nbsp;            if(d &gt; high){</b>
+<b class="fc">&nbsp;                high = d;</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="pc">&nbsp;        if(high == 0)</b>
+<b class="nc">&nbsp;            return getHigh(hands).getValue()/100.0;</b>
+<b class="fc">&nbsp;        return high;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;//    private Map&lt;String, Object&gt; checkRoyal(PlayerHands hands){
+&nbsp;//        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();
+&nbsp;//        for(Enums.SUIT suit: Enums.SUIT.values()){
+&nbsp;//            for(Enums.VALUE value: Enums.VALUE.values()){
+&nbsp;//                Card temp = new Card(value.toString(), suit, null);
+&nbsp;//                if(hands.contains(temp)){
+&nbsp;//                    if(value == Enums.VALUE.ACE &amp;&amp; hands.contains(new Card(&quot;10&quot;, suit, null))){
+&nbsp;//                        PlayerHands tempHand = new PlayerHands();
+&nbsp;//                        tempHand.add(new Card(&quot;10&quot;, suit, null));
+&nbsp;//                        tempHand.add(temp);
+&nbsp;//                        for(int i = 0; i &lt; 3; i++){
+&nbsp;//                            tempHand.add(new Card(Enums.VALUE.values()[i].toString(), suit, null));
+&nbsp;//                        }
+&nbsp;//                        response.put(&quot;hand&quot;, tempHand);
+&nbsp;//                        response.put(&quot;value&quot;, 10);
+&nbsp;//                        break;
+&nbsp;//                    }
+&nbsp;//                    continue;
+&nbsp;//                }
+&nbsp;//                break;
+&nbsp;//            }
+&nbsp;//        }
+&nbsp;//        return response;
+&nbsp;//    }
+&nbsp;
+&nbsp;    private static Map&lt;String, Object&gt; checkFlush(PlayerHands hands){
+<b class="fc">&nbsp;        ArrayList&lt;Card&gt; hearts = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        ArrayList&lt;Card&gt; diamonds = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        ArrayList&lt;Card&gt; clubs = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        ArrayList&lt;Card&gt; spades = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Card c: hands.getHand()){</b>
+<b class="pc">&nbsp;            switch(c.getSuit().toString()){</b>
+<b class="fc">&nbsp;                case &quot;HEARTS&quot;: hearts.add(c);</b>
+&nbsp;                break;
+<b class="fc">&nbsp;                case &quot;DIAMONDS&quot;: diamonds.add(c);</b>
+&nbsp;                break;
+<b class="fc">&nbsp;                case &quot;CLUBS&quot;: clubs.add(c);</b>
+&nbsp;                break;
+<b class="fc">&nbsp;                case &quot;SPADES&quot;: spades.add(c);</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="pc">&nbsp;        if(hearts.size() &gt;= 5){</b>
+<b class="nc">&nbsp;            response = simplify(hearts);</b>
+<b class="pc">&nbsp;        } else if(clubs.size() &gt;= 5){</b>
+<b class="nc">&nbsp;            response = simplify(clubs);</b>
+<b class="pc">&nbsp;        } else if(spades.size() &gt;= 5){</b>
+<b class="nc">&nbsp;            response = simplify(spades);</b>
+<b class="pc">&nbsp;        } else if(diamonds.size() &gt;= 5){</b>
+<b class="nc">&nbsp;            response = simplify(diamonds);</b>
+&nbsp;        }
+<b class="pc">&nbsp;        if(!response.isEmpty())</b>
+<b class="nc">&nbsp;            response.put(&quot;value&quot;, 6 + getHigh((PlayerHands) response.get(&quot;hand&quot;)).getValue()/100.0);</b>
+<b class="fc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Map&lt;String, Object&gt; simplify(ArrayList&lt;Card&gt; cards){
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="pc">&nbsp;        while(cards.size() &gt; 5){</b>
+<b class="nc">&nbsp;            Card smallest = cards.get(0);</b>
+<b class="nc">&nbsp;            for(Card c: cards){</b>
+<b class="nc">&nbsp;                if(c.getValue() &lt; smallest.getValue())</b>
+<b class="nc">&nbsp;                    smallest = c;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            cards.remove(smallest);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        PlayerHands temp = new PlayerHands();</b>
+<b class="fc">&nbsp;        temp.addAll(cards);</b>
+<b class="fc">&nbsp;        response.put(&quot;hand&quot;, temp);</b>
+<b class="fc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Map&lt;String, Object&gt; straight(PlayerHands hand){
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Card c: hand.getHand()){</b>
+<b class="fc">&nbsp;            PlayerHands temp = new PlayerHands();</b>
+<b class="fc">&nbsp;            int start = c.getValue();</b>
+<b class="fc">&nbsp;            for(int i = start; i &lt; start + 5; i++){</b>
+<b class="fc">&nbsp;                Card card = hand.containsValue(i);</b>
+<b class="fc">&nbsp;                if(card != null){</b>
+<b class="fc">&nbsp;                    temp.add(card);</b>
+&nbsp;                    continue;
+&nbsp;                }
+&nbsp;                break;
+&nbsp;            }
+<b class="fc">&nbsp;            if(temp.getHand().size() &gt;= 5){</b>
+<b class="fc">&nbsp;                response.put(&quot;hand&quot;, temp);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        if(!response.isEmpty()) {</b>
+<b class="fc">&nbsp;            PlayerHands flush = (PlayerHands) checkFlush((PlayerHands) response.get(&quot;hand&quot;)).get(&quot;hand&quot;);</b>
+<b class="pc">&nbsp;            if(flush != null) {</b>
+<b class="nc">&nbsp;                response.put(&quot;hand&quot;, flush);</b>
+<b class="nc">&nbsp;                response.put(&quot;value&quot;, 9 + getHigh(flush).getValue()/100.0);</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                PlayerHands fin = (PlayerHands) simplify(((PlayerHands) response.get(&quot;hand&quot;)).getHand()).get(&quot;hand&quot;);</b>
+<b class="fc">&nbsp;                response.put(&quot;hand&quot;, fin);</b>
+<b class="fc">&nbsp;                response.put(&quot;value&quot;, 5 + getHigh(fin).getValue()/100.0);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Card getHigh(PlayerHands hand){
+<b class="fc">&nbsp;        Card high = hand.getHand().get(0);</b>
+<b class="fc">&nbsp;        for(Card c: hand.getHand()){</b>
+<b class="fc">&nbsp;            if(c.getValue() &gt; high.getValue())</b>
+<b class="fc">&nbsp;                high = c;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return high;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Map&lt;String, Object&gt; checkMult(PlayerHands hand){
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        Map&lt;Integer, Integer&gt; values = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Card c: hand.getHand()){</b>
+<b class="fc">&nbsp;            int count = 0;</b>
+<b class="fc">&nbsp;            for(Card c2: hand.getHand()){</b>
+<b class="fc">&nbsp;                if(c.getValue() == c2.getValue()){</b>
+<b class="fc">&nbsp;                    count++;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            if(count &gt; 1)</b>
+<b class="fc">&nbsp;                values.put(c.getValue(), count);</b>
+&nbsp;        }
+<b class="pc">&nbsp;        if(values.isEmpty()){</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+&nbsp;
+<b class="pc">&nbsp;        if(values.containsValue(2)){</b>
+&nbsp;            //values.values().remove(2);
+<b class="pc">&nbsp;            if(values.containsValue(3)){</b>
+<b class="nc">&nbsp;                response.put(&quot;name&quot;, &quot;Full House&quot;);</b>
+<b class="nc">&nbsp;                response.put(&quot;value&quot;, 7);</b>
+<b class="pc">&nbsp;            } else if(Collections.frequency(values.values(), 2) &gt;= 2){</b>
+<b class="nc">&nbsp;                response.put(&quot;name&quot;, &quot;Two Pair&quot;);</b>
+<b class="nc">&nbsp;                response.put(&quot;value&quot;, 2);</b>
+&nbsp;            } else {
+<b class="fc">&nbsp;                response.put(&quot;name&quot;, &quot;Pair&quot;);</b>
+<b class="fc">&nbsp;                response.put(&quot;value&quot;, 1);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } else if(values.containsValue(3)){</b>
+<b class="nc">&nbsp;            response.put(&quot;name&quot;, &quot;Three of a Kind&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;value&quot;, 3);</b>
+&nbsp;        }
+<b class="pc">&nbsp;        if(values.containsValue(4)){</b>
+<b class="nc">&nbsp;            response.put(&quot;name&quot;, &quot;Four of a kind&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;value&quot;, 8);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        response.put(&quot;value&quot;, addDec((int) response.get(&quot;value&quot;), values));</b>
+<b class="fc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Double addDec(int d, Map&lt;Integer, Integer&gt; values){
+<b class="fc">&nbsp;        int high = 0;</b>
+<b class="fc">&nbsp;        for(Integer i: values.keySet()){</b>
+<b class="pc">&nbsp;            if(i &gt; high)</b>
+<b class="fc">&nbsp;                high = i;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return d + high/100.0;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

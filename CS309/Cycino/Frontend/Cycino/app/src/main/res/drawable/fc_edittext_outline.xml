@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#2E4D3C" /> <!-- Background color to match the top bar -->
+    <stroke android:width="2dp" android:color="#000000" /> <!-- Black outline -->
+    <corners android:radius="4dp" /> <!-- Optional rounded corners -->
+</shape>

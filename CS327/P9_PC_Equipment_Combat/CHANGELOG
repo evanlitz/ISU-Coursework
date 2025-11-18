@@ -1,0 +1,14 @@
+4/19/2025:
+Added hp and damage to the character class. Added a default amount = 100 hp to the player character class by default. Added the PC equipment slots ordering and numbering system along with carry slots. Also added automatic pickup of items when the PC steps on an item. 
+
+4/20/2025:
+Completed all of the necesscary input commands for listing, wearing, dropping, expunging, taking off, and inspecting items. Looking mode is mostly complete but has just a few bugs.
+
+4/21/2025:
+Look mode is complete. Added speed and damage bonuses from picking up specific items. 
+
+4/22/2025:
+Combat and message prompting/timing is complete in all monster and player situations, along with monster on monster movement. Bug-testing, but the program should be mostly complete.
+
+4/23/2025:
+Bug testing, but is done. Creating README and submitting.

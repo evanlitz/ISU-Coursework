@@ -1,0 +1,44 @@
+{
+  "movies": [
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "title": "Spider-Man: No Way Home",
+      "year": 2021,
+      "url": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "title": "Top Gun: Maverick",
+      "year": 2022,
+      "url": "https://m.media-amazon.com/images/M/MV5BMDBkZDNjMWEtOTdmMi00NmExLTg5MmMtNTFlYTJlNWY5YTdmXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "title": "Oppenheimer",
+      "year": 2023,
+      "url": "https://capecinema.org/wp-content/uploads/2023/04/280752292_1765040687015514_8734891047043737920_n.jpg"
+    },
+    {
+      "title": "Black Panther",
+      "year": 2018,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_.jpg"
+    },
+    {
+      "title": "Parasite",
+      "year": 2019,
+      "url": "https://images.fandango.com/ImageRenderer/500/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/239318/IMAX_Exclusive%20Artwork_Parasite_IMAX_Exclusive.jpg"
+    },
+    {
+      "title": "F1: The Movie",
+      "year": 2025,
+      "url": "https://m.media-amazon.com/images/I/81ECAgG5KyL._UF1000,1000_QL80_.jpg"
+    },
+    {
+      "title": "Avatar: Fire & Ash",
+      "year": 2025,
+      "url": "https://m.media-amazon.com/images/M/MV5BZDYxY2I1OGMtN2Y4MS00ZmU1LTgyNDAtODA0MzAyYjI0N2Y2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    }
+  ]
+}

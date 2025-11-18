@@ -1,0 +1,16 @@
+{
+    "name": "activity07",
+    "version": "1.0.0",
+    "description": "Activity 07 - NodeJS & Express Activity with REST API Methods",
+    "main": "App.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" & exit 1"
+    },
+    "author": "Evan Litzer",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^2.2.0",
+        "cors": "^2.8.5",
+        "express": "^5.1.0"
+    }
+}

@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > GroupChatService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.groupChat</a>
+</div>
+
+<h1>Coverage Summary for Class: GroupChatService (coms309.Cycino.groupChat)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GroupChatService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.9%
+  </span>
+  <span class="absValue">
+    (1/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.groupChat;
+&nbsp;
+&nbsp;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import coms309.Cycino.users.UserService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+&nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class GroupChatService {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    GroupChatRepository groupChatRepository;
+&nbsp;    @Autowired
+&nbsp;    UserService userService;
+&nbsp;
+&nbsp;    public Set&lt;GroupChat&gt; getUsersGroupChats(Long uid) {
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        return user.getGroupChats();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;User&gt; getUsersInGroupChat(Long groupchatID) {
+<b class="nc">&nbsp;        Optional&lt;GroupChat&gt; groupChat = groupChatRepository.findById(groupchatID);</b>
+<b class="nc">&nbsp;        if (groupChat.isPresent()) {</b>
+<b class="nc">&nbsp;            return groupChat.get().getUsers();</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public GroupChat getGroupChat(Long groupchatID) {
+<b class="nc">&nbsp;        Optional&lt;GroupChat&gt; groupChat = groupChatRepository.findById(groupchatID);</b>
+<b class="nc">&nbsp;        if (groupChat.isPresent()) {</b>
+<b class="nc">&nbsp;            return groupChat.get();</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isUserInGroupChat(Long userID, Long groupchatID) {
+<b class="nc">&nbsp;        Optional&lt;GroupChat&gt; groupChat = groupChatRepository.findById(groupchatID);</b>
+<b class="nc">&nbsp;        if (groupChat.isPresent()) {</b>
+<b class="nc">&nbsp;            for (User member : groupChat.get().getUsers()) {</b>
+<b class="nc">&nbsp;                if (member.getId() == userID) {</b>
+<b class="nc">&nbsp;                    return true;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 21:23</div>
+</div>
+</body>
+</html>

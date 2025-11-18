@@ -1,0 +1,55 @@
+/* assets/styles.css */
+:root {
+  --brand-dark: #1a1f2e;
+}
+
+body {
+  background: #DED1BD;
+}
+
+.squarebar .container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-squares {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.nav-square {
+  inline-size: 84px;         
+  aspect-ratio: 1 / 1;       
+  text-align: center;
+  line-height: 1.1;
+  padding: .35rem;           
+}
+
+.card-img-top {
+  height: 180px;            
+  width: 100%;
+  object-fit: contain;      
+  object-position: center;   
+  background: #3d2003;       
+  display: block;  
+}
+
+.table-responsive {
+  display: flex;
+  justify-content: center; 
+  
+}
+
+.card {
+  border: 3px solid #683B2B;
+  border-radius: .75rem; 
+  max-width: 500px; 
+  margin: 0 auto;     
+}
+
+.footer {
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 0;
+  color: #6c757d;
+  text-align: center;
+}

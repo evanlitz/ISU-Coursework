@@ -1,0 +1,338 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > User</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.users</a>
+</div>
+
+<h1>Coverage Summary for Class: User (coms309.Cycino.users)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">User</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.7%
+  </span>
+  <span class="absValue">
+    (5/34)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15.7%
+  </span>
+  <span class="absValue">
+    (8/51)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">User$HibernateInstantiator$uljUy7F5</td>
+  </tr>
+  <tr>
+    <td class="name">User$HibernateProxy$5UZ3nZTL</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    14.7%
+  </span>
+  <span class="absValue">
+    (5/34)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15.7%
+  </span>
+  <span class="absValue">
+    (8/51)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.users;
+&nbsp;
+&nbsp;import com.fasterxml.jackson.annotation.JsonIgnore;
+&nbsp;import coms309.Cycino.Enums;
+&nbsp;import coms309.Cycino.GameSettings.BlackJack.BlackJackSettings;
+&nbsp;import coms309.Cycino.Games.GameLogic.PlayerHands;
+&nbsp;import coms309.Cycino.follow.Follow;
+&nbsp;import coms309.Cycino.groupChat.GroupChat;
+&nbsp;import coms309.Cycino.lobby.Lobby;
+&nbsp;import coms309.Cycino.login.LoginInfo;
+&nbsp;import coms309.Cycino.stats.GameHistory;
+&nbsp;import coms309.Cycino.stats.UserStats;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;import coms309.Cycino.GameSettings.BlackJack.BlackJackSettingsRepository;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Table(name = &quot;users&quot;) // escaping using double quotes for H2 SQL compatibility
+&nbsp;public class User implements Serializable {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    @Column(name = &quot;id&quot;)
+&nbsp;    private Long id;
+&nbsp;    private String username;
+&nbsp;    private String firstName;
+&nbsp;    private String lastName;
+&nbsp;    private String phoneNumber;
+&nbsp;    private double chips;
+<b class="fc">&nbsp;    @Enumerated(EnumType.STRING)</b>
+&nbsp;    private Enums.Roles role = Enums.Roles.BEGINNER;
+&nbsp;    private String userBiography;
+&nbsp;
+&nbsp;    @OneToOne(mappedBy = &quot;user&quot;, cascade = CascadeType.ALL)
+&nbsp;    private BlackJackSettings blackJackSettings;
+&nbsp;
+&nbsp;
+&nbsp;    @OneToMany(cascade = CascadeType.ALL)
+&nbsp;    @JoinColumn(name = &quot;fk_user_ID&quot;, referencedColumnName = &quot;id&quot;)
+&nbsp;    private List&lt;Follow&gt; followList;
+&nbsp;
+&nbsp;    @OneToMany(cascade = CascadeType.ALL)
+&nbsp;    @JoinColumn(name = &quot;user_id&quot;, referencedColumnName = &quot;id&quot;)
+&nbsp;    private List&lt;UserStats&gt; userStatslist;
+&nbsp;
+&nbsp;    @OneToOne(cascade = CascadeType.ALL)
+&nbsp;    @JsonIgnore
+&nbsp;    private LoginInfo loginInfo;
+&nbsp;
+&nbsp;    @ManyToOne
+&nbsp;    private Lobby lobby;
+&nbsp;
+<b class="fc">&nbsp;    @OneToMany</b>
+&nbsp;    private Set&lt;PlayerHands&gt; hands = new HashSet&lt;&gt;();
+&nbsp;
+&nbsp;    @ManyToMany
+&nbsp;    @JoinTable(
+&nbsp;            name = &quot;user_game_history&quot;,
+&nbsp;            joinColumns = @JoinColumn(name = &quot;user_id&quot;),
+&nbsp;            inverseJoinColumns = @JoinColumn(name = &quot;game_history_id&quot;)
+&nbsp;    )
+&nbsp;    private Set&lt;GameHistory&gt; gameHistories;
+&nbsp;
+<b class="fc">&nbsp;    @ManyToMany(cascade = CascadeType.ALL)</b>
+&nbsp;    @JoinTable(
+&nbsp;            name = &quot;user_groupchat&quot;,
+&nbsp;            joinColumns = @JoinColumn(name = &quot;user_id&quot;),
+&nbsp;            inverseJoinColumns = @JoinColumn(name = &quot;groupChat_id&quot;)
+&nbsp;    )
+&nbsp;    private Set&lt;GroupChat&gt; groupChats = new HashSet&lt;&gt;();
+&nbsp;
+<b class="fc">&nbsp;    public User(){}</b>
+&nbsp;
+<b class="nc">&nbsp;    public User(Long id, String firstName, String lastName, String phoneNumber, Enums.Roles role, String userBiography, List&lt;Follow&gt; followList, LoginInfo loginInfo, BlackJackSettings blackJackSettings) {</b>
+<b class="nc">&nbsp;        this.id = id;</b>
+<b class="nc">&nbsp;        this.firstName = firstName;</b>
+<b class="nc">&nbsp;        this.lastName = lastName;</b>
+<b class="nc">&nbsp;        this.phoneNumber = phoneNumber;</b>
+<b class="nc">&nbsp;        this.role = role;</b>
+<b class="nc">&nbsp;        this.userBiography = userBiography;</b>
+<b class="nc">&nbsp;        this.followList = followList;</b>
+<b class="nc">&nbsp;        this.loginInfo = loginInfo;</b>
+<b class="nc">&nbsp;        this.blackJackSettings = blackJackSettings;</b>
+<b class="nc">&nbsp;        this.username = loginInfo.getUsername();</b>
+<b class="nc">&nbsp;        chips = 1000;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addGroupChat(GroupChat groupChat){
+<b class="nc">&nbsp;        groupChats.add(groupChat);</b>
+<b class="nc">&nbsp;        groupChat.getUsers().add(this);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void removeGroupChat(GroupChat groupChat){
+<b class="nc">&nbsp;        this.groupChats.remove(groupChat);</b>
+<b class="nc">&nbsp;        groupChat.getUsers().remove(this);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;GroupChat&gt; getGroupChats() {
+<b class="nc">&nbsp;        return groupChats;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGroupChats(Set&lt;GroupChat&gt; groupChats) {
+<b class="nc">&nbsp;        this.groupChats = groupChats;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public BlackJackSettings getBlackJackSettings() {
+<b class="nc">&nbsp;        return this.blackJackSettings;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getUsername(){
+<b class="nc">&nbsp;        username = loginInfo.getUsername();</b>
+<b class="nc">&nbsp;        return username;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBlackJackSettings(BlackJackSettings blackJackSettings) {
+<b class="nc">&nbsp;        this.blackJackSettings = blackJackSettings;</b>
+&nbsp;    }
+&nbsp;    public List&lt;Follow&gt; getFollowList() {
+<b class="nc">&nbsp;        return followList;</b>
+&nbsp;    }
+&nbsp;    public void setFollowList(List&lt;Follow&gt; followList) {
+<b class="nc">&nbsp;        this.followList = followList;</b>
+&nbsp;    }
+&nbsp;    public void newFollow(Follow follow){
+<b class="nc">&nbsp;        this.followList.add(follow);</b>
+&nbsp;    }
+&nbsp;    public void removeFollow(Follow follow){
+<b class="nc">&nbsp;        this.followList.remove(follow);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public long getId(){
+&nbsp;        //this.username = loginInfo.getUsername();
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getFirstName(){
+<b class="nc">&nbsp;        return firstName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LoginInfo getLoginInfo() {
+<b class="nc">&nbsp;        return loginInfo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getLastName() {
+<b class="nc">&nbsp;        return lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getPhoneNumber() {
+<b class="nc">&nbsp;        return phoneNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Enums.Roles getRole(){
+<b class="fc">&nbsp;        return role;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRole(Enums.Roles role){
+<b class="fc">&nbsp;        this.role = role;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setFirstName(String firstName) {
+<b class="nc">&nbsp;        this.firstName = firstName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLastName(String lastName) {
+<b class="nc">&nbsp;        this.lastName = lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLoginInfo(LoginInfo loginInfo) {
+<b class="nc">&nbsp;        this.loginInfo = loginInfo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPhoneNumber(String phoneNumber) {
+<b class="nc">&nbsp;        this.phoneNumber = phoneNumber;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public String getUserBiography() {return userBiography;}</b>
+<b class="nc">&nbsp;    public void setUserBiography(String userBiography) {this.userBiography = userBiography;}</b>
+&nbsp;
+&nbsp;    public String[] getContact(){
+<b class="nc">&nbsp;        return new String[]{firstName, lastName, phoneNumber};</b>
+&nbsp;    }
+&nbsp;    public void updateRole(String role){
+<b class="nc">&nbsp;        this.role = Enums.Roles.valueOf(role.toUpperCase());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;User{&quot; +</b>
+&nbsp;                &quot;firstName=&#39;&quot; + firstName + &#39;\&#39;&#39; +
+&nbsp;                &quot;, lastName=&#39;&quot; + lastName + &#39;\&#39;&#39; +
+&nbsp;                &quot;, phoneNumber=&#39;&quot; + phoneNumber + &#39;\&#39;&#39; +
+&nbsp;                &quot;, role=&quot; + role +
+&nbsp;                &quot;, userBiography=&#39;&quot; + userBiography + &#39;\&#39;&#39; +
+&nbsp;                &quot;, loginInfo=&quot; + loginInfo +
+&nbsp;                &quot;, id=&quot; + id +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;    public void setId(long id){
+<b class="nc">&nbsp;        this.id=id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public Set&lt;GameHistory&gt; getGameHistories(){
+<b class="nc">&nbsp;        return gameHistories;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getChips(){
+<b class="nc">&nbsp;        return chips;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addGameHistory(GameHistory gameHistory){
+<b class="nc">&nbsp;        gameHistories.add(gameHistory);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addChips(double chips){
+<b class="fc">&nbsp;        this.chips += chips;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

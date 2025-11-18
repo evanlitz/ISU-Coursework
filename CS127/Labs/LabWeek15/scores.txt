@@ -1,0 +1,16 @@
+Student ID, Assignment, Score
+123456, Zany Text, 100
+123456, Magic 9 Ball, 60
+123456, Nim Grab, 80
+123456, Dungeon Crawl, 78
+123456, Ultimate TODO List, 90
+654321, Zany Text, 48
+654321, Ultimate TODO List, 82
+654321, Nim Grab, 17
+246810, Zany Text, 100
+246810, Ultimate TODO List, 24
+246810, Nim Grab, 98
+135791, Zany Text, 84
+135791, Ultimate TODO List, 3
+135791, Nim Grab, 89
+135791, Dungeon Crawl, 0

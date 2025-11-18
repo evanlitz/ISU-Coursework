@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoginController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.login</a>
+</div>
+
+<h1>Coverage Summary for Class: LoginController (coms309.Cycino.login)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoginController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.login;
+&nbsp;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;@RestController
+<b class="fc">&nbsp;public class LoginController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private LoginService loginService;
+&nbsp;
+&nbsp;    @GetMapping(&quot;/login/submit/{username}/{password}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; checkInfo(@PathVariable String username, @PathVariable String password){
+<b class="nc">&nbsp;        return loginService.checkInfo(username, password);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/login/{id}&quot;)
+&nbsp;    public LoginInfo getUser(@PathVariable long id){
+<b class="nc">&nbsp;        return loginService.getUser(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/login/contains/{username}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; containsUser(@PathVariable String username){
+<b class="nc">&nbsp;        return loginService.containsUser(username);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/login/setUser/{username}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; setUser(@RequestBody User user, String username){
+<b class="nc">&nbsp;        return loginService.setUser(username, user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/login/update/{username}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; updateUser(@RequestBody LoginInfo login, @PathVariable String username){
+<b class="nc">&nbsp;        return loginService.update(login, username);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @DeleteMapping(&quot;/login/delete/{username}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; deleteUser(@PathVariable String username){
+<b class="nc">&nbsp;        return loginService.deleteUser(username);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

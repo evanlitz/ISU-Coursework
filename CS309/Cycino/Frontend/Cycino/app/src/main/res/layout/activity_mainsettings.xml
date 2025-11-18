@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray">
+
+    <!-- Back Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textColor="#B31B1B"
+        android:textStyle="bold"
+        app:backgroundTint="#FFD700"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.267"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SETTINGS"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textColor="#000000"
+    />
+
+    <!-- Log Out Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logOutButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:textColor="#FFD700"
+        android:textStyle="bold"
+        app:backgroundTint="#B31B1B"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.267"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp" />
+
+
+    <Button
+        android:id="@+id/resetLeaderboardButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Reset Leaderboard"
+        android:textColor="#671A1A"
+        android:textStyle="bold"
+        app:backgroundTint="#006400"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pageTitle"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/accountSettingsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Account Settings"
+        android:textColor="#671A1A"
+        android:textStyle="bold"
+        app:backgroundTint="#006400"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resetLeaderboardButton"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Dealer Stand-On Value and Button -->
+    <EditText
+        android:id="@+id/dealerStandOnEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Dealer Stand-On Value"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/accountSettingsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/updateDealerStandOnButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateDealerStandOnButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="#006400"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/accountSettingsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Min Bet and Button -->
+    <EditText
+        android:id="@+id/minBetEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Minimum Bet"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/dealerStandOnEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/updateMinBetButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateMinBetButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="#006400"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/dealerStandOnEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Max Bet and Button -->
+    <EditText
+        android:id="@+id/maxBetEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Maximum Bet"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/minBetEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/updateMaxBetButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateMaxBetButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="#006400"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/minBetEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Number of Decks and Button -->
+    <EditText
+        android:id="@+id/numberOfDecksEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Number of Decks"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/maxBetEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/updateNumberOfDecksButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <Button
+        android:id="@+id/updateNumberOfDecksButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="#006400"
+        app:cornerRadius="16dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/maxBetEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Dealer Stand-On Display -->
+    <TextView
+        android:id="@+id/dealerStandOnDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Dealer Stand-On Value: 17"
+        android:textSize="16sp"
+        android:textColor="#FFD700"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:background="#B31B1B"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/numberOfDecksEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Minimum Bet Display -->
+    <TextView
+        android:id="@+id/minBetDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Minimum Bet: 10"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:padding="8dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/dealerStandOnDisplay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Maximum Bet Display -->
+    <TextView
+        android:id="@+id/maxBetDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Maximum Bet: 100"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#B31B1B"
+        android:padding="8dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/minBetDisplay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Number of Decks Display -->
+    <TextView
+        android:id="@+id/numberOfDecksDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Number of Decks: 2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#B31B1B"
+        android:padding="8dp"
+        android:background="#FFD700"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/maxBetDisplay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

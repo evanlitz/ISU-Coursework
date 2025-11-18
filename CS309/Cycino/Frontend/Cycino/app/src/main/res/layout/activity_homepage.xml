@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#35654D">
+
+    <!-- Logo ImageView -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="75dp"
+        android:paddingTop="50dp">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="Cycino Home Page Logo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cycinohp" />
+
+        <TextView
+            android:id="@+id/hpUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/hpChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/lobbyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="5dp"
+            android:text="Start Lobby"
+            android:textColor="@color/cardinal"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/joinLobbyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Join Lobby"
+            android:backgroundTint="@color/gold"
+            android:textColor="@color/cardinal"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/joinLobbyID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberSigned" />
+
+        <Button
+            android:id="@+id/leaderboardButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Leaderboard"
+            android:backgroundTint="@color/gold"
+            android:textColor="@color/cardinal"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/friendsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="5dp"
+            android:text="Friends"
+            android:textColor="@color/cardinal"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="5dp"
+            android:text="Settings"
+            android:textColor="@color/cardinal"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/rulesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="5dp"
+            android:text="Rules and Information"
+            android:textStyle="bold"
+            android:textColor="@color/cardinal"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bankButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="5dp"
+            android:text="Add/Remove Chips"
+            android:textStyle="bold"
+            android:textColor="@color/cardinal"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

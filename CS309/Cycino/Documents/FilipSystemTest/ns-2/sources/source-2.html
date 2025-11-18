@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BlackJackSettingsController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.GameSettings.BlackJack</a>
+</div>
+
+<h1>Coverage Summary for Class: BlackJackSettingsController (coms309.Cycino.GameSettings.BlackJack)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlackJackSettingsController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    12.5%
+  </span>
+  <span class="absValue">
+    (1/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.GameSettings.BlackJack;
+&nbsp;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import coms309.Cycino.users.UserService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/gameSettings/blackjack&quot;)
+<b class="fc">&nbsp;public class BlackJackSettingsController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private UserService userService;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private BlackJackSettingsService blackJackSettingsService;
+&nbsp;
+&nbsp;    @GetMapping(&quot;/user/{id}&quot;)
+&nbsp;    public BlackJackSettings getBlackJackSettings(@PathVariable Long id) {
+<b class="nc">&nbsp;        BlackJackSettings settings = blackJackSettingsService.getBlackJackSettings(id);</b>
+<b class="nc">&nbsp;        return settings;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/user/{id}/update&quot;)
+&nbsp;    public Map&lt;String, Object&gt; updateBlackJackSettings(@PathVariable Long id, @RequestBody BlackJackSettings settings) {
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        if(blackJackSettingsService.updateBlackJackSettings(settings, id)) {</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;200 OK&quot;);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;400 Bad Request&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 21:23</div>
+</div>
+</body>
+</html>

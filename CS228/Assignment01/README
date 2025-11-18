@@ -1,0 +1,97 @@
+# ISP Profit Simulation – COM S 228 Fall 2023 Project 1
+
+## Overview
+This project models the **profit utilization of an Internet Service Provider (ISP)** operating across a grid of customers. Each cell in the grid represents a customer or condition that evolves monthly according to specific neighborhood-based rules.  
+The program simulates **12 billing cycles (months)** and outputs the ISP’s **annual profit utilization percentage**, reflecting how efficiently bandwidth is used.
+
+---
+
+## Key Concepts
+- **Object-Oriented Design:** Use of inheritance and polymorphism through an abstract base class and five subclasses.
+- **Grid-Based Simulation:** Each cell represents a customer type or status (`Casual`, `Streamer`, `Reseller`, `Empty`, `Outage`).
+- **Concurrent Updates:** All cells update their state simultaneously each cycle based on neighborhood conditions.
+- **Profit Computation:** Only *Casual* customers generate profit; utilization percentage is computed relative to a fully casual grid.
+
+---
+
+## Classes Implemented
+
+### 1. `TownCell` *(abstract class)*
+Defines the base behavior and structure for all cell types.  
+Each subclass overrides the `next()` method to determine the next month’s state based on its neighbors.
+
+### 2. `Casual`
+Represents low-bandwidth users that generate profit.  
+- Becomes an `Outage` if a `Reseller` is nearby.  
+- Becomes a `Streamer` if a neighboring `Streamer` is present.  
+- Otherwise, may turn into a `Reseller` if surrounded by few `Empty`/`Outage` cells.
+
+### 3. `Streamer`
+High-bandwidth users who consume more resources.  
+- Outaged if near a `Reseller`.  
+- Leaves (becomes `Empty`) if adjacent to any `Outage`.
+
+### 4. `Reseller`
+Acts as a business intermediary.  
+- Becomes `Empty` if too few `Casual` neighbors (≤ 3) or too many `Empty` neighbors (≥ 3).  
+- Causes outages in nearby `Casual` and `Streamer` cells.
+
+### 5. `Empty`
+Represents unoccupied grid space.  
+- Becomes `Casual` the next cycle.  
+- Can become a `Reseller` under certain conditions.
+
+### 6. `Outage`
+Represents internet downtime.  
+- Automatically restores to `Empty` in the next cycle.
+
+### 7. `State` *(enum)*
+Defines the possible cell states:
+C - Casual
+S - Streamer
+R - Reseller
+E - Empty
+O - Outage
+
+
+### 8. `Town`
+Encapsulates the 2D grid of `TownCell` objects.  
+Responsible for:
+- Tracking all cell states.  
+- Managing neighbor lookups for each cell.  
+- Producing the next month’s grid through concurrent updates.
+
+### 9. `ISPBusiness`
+Handles the yearly simulation and profit calculation.  
+- Provides both file-based and randomly generated grid initialization.  
+- Runs 12 monthly updates.  
+- Computes total profit utilization as:  
+  \[
+  \text{Utilization (\%)} = \frac{100 \times \text{CasualCount}}{\text{TotalCells}}
+  \]
+- Outputs the final utilization rounded to **two decimal places** followed by a percent sign.
+
+---
+
+## Input and Execution
+Upon running, the program prompts:
+
+How to populate grid (type 1 or 2): 1: from a file. 2: randomly with seed
+
+**Option 1:**  
+Load grid from a file. The file format:
+
+
+<rows> <cols>
+O R O R
+E E C O
+E S O S
+E O R R
+
+
+**Option 2:**  
+Randomly generate grid using:
+
+
+Provide rows, cols and seed integer separated by spaces:
+4 4 10

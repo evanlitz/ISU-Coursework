@@ -1,0 +1,126 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBlackjack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:text="Blackjack"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FF0000"
+            app:backgroundTint="#2F2F2F" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPoker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:text="Poker"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#228B22" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBaccarat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:text="Baccarat"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFD700"
+            app:backgroundTint="#8B0000" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCoinFlip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:text="Coin Flip"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#B87333" />
+
+    </GridLayout>
+
+    <!-- Horizontal Layout for Back and App Info Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="8dp">
+
+        <!-- Back Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:text="Back"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#808080" /> <!-- Gray background -->
+
+        <!-- App Info Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAppInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="App Info"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            app:backgroundTint="#00FFFF" /> <!-- Cyan background -->
+
+    </LinearLayout>
+
+    <!-- Scrollable Content Area -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/scrollViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

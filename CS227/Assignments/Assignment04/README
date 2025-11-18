@@ -1,0 +1,83 @@
+# Model Train Simulation – Com S 227 Assignment 4
+
+## Overview
+This project implements the backend model for a **train track simulation** as part of *Com S 227 Spring 2023 Assignment 4*.  
+The assignment focuses on **object-oriented design**, emphasizing **inheritance**, **interfaces**, and **composition** to model a system of train tracks, links, and crossings.  
+
+The simulation models how a train moves between connected paths using different types of links. Each link determines how the train transitions from one path to another when it reaches a crossing.
+
+---
+
+## Key Concepts
+- **Inheritance & Abstraction:**  
+  Common functionality for all link types is defined in `AbstractLink` and `AbstractMultiLink`.  
+  Each specialized link type (e.g., `TurnLink`, `StraightLink`, `DeadEndLink`) extends from these abstract classes.
+
+- **Interfaces Used:**  
+  - `Traversable` – allows movement along a path via position shifting (`shiftPoints`).  
+  - `Crossable` – extends `Traversable` and defines behavior when trains enter or exit crossings (`getConnectedPoint`, `trainEnteredCrossing`, `trainExitedCrossing`).
+
+- **Composition:**  
+  Each link object uses `Point`, `Path`, and `PositionVector` objects from the `api` package to represent the connected endpoints and positions of the train.
+
+---
+
+## Classes Implemented
+All classes are located in the `hw4` package.
+
+### 1. `AbstractLink`
+Base class for all link types. Defines shared structure, accessors, and default functionality for managing connected points and paths.  
+Subclasses override methods as needed for specific link behaviors.  
+Includes documentation describing design rationale and inheritance strategy.
+
+### 2. `AbstractMultiLink`
+Extends `AbstractLink` to handle links that connect more than two paths (e.g., switches, turn links, and multi-links).
+
+### 3. `CouplingLink`
+Connects two paths directly end-to-end. Allows trains to move between them seamlessly.  
+Implements `getConnectedPoint()` to return the opposite point across the link.
+
+### 4. `DeadEndLink`
+Represents a path endpoint with no valid exit.  
+All crossing or traversal calls result in no movement.
+
+### 5. `StraightLink`
+Models a straight connection between two paths in a line, where entering from one side exits directly on the opposite side.
+
+### 6. `SwitchLink`
+Connects multiple paths but allows traversal only between two active ones at a time.  
+Switches connections after a train exits.
+
+### 7. `TurnLink`
+Connects three paths, modeling a curved intersection:
+- Point A (on path A) connects to point C (on path C).  
+- Point B (on path B) connects to point A (on path A).  
+Implements `getConnectedPoint()` and always returns the correct target point based on current path position.
+
+### 8. `MultiFixedLink` and `MultiSwitchLink`
+Advanced multi-path links that combine the logic of multiple switches or fixed junctions:
+- `MultiFixedLink` – maintains static connections among several paths.
+- `MultiSwitchLink` – dynamically changes active paths after each train crossing.
+
+---
+
+## Design Highlights
+- Clean hierarchy with minimal code duplication through use of abstract base classes.
+- Heavy reliance on **polymorphism** instead of type-checking or `instanceof`.
+- All subclasses encapsulate only the functionality needed for their own purpose.
+- Accessor and helper methods are private or protected for controlled subclass use.
+- Consistent and readable internal commenting and Javadoc documentation.
+
+---
+
+## Testing
+Use the provided `SimpleTests.java` to test each link’s behavior in isolation.  
+Example:
+```java
+Point p1 = new Point(new Path(), 0);
+Point p2 = new Point(new Path(), 1);
+Point p3 = new Point(new Path(), 2);
+TurnLink turn = new TurnLink(p1, p2, p3);
+
+System.out.println(turn.getConnectedPoint(p1)); // Expected: p3
+System.out.println(turn.getNumPaths()); // Expected: 3

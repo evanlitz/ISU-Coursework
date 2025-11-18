@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Blackjackcontroller</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.Games.Blackjack</a>
+</div>
+
+<h1>Coverage Summary for Class: Blackjackcontroller (coms309.Cycino.Games.Blackjack)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Blackjackcontroller</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    7.1%
+  </span>
+  <span class="absValue">
+    (1/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    7.1%
+  </span>
+  <span class="absValue">
+    (1/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.Games.Blackjack;
+&nbsp;
+&nbsp;import coms309.Cycino.Games.GameLogic.BlackJackLogic;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;@RestController
+<b class="fc">&nbsp;public class Blackjackcontroller {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private BlackjackService bjs;
+&nbsp;
+&nbsp;    @PostMapping(&quot;/blackjack/create/{lobby}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; createGame(@PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.createGame(6, lobby);</b>
+&nbsp;    }
+&nbsp;    @PostMapping(&quot;/blackjack/create/{lobby}/{deck}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; createGame(@PathVariable int deck, @PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.createGame(deck, lobby);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/blackjack/hit/{lobby}/{userId}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; hit(@PathVariable Long lobby, @PathVariable Long userId){
+<b class="nc">&nbsp;        return bjs.hit(lobby, userId);</b>
+&nbsp;    }
+&nbsp;    @PutMapping(&quot;/blackjack/stand/{lobby}/{userId}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; stand(@PathVariable Long lobby, @PathVariable Long userId){
+<b class="nc">&nbsp;        return bjs.stand(lobby, userId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/blackjack/double/{lobby}/{userId}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; doubleBlackJack(@PathVariable Long lobby, @PathVariable Long userId){
+<b class="nc">&nbsp;        return bjs.dou(lobby, userId);</b>
+&nbsp;    }
+&nbsp;    @PutMapping(&quot;/blackjack/split/{lobby}/{userId}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; Split(@PathVariable Long lobby, @PathVariable Long userId){
+<b class="nc">&nbsp;        return bjs.split(lobby, userId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @DeleteMapping(&quot;/blackjack/delete/{lobby}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; delete(@PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.deleteGame(lobby);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/blackjack/deal/{lobby}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; deal(@PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.start(lobby);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/blackjack/finish/{lobby}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; finish(@PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.finish(lobby);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/blackjack/gethand/{lobby}/{userId}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; getHand(@PathVariable Long lobby, @PathVariable Long userId){
+<b class="nc">&nbsp;        return bjs.getHand(lobby, userId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/blackjack/getdealer/{lobby}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; getDealer(@PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.getDealer(lobby);</b>
+&nbsp;    }
+&nbsp;    @GetMapping(&quot;/blackjack/gethands/{lobby}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; gethands(@PathVariable Long lobby){
+<b class="nc">&nbsp;        return bjs.getHands(lobby);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/blackjack/bet/{lobby}/{userId}/{bet}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; addBet(@PathVariable long lobby, @PathVariable long userId, @PathVariable double bet){
+<b class="nc">&nbsp;        return bjs.setBet(lobby, userId, (int) bet);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

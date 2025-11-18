@@ -1,0 +1,43 @@
+# CS 363 - Project 2: Neo4j Graph Database Queries
+
+A collection of Cypher queries for Neo4j demonstrating graph database operations on a university student records system.
+
+## Overview
+
+This project implements 18 query scripts and 5 data modification scripts using Cypher Query Language to interact with a graph database modeling:
+- Students and their attributes (name, SSN, gender, addresses)
+- Degrees (majors/minors at various levels)
+- Courses and registrations
+- Departments and their offerings
+
+## Files
+
+- **queries.txt** - 18 Cypher queries for data retrieval and analysis
+- **ModifyRecords.txt** - 5 scripts for updating, deleting, and modifying graph data
+
+## Query Highlights
+
+- Basic pattern matching and filtering
+- Relationship traversal (Student → Degree, Department → Course)
+- Aggregations (COUNT, AVG, SUM)
+- Set operations (UNION)
+- Subqueries and conditional logic
+- Shortest path finding
+- Complex filtering with CASE expressions
+
+## Data Modification Operations
+
+- Property updates (SET)
+- Relationship deletion
+- Node and relationship cleanup with cascading deletes
+- Conditional deletion based on aggregated criteria
+
+## Prerequisites
+
+- Neo4j Database (4.x or 5.x)
+- Graph data model with Student, Course, Degree, and Department nodes
+- Relationships: Majors, Minors, Registers, Offers, Administers
+
+## Author
+
+Evan Litzer - Iowa State University

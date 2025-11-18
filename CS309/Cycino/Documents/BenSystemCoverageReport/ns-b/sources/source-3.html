@@ -1,0 +1,239 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > FollowService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.follow</a>
+</div>
+
+<h1>Coverage Summary for Class: FollowService (coms309.Cycino.follow)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FollowService</td>
+<td class="coverageStat">
+  <span class="percent">
+    12.5%
+  </span>
+  <span class="absValue">
+    (1/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    2.3%
+  </span>
+  <span class="absValue">
+    (1/44)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">FollowService$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    12.5%
+  </span>
+  <span class="absValue">
+    (1/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    2.3%
+  </span>
+  <span class="absValue">
+    (1/44)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.follow;
+&nbsp;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import coms309.Cycino.users.UserService;
+&nbsp;import coms309.Cycino.users.UsersRepository;
+&nbsp;import jakarta.transaction.Transactional;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class FollowService {</b>
+&nbsp;    @Autowired
+&nbsp;    private FollowRepository followRepository;;
+&nbsp;    @Autowired
+&nbsp;    private UserService userService;
+&nbsp;    @Autowired
+&nbsp;    private UsersRepository repo;
+&nbsp;
+&nbsp;    public List&lt;Follow&gt; getFollowingList(Long uid) {
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        return followRepository.findByUser(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public boolean updateFollowing(Follow follow, Long uid) {
+<b class="nc">&nbsp;        boolean ok = false;</b>
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        for (Follow item : user.getFollowList()){</b>
+<b class="nc">&nbsp;            if (item.getFollowingID() == follow.getFollowingID()){</b>
+<b class="nc">&nbsp;                item.setMuteNotifications(!(item.isMuteNotifications()));</b>
+<b class="nc">&nbsp;                ok = true;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return ok;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public boolean blockUser(Follow follow, Long uid) {
+<b class="nc">&nbsp;        boolean ok = false;</b>
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        for (Follow item : user.getFollowList()){</b>
+<b class="nc">&nbsp;            if (item.getFollowingID() == follow.getFollowingID()){</b>
+<b class="nc">&nbsp;                item.setBlockUser(true);</b>
+<b class="nc">&nbsp;                ok = true;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return ok;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public boolean unblockUser(Follow follow, Long uid) {
+<b class="nc">&nbsp;        boolean ok = false;</b>
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        for (Follow item : user.getFollowList()){</b>
+<b class="nc">&nbsp;            if (item.getFollowingID() == follow.getFollowingID()){</b>
+<b class="nc">&nbsp;                item.setBlockUser(false);</b>
+<b class="nc">&nbsp;                ok = true;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return ok;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public boolean addToFollowList(Follow follow, Long uid) {
+<b class="nc">&nbsp;        boolean ok = true;</b>
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        for (Follow item : user.getFollowList()){</b>
+<b class="nc">&nbsp;            if (item.getFollowingID() == follow.getFollowingID()) {</b>
+<b class="nc">&nbsp;                ok = false;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        if (ok) {user.newFollow(follow);}</b>
+<b class="nc">&nbsp;        return ok;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public boolean removeFromFollowList(Long uid, Long unfollowID) {
+<b class="nc">&nbsp;        User user = userService.getUser(uid);</b>
+<b class="nc">&nbsp;        for (Follow item : user.getFollowList()){</b>
+<b class="nc">&nbsp;            if (item.getFollowingID() == unfollowID) {</b>
+<b class="nc">&nbsp;                user.removeFollow(item);</b>
+<b class="nc">&nbsp;                followRepository.delete(item);</b>
+<b class="nc">&nbsp;                repo.save(user);</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Long&gt; getFollowers(Long uid) {
+<b class="nc">&nbsp;        List&lt;Long&gt; followersUIDs = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        List&lt;Follow&gt; followers = followRepository.getFollowersByFollowingID(uid);</b>
+<b class="nc">&nbsp;        for (Follow follow : followers) {</b>
+<b class="nc">&nbsp;            followersUIDs.add(follow.getForeignKey());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return followersUIDs;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

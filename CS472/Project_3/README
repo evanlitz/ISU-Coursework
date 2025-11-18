@@ -1,0 +1,102 @@
+# CS472 Project 3: Multi-Agent Pursuit-Evasion Game
+
+A multi-agent AI system implementing intelligent game-playing agents using reinforcement learning and adversarial search algorithms. The project simulates a three-agent pursuit/evasion game inspired by Tom & Jerry.
+
+## Overview
+
+Three agents compete on a 30x30 grid environment with obstacles:
+
+- **Tom** (Pursuer): Chases Jerry using Q-learning with probabilistic transitions
+- **Jerry** (Evader): Escapes Tom while pursuing Spike using alpha-beta pruning
+- **Spike** (Defender): Catches Tom while avoiding Jerry using alpha-beta pruning
+
+### Win Conditions
+- **Tom wins**: Catches Jerry without being caught by Spike
+- **Jerry wins**: Catches Spike without being caught by Tom
+- **Spike wins**: Catches Tom without being caught by Jerry
+- **Draw**: No collision after 1000 iterations
+
+## Project Structure
+
+```
+Project_3/
+├── main.py                          # Core simulation engine
+├── devel.py                         # Development/testing script
+├── eval.sh                          # Batch evaluation script
+├── planners/
+│   ├── __init__.py
+│   ├── tom.py                       # Tom's Q-learning planner
+│   ├── jerry.py                     # Jerry's alpha-beta pruning planner
+│   └── spike.py                     # Spike's alpha-beta pruning planner
+├── data/
+│   ├── grid_files/                  # 100 pre-generated grid environments
+│   │   ├── grid_0.npy
+│   │   └── ... (grid_99.npy)
+│   └── proj_iii_solutions/          # Output directory for results
+└── CS472 P3 Report - Evan Litzer.pdf  # Technical report
+```
+
+## Requirements
+
+```bash
+pip install numpy pandas scipy
+```
+
+## Usage
+
+### Run Single Test
+```bash
+python devel.py
+```
+Tests a single grid configuration (default: grid 28).
+
+### Run Full Evaluation
+```bash
+python main.py
+```
+Executes all 100 grids × 5 runs = 500 total simulations.
+
+### Batch Evaluation
+```bash
+bash eval.sh
+```
+Processes submissions from `submissions/*/planner.py`.
+
+## Output
+
+Results are saved as CSV files in `data/proj_iii_solutions/`:
+- Format: `{grid_id}_{running_id}.csv`
+- Columns: `Tom_X, Tom_Y, Jerry_X, Jerry_Y, Spike_X, Spike_Y`
+- Each row represents one game step
+
+## AI Techniques
+
+### Tom's Strategy (Q-Learning)
+- Epsilon-greedy exploration (ε = 0.1)
+- Dynamic probability adaptation based on Spike's distance
+- Reward system balancing pursuit and self-preservation
+- Parameters: α = 0.1, γ = 0.95
+
+### Jerry's Strategy (Alpha-Beta Pruning)
+- Stochastic evaluation with probabilistic transitions
+- A* pathfinding for distance calculations
+- Adaptive search depth based on game state
+- Balances escaping Tom and catching Spike
+
+### Spike's Strategy (Alpha-Beta Pruning)
+- A* distance calculations for path-based reasoning
+- Pursues Tom while avoiding Jerry
+- Evaluates positions based on relative distances
+
+## Game Mechanics
+
+- **Grid Size**: 30×30 with obstacles
+- **Movement**: 8-directional (cardinal + diagonal)
+- **Probabilistic Transitions**: Actions can rotate [left: 0.3, straight: 0.3, right: 0.4]
+- **Collision Detection**: Game ends when agents occupy same cell
+- **Max Iterations**: 1000 steps per game
+- **Agent Spawning**: Minimum Manhattan distance of 3 between agents
+
+## Author
+
+Evan Litzer - Iowa State University

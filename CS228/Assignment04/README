@@ -1,0 +1,398 @@
+# COM S 228 – Project 4
+## Archived Message Reconstruction
+
+This repository contains my solution for **COM S 228 (Fall 2023) – Project 4: Archived Message Reconstruction**.
+
+The goal of this project is to **decode (unzip) a text message** that was archived using a
+binary-tree–based encoding scheme. The program:
+
+1. Prompts the user for a single archive filename (ending in `.arch`).
+2. Reconstructs the **message tree** that defines the encoding.
+3. Decodes the compressed bit string using this tree.
+4. Prints the encoding table and the decoded message to the console.
+5. (Optional extra credit) Prints message-specific statistics about compression efficiency.
+
+---
+
+## Problem Overview
+
+The encoding algorithm uses a **binary tree**:
+
+- **Internal nodes** hold no character (they are marked with `'^'` in the encoding string).
+- **Leaf nodes** contain a single character payload.
+- **Left edges** represent bit `0`.
+- **Right edges** represent bit `1`.
+
+To encode a character, you follow the path from the **root** to the leaf containing that character:
+
+- Sequence of edges `0`/`1` along the path is the character’s code.
+- No character’s code is allowed to be the prefix of another character’s code
+  (prefix-free / prefix code), so decoding is unambiguous.
+
+Example mapping:
+
+| Character | Encoding |
+|----------|----------|
+| a        | 0        |
+| !        | 100      |
+| d        | 1010     |
+| c        | 1011     |
+| r        | 110      |
+| b        | 111      |
+
+Using this encoding, the bit string:
+
+```text
+10110101011101101010100
+```
+
+is parsed as:
+
+```text
+1011 | 0 | 1010 | 111 | 0 | 110 | 1010 | 100
+```
+
+which decodes to:
+
+```text
+cadbard!
+```
+
+---
+
+## Input File Format (`*.arch`)
+
+The input archive file has **two or three lines**:
+
+1. **Encoding scheme string** (may span one or two lines).
+2. **Compressed message bits** (last line).
+
+### Encoding Scheme Line(s)
+
+The encoding scheme is given as a **preorder traversal** of the encoding tree, where:
+
+- `'^'` represents an **internal node**.
+- Any other character represents a **leaf node** holding that character.
+
+Example tree string:
+
+```text
+^a^^!^dc^rb
+```
+
+This describes a full binary tree in preorder.
+
+> Note: The encoding scheme may contain a **space character** and/or a **newline character** as valid
+> payload characters. That can cause the tree string itself to be split across **two lines** in
+> the `.arch` file. When this happens, the file effectively has three lines:
+>
+> 1. First portion of the tree string.
+> 2. Second portion of the tree string (including space and/or newline).
+> 3. Compressed message line.
+>
+> Your decoder must reconstruct the full tree string before building the tree.
+
+### Compressed Message Line
+
+The final line in the file contains the **compressed message** as a string of `'0'` and `'1'`
+characters. Each `'0'`/`'1'` corresponds to a left/right traversal in the message tree.
+
+For example, the file `cadbard.arch`:
+
+```text
+^a^^!^dc^rb
+10110101011101101010100
+```
+
+decodes to:
+
+```text
+cadbard!
+```
+
+---
+
+## Core Classes
+
+All classes for this project belong to the package:
+
+```java
+package edu.iastate.cs228.hw4;
+```
+
+### `MsgTree`
+
+`MsgTree` is the core data structure representing nodes in the message tree:
+
+```java
+public class MsgTree {
+
+    public char payloadChar;
+    public MsgTree left;
+    public MsgTree right;
+
+    private static int staticCharIdx = 0;
+
+    // Constructor building the tree from an encoding string
+    public MsgTree(String encodingString) { }
+
+    // Constructor for a single node with null children
+    public MsgTree(char payloadChar) { }
+
+    // Prints characters and their binary codes
+    public static void printCodes(MsgTree root, String code) { }
+}
+```
+
+Key details:
+
+- **`payloadChar`**:
+  - For internal nodes, this should be `'^'`.
+  - For leaves, it is the decoded character.
+- **`left` / `right`**: child references, corresponding to bit `0` and bit `1`.
+- **`staticCharIdx`**:
+  - Used by the recursive constructor to track position within the encoding string.
+  - The `MsgTree(String encodingString)` constructor builds the entire tree by reading one
+    character at a time and recursively creating child nodes.
+
+#### Building the Tree (Recursive Approach)
+
+A typical recursive strategy for `MsgTree(String encodingString)`:
+
+1. Read the character at `encodingString.charAt(staticCharIdx)` and increment `staticCharIdx`.
+2. If the character is `'^'`:
+   - Create an internal node with `payloadChar = '^'`.
+   - Recursively build its `left` child.
+   - Recursively build its `right` child.
+3. Otherwise:
+   - Create a **leaf node** with that character as `payloadChar`.
+   - Set both children to `null`.
+
+#### `printCodes(MsgTree root, String code)`
+
+- Performs a **recursive preorder traversal** to print a table of characters and their codes.
+- For each leaf node:
+  - Print the character and the accumulated `code` string of `0`s and `1`s.
+- For example, output format (excluding header line):
+
+```text
+ c  1011
+ r  110
+ b  111
+```
+
+You typically print the header in `main`:
+
+```text
+character code
+-------------------------
+```
+
+---
+
+### `MessageDecoder` (Main Program)
+
+The driver class (often named `MessageDecoder`) coordinates file I/O and decoding.
+
+Typical responsibilities:
+
+1. **Prompt for filename**:
+
+   ```text
+   Please enter filename to decode:
+   ```
+
+2. **Read the archive file**:
+   - Determine whether the encoding scheme uses one or two lines.
+   - Concatenate the parts into a single tree string.
+   - Store the compressed bit string separately.
+
+3. **Build the message tree**:
+
+   ```java
+   MsgTree codes = new MsgTree(encodingString);
+   ```
+
+4. **Print the character codes**:
+
+   ```text
+   character code
+   -------------------------
+   <output of MsgTree.printCodes(...)>
+   ```
+
+5. **Decode the message** (see next section).
+
+6. **Optionally** print statistics (extra credit).
+
+A typical method signature for decoding:
+
+```java
+public static void decode(MsgTree codes, String msg)
+```
+
+---
+
+## Decoding the Message
+
+The decoding algorithm uses the message tree:
+
+1. Start at the **root** of the tree.
+2. For each bit in the compressed string:
+   - If bit is `'0'`, go to `left`.
+   - If bit is `'1'`, go to `right`.
+3. When you reach a **leaf node**:
+   - Print its `payloadChar`.
+   - Reset the current node to the root and continue with the next bit.
+4. When all bits have been consumed, you have reconstructed the original message.
+
+The decoded message is printed as:
+
+```text
+MESSAGE:
+<decoded text here>
+```
+
+Example:
+
+```text
+MESSAGE:
+The quick brown fox jumped over the lazy dog.
+```
+
+---
+
+## Program Output Format
+
+Overall output (no extra credit) should look like:
+
+```text
+character code
+-------------------------
+
+ c  1011
+ r  110
+ b  111
+
+MESSAGE:
+The quick brown fox jumped over the lazy dog.
+```
+
+(Blank lines are included as in the assignment specification.)
+
+---
+
+## Extra Credit: Statistics (5%)
+
+For **5% extra credit**, print **message-specific** statistics after the decoded message:
+
+```text
+STATISTICS:
+Avg bits/char: <value>
+Total characters: <value>
+Space savings: <value>%
+```
+
+Definitions:
+
+- Let:
+  - `compressedBits` = total number of bits used in the compressed message.
+  - `uncompressedBits` = `16 * (total number of decoded characters)`
+    (assuming each original character uses 16 bits in uncompressed form).
+- Then:
+
+  ```text
+  Avg bits/char = compressedBits / totalCharacters
+  Space savings = (1 – compressedBits / uncompressedBits) * 100
+  ```
+
+Print `Space savings` as a percentage (e.g., `50.0%`).
+
+> Note: You can **either** claim the 5% stats bonus **or** the 15% iterative-construction bonus,
+> but not both (they are non-cumulative). The early-submission bonus stacks with whichever
+> you choose.
+
+---
+
+## Extra Credit: Iterative Tree Construction (15%)
+
+For **15% extra credit**, you can implement a **non-recursive, iterative solution** to build
+the `MsgTree` from the encoding string.
+
+- This is significantly more complex than the recursive approach.
+- If you choose this option:
+  - You do **not** implement the statistics bonus for that submission.
+  - Name your submission `Firstname_Lastname_HW4_extra.zip`.
+
+The README and core behavior remain the same; only the internal construction logic differs.
+
+---
+
+## Building and Running
+
+### Package and File Layout
+
+Your classes should follow this structure:
+
+```text
+src/
+  edu/
+    iastate/
+      cs228/
+        hw4/
+          MsgTree.java
+          MessageDecoder.java   (or equivalent main driver)
+```
+
+### Compile
+
+From the project root:
+
+```bash
+javac -d out src/edu/iastate/cs228/hw4/MsgTree.java src/edu/iastate/cs228/hw4/MessageDecoder.java
+```
+
+(adapt paths as needed if using an IDE).
+
+### Run
+
+From the same root:
+
+```bash
+java -cp out edu.iastate.cs228.hw4.MessageDecoder
+```
+
+Then, when prompted:
+
+```text
+Please enter filename to decode:
+```
+
+enter a path to a `.arch` file (e.g., `cadbard.arch` or any of the provided test files).
+
+---
+
+## Submission Notes (Original Assignment)
+
+According to the assignment specification:
+
+- Submit a **zip file** containing only your **source files** with the correct package structure.
+- Do **not** include compiled `.class` files or IDE project metadata.
+- Use naming convention: `Firstname_Lastname_HW4.zip`.
+- Include the `@author`
+  Javadoc tag in each class.
+
+---
+
+## Summary
+
+This project practices:
+
+- Implementing and traversing **binary trees**.
+- Parsing custom-encoded file formats.
+- Recursively (or iteratively) building trees from linear encodings.
+- Working with bitstring-like data and manual decoding.
+- (Optionally) computing basic compression statistics.
+
+The code in this repository follows the **COM S 228 – Project 4: Archived Message Reconstruction**
+specification and implements a working decoder for the given `.arch` files.

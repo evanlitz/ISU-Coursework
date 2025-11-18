@@ -1,0 +1,43 @@
+# firefox.tsl for question 3
+Parameters:
+    default_search_engine:
+        google.
+        amazon.
+        bing.
+        duckduckgo.
+        ebay.
+        wikipedia.
+    
+    ctrltab_recent:
+        on.
+        off.
+
+    newtab_links:
+        on.
+        off.
+
+    switch_to_open_link:
+        on.
+        off.
+
+    ask_before_closing_multiple_links:
+        on.
+        off.
+
+    ask_before_quitting_xq:
+        on.
+        off.
+
+    updates:
+        automatically_install.
+        ask_to_install.
+        
+    autoscrolling:
+        on.
+        off.
+    
+    smooth_scrolling:
+        on.
+        off.
+
+Environments:

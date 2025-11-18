@@ -1,0 +1,55 @@
+# Activity 04 - Flower Catalog
+
+A responsive web application showcasing a catalog of flowers using Bootstrap 5.
+
+## Author
+
+- **Name:** Evan Litzer
+- **Email:** bubaq@iastate.edu
+- **Date:** September 11, 2025
+- **Course:** CS319 - Construction of User Interfaces
+
+## Description
+
+This project displays a collection of flowers in an album-style layout. Each flower is presented in a card format with an image and descriptive text about the species. The catalog includes:
+
+- Lily (*Lilium candidum*)
+- Daisy (*Leucanthemum vulgare*)
+- Blue Lotus (*Nymphaea caerulea*)
+- Bluebell (*Hyacinthoides*)
+- Sunflower (*Helianthus annuus*)
+- Tulip (*Tulipa*)
+
+## Features
+
+- **Responsive Grid Layout:** Cards automatically adjust from 1 to 3 columns based on screen size
+- **Theme Toggle:** Light, dark, and auto theme modes
+- **Collapsible Navigation:** Header with expandable about/contact section
+- **Bootstrap 5.3:** Modern UI components and styling
+
+## Project Structure
+
+```
+Activity04/
+├── index.html          # Main webpage
+├── images/             # Flower images and descriptions
+│   ├── *.jpg           # Flower photographs
+│   └── *.txt           # Text descriptions for each flower
+└── README.md           # This file
+```
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- Bootstrap 5.3.8 (CDN)
+- JavaScript (Bootstrap Bundle)
+
+## How to Run
+
+1. Open `index.html` in a web browser
+2. Or serve the directory using a local web server
+
+## Dependencies
+
+The project uses Bootstrap via CDN, so an internet connection is required for full styling and functionality.

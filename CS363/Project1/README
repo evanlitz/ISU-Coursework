@@ -1,0 +1,106 @@
+# CS 363 - Project 1: College Database System
+
+A relational database project implementing a college management system using MySQL. This project demonstrates database design, SQL query writing, and data manipulation operations.
+
+## Database Schema
+
+The database models a college system with the following entities:
+
+- **students** - Student information (SSN, SID, name, contact details)
+- **departments** - Academic departments with college affiliations
+- **degrees** - Degree programs offered by departments (BS, MS, PhD levels)
+- **courses** - Course catalog with credit hours and department associations
+- **register** - Student course registrations with grades
+- **major** - Student major degree enrollments
+- **minor** - Student minor degree enrollments
+
+### Entity Relationships
+
+```
+departments (1) ──── (N) degrees
+departments (1) ──── (N) courses
+students (1) ──── (N) register (N) ──── (1) courses
+students (1) ──── (N) major (N) ──── (1) degrees
+students (1) ──── (N) minor (N) ──── (1) degrees
+```
+
+## Project Structure
+
+```
+├── CreateTables.sql      # DDL for creating database schema
+├── InsertRecords.sql     # Load data from CSV files
+├── Query.sql             # All queries combined
+├── Query1-13.sql         # Individual query files
+├── ModifyRecords.sql     # UPDATE, DELETE, INSERT operations
+├── DropTables.sql        # Clean up script
+└── data/                 # CSV source files
+    ├── students.csv
+    ├── departments.csv
+    ├── degrees.csv
+    ├── courses.csv
+    ├── register.csv
+    ├── major.csv
+    └── minor.csv
+```
+
+## SQL Queries Implemented
+
+1. Find student address by name
+2. List student's major degrees
+3. Get all courses offered by a department
+4. Find students registered in a specific semester
+5. List degrees administered by a department
+6. Find all students with minors
+7. Find graduate students enrolled in specific courses
+8. Search students by name pattern (contains 'n')
+9. Filter students by name range (alphabetical)
+10. Count students enrolled per course
+11. Count female students in a specific program
+12. Find most popular major degree
+13. Find most popular degree overall (majors + minors)
+
+## Setup Instructions
+
+1. **Create the database:**
+   ```sql
+   CREATE DATABASE CollegeDB;
+   USE CollegeDB;
+   ```
+
+2. **Create tables:**
+   ```bash
+   mysql -u username -p CollegeDB < CreateTables.sql
+   ```
+
+3. **Load data:**
+   - Update file paths in `InsertRecords.sql` to match your system
+   - Enable local file loading: `SET GLOBAL local_infile = 1;`
+   ```bash
+   mysql --local-infile=1 -u username -p CollegeDB < InsertRecords.sql
+   ```
+
+4. **Run queries:**
+   ```bash
+   mysql -u username -p CollegeDB < Query.sql
+   ```
+
+## Technologies
+
+- MySQL 8.0+
+- SQL (DDL, DML, Joins, Aggregations, Subqueries)
+
+## Key Concepts Demonstrated
+
+- Primary and foreign key constraints
+- Referential integrity with ON DELETE CASCADE
+- JOIN operations (INNER, LEFT)
+- Aggregate functions (COUNT, GROUP BY)
+- Subqueries and UNION operations
+- Pattern matching with LIKE and BETWEEN
+- Data import from CSV files
+
+## Author
+
+Evan Litzer
+Iowa State University
+CS 363 - Introduction to Database Management Systems

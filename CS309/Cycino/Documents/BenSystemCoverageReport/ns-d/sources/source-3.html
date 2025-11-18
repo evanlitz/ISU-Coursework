@@ -1,0 +1,277 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LobbyService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.lobby</a>
+</div>
+
+<h1>Coverage Summary for Class: LobbyService (coms309.Cycino.lobby)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LobbyService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36.4%
+  </span>
+  <span class="absValue">
+    (4/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    3.8%
+  </span>
+  <span class="absValue">
+    (1/26)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.6%
+  </span>
+  <span class="absValue">
+    (14/96)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.lobby;
+&nbsp;
+&nbsp;import coms309.Cycino.Enums;
+&nbsp;import coms309.Cycino.Games.Blackjack.BlackjackService;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import coms309.Cycino.users.UserService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class LobbyService {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private LobbyRepo repo;
+&nbsp;    @Autowired
+&nbsp;    private UserService userService;
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; startLobby(){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = new Lobby();</b>
+<b class="nc">&nbsp;        repo.save(l);</b>
+<b class="nc">&nbsp;        response.put(&quot;lobbyId&quot;, l.getLobbyId());</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; startLobby(Long u){
+&nbsp;
+<b class="fc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        User user = userService.getUser(u);</b>
+<b class="fc">&nbsp;        user.setRole(Enums.Roles.LOBBYHOST);</b>
+<b class="fc">&nbsp;        Enums.Roles role = user.getRole();</b>
+<b class="pc">&nbsp;        if(role.ordinal() == 0){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, 405);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;permission not allowed&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        Lobby l = new Lobby(user);</b>
+<b class="fc">&nbsp;        repo.save(l);</b>
+<b class="fc">&nbsp;        response.put(&quot;lobbyId&quot;, l.getLobbyId());</b>
+<b class="fc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="fc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; startLobby(Collection&lt;User&gt; users){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = new Lobby(users);</b>
+<b class="nc">&nbsp;        repo.save(l);</b>
+<b class="nc">&nbsp;        response.put(&quot;lobbyId&quot;, l.getLobbyId());</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; delete(Long id, long userId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        if(repo.findById(id).isEmpty()){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Enums.Roles role = userService.getUser(userId).getRole();</b>
+<b class="nc">&nbsp;        if(role.ordinal() &lt; 2){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, 405);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;permission not allowed&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        for(User u : getLobby(id).getPlayers()){</b>
+<b class="nc">&nbsp;            if(u.getRole().equals(Enums.Roles.LOBBYHOST)){</b>
+<b class="nc">&nbsp;                u.setRole(Enums.Roles.EXPERIENCED);</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        repo.deleteById(id);</b>
+<b class="nc">&nbsp;        response.put(&quot;lobbyId&quot;, id);</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; addPlayer(Long userId, Long id){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        User u = userService.getUser(userId);</b>
+<b class="nc">&nbsp;        Lobby l = repo.findById(id).orElse(null);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        l.addPlayer(u);</b>
+<b class="nc">&nbsp;        response.put(&quot;lobbyId&quot;, l.getLobbyId());</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        repo.save(l);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; removePlayer(long userId, Long id){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        User u = userService.getUser(userId);</b>
+<b class="nc">&nbsp;        Enums.Roles role = u.getRole();</b>
+<b class="nc">&nbsp;        if(role.ordinal() &gt;= 2){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, 405);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;permission not allowed&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Lobby l = repo.findById(id).orElse(null);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(!l.getPlayers().contains(u)){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;user not in this lobby&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        l.removePlayer(u);</b>
+<b class="nc">&nbsp;        response.put(&quot;lobbyId&quot;, l.getLobbyId());</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        repo.save(l);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; getPlayers(Long id){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = repo.findById(id).orElse(null);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Set&lt;User&gt; players = l.getPlayers();</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+&nbsp;        //response.put(&quot;lobby&quot;, l);
+<b class="nc">&nbsp;        Set&lt;Long&gt; ids = new HashSet&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        players.forEach(user -&gt; {</b>
+<b class="nc">&nbsp;            if (user != null) {</b>
+<b class="nc">&nbsp;                ids.add(user.getId());</b>
+&nbsp;            }
+&nbsp;        });
+<b class="nc">&nbsp;        response.put(&quot;players&quot;, ids);</b>
+<b class="nc">&nbsp;        response.put(&quot;size&quot;, players.size());</b>
+<b class="nc">&nbsp;        for(User u: players){</b>
+<b class="nc">&nbsp;            if(u.getRole().equals(Enums.Roles.LOBBYHOST)){</b>
+<b class="nc">&nbsp;                response.put(&quot;host&quot;, u.getId());</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Lobby getLobby(Long id){
+<b class="fc">&nbsp;        return repo.findById(id).orElse(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateGameId(Long id, Lobby l){
+<b class="fc">&nbsp;        l.setGameId(id);</b>
+<b class="fc">&nbsp;        repo.save(l);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

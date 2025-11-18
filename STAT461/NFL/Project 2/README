@@ -1,0 +1,152 @@
+# STAT 461 Project 2: NFL Statistical Modeling
+
+A statistical analysis project that uses various modeling approaches to quantify team strength and home-field advantage in NFL games.
+
+## Overview
+
+This project applies advanced statistical models to NFL game data to answer key questions about competitive advantage and team performance. The analysis includes logistic regression, Bradley-Terry models, and ordinal regression to estimate home-field advantage and rank team strengths.
+
+## Project Structure
+
+```
+Project 2/
+├── nfl.csv              # NFL game data (1966-present, 14,087 games)
+├── WLTNFL_P1.r          # Basic logistic regression for home advantage
+├── WLTNFL_P2.r          # Margin of Victory vs. Win-Loss model comparison
+├── WLTNFL_P3.r          # Bradley-Terry model implementation
+├── WLTNFL_P4.r          # Team strength rankings with visualizations (2024)
+├── WLTNFL_P5.r          # Bradley-Terry model for 2024 season
+├── WLTNFL_P6.r          # Ordinal logistic regression (2022 season)
+├── WILT_NFL_P7.r        # Extended ordinal model with adjusted strengths
+├── WILT_NFL_P8.r        # Game outcome predictions (Vikings vs. Bears)
+├── nflytest.py          # Python validation implementation
+└── README.md            # This file
+```
+
+## Key Research Questions
+
+1. **Home-Field Advantage**: What competitive advantage does playing at home provide?
+2. **Team Strength Estimation**: How can we objectively rank NFL teams by relative strength?
+3. **Win Probability**: What is the probability of a home team winning against an equal-strength opponent?
+4. **Model Comparison**: How do different statistical approaches compare in their predictions?
+
+## Statistical Models Implemented
+
+### Logistic Regression
+- Binary outcome modeling (Win/Loss)
+- Estimates home-field advantage as log-odds
+- Calculates team strength coefficients
+
+### Bradley-Terry Model
+- Paired comparison approach for ranking
+- Estimates relative team abilities
+- Provides normalized strength parameters
+
+### Ordinal Logistic Regression (Proportional Odds Model)
+- Three-way outcome modeling (Loss/Tie/Win)
+- Captures ordering of outcomes
+- Uses cumulative logit link function
+
+## Technologies & Dependencies
+
+### R (Primary Language)
+```r
+# Required packages
+install.packages(c("tidyverse", "BradleyTerry2", "MASS", "ordinal", "DT", "ggplot2"))
+```
+
+- `tidyverse` - Data manipulation and pipelines
+- `BradleyTerry2` - Bradley-Terry model fitting
+- `MASS` - Ordinal logistic regression (`polr`)
+- `ordinal` - Additional ordinal model support
+- `ggplot2` - Data visualization
+- `DT` - Interactive data tables
+
+### Python (Validation)
+```python
+# Required packages
+pip install pandas scikit-learn
+```
+
+## Dataset
+
+The `nfl.csv` file contains comprehensive NFL game data including:
+- Game scheduling information (date, season, week)
+- Team matchups (home vs. away)
+- Final scores
+- Stadium and weather conditions
+- Betting spread information
+
+**Data Scope**: 14,087 games from 1966 to present
+
+## Usage
+
+### Running R Scripts
+
+```r
+# Set working directory to project folder
+setwd("path/to/Project 2")
+
+# Run individual analysis scripts
+source("WLTNFL_P1.r")  # Basic home advantage model
+source("WLTNFL_P4.r")  # Full team rankings with plots
+source("WLTNFL_P6.r")  # Ordinal regression analysis
+```
+
+### Key Outputs
+
+Each script produces:
+- Model coefficients and parameter estimates
+- Home-field advantage quantification
+- Team strength rankings (normalized)
+- Win/Loss probability predictions
+- Visualizations (bar charts, scatter plots)
+
+## Example Analysis
+
+From `WLTNFL_P4.r` - 2024 Season Team Rankings:
+- Estimates relative team strength for all NFL teams
+- Normalizes coefficients relative to baseline team
+- Generates ranked bar chart visualization
+- Calculates home win probability for equal-strength matchups
+
+## Key Findings
+
+The models consistently demonstrate:
+- Significant home-field advantage in NFL games
+- Quantifiable team strength differences
+- Consistency between different modeling approaches
+- Predictive capability for specific game outcomes
+
+## Academic Context
+
+This project was completed for **STAT 461** (Applied Statistics) at Iowa State University. It demonstrates practical applications of:
+- Frequentist statistical modeling
+- Sports analytics methodologies
+- Model selection and comparison
+- Statistical inference and prediction
+
+## Data Filtering Notes
+
+- All analyses exclude playoff games (regular season only)
+- Missing values are handled appropriately
+- Identifiability constraints applied (reference team or zero-sum)
+
+## Future Extensions
+
+Potential improvements could include:
+- Incorporating additional covariates (weather, injuries)
+- Time-varying team strength models
+- Bayesian alternatives to frequentist approaches
+- Cross-validation and model assessment
+- Predictive accuracy evaluation on held-out data
+
+## Author
+
+Evan Litzer
+Iowa State University
+STAT 461 - Applied Statistics
+
+## License
+
+This project is for educational purposes as part of university coursework.

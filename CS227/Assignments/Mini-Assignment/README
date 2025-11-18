@@ -1,0 +1,32 @@
+# LoopsInfinityAndBeyond – Com S 227 Miniassignment
+
+## Overview
+This miniassignment focuses on **writing and debugging loops in Java**.  
+You will implement four static methods inside the class `mini.LoopsInfinityAndBeyond`, each solving a small but precise string-processing challenge related to the theme of *“flying saucers.”*  
+
+All grading for this assignment is automated through the SpecChecker, so correctness, code behavior, and exact method signatures are essential. The class contains **no instance variables**—all methods are static, and the constructor is private to prevent instantiation.
+
+---
+
+## Learning Objectives
+- Practice **loop construction and control flow**.
+- Strengthen understanding of **string traversal using `charAt()` and indices**.
+- Develop strategies for **testing and debugging iterative logic**.
+- Learn to think algorithmically and trace loop behavior manually.
+- Apply critical thinking to validate code correctness—even when AI-generated solutions appear convincing.
+
+---
+
+## Files Included
+- `LoopsInfinityAndBeyond.java` — Main implementation file containing four static methods.
+- `mini-2023-spring-2.pdf` — Official assignment specification with full problem descriptions.
+- `SimpleTest.java` (optional for local testing) — A simple test harness used to verify method outputs before SpecChecker submission.
+
+---
+
+## Implemented Methods
+Each method is **static** and must exactly match its required signature. No instance variables, arrays, or collections are required (though arrays may be used).
+
+### 1. `public static int flyingSaucerLength(String s)`
+Finds the length of the first *flying saucer* pattern in a string.  
+A valid saucer follows the format:

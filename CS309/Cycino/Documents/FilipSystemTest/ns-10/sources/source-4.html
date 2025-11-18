@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > UserStatsController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.stats</a>
+</div>
+
+<h1>Coverage Summary for Class: UserStatsController (coms309.Cycino.stats)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserStatsController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    2.6%
+  </span>
+  <span class="absValue">
+    (1/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.stats;
+&nbsp;
+&nbsp;import coms309.Cycino.Enums;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;@RestController
+<b class="fc">&nbsp;public class UserStatsController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private UserStatsRepo userStatsRepo;
+&nbsp;
+&nbsp;    @GetMapping(&quot;/stats/{game}&quot;)
+&nbsp;    public UserStats getStats(@PathVariable String game, @RequestHeader(&quot;userId&quot;) Long userId){
+<b class="nc">&nbsp;       return userStatsRepo.findById(userId + game.toUpperCase()).orElse(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/stats/all/{game}&quot;)
+&nbsp;    public List&lt;UserStats&gt; getStats(@PathVariable String game){
+<b class="nc">&nbsp;        List&lt;UserStats&gt; userStats = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        for(UserStats u : userStatsRepo.findAll()){</b>
+<b class="nc">&nbsp;            String id = u.getUserStatsId();</b>
+<b class="nc">&nbsp;            id = id.substring((u.getUserId() + &quot;&quot;).length());</b>
+<b class="nc">&nbsp;            if(id.equalsIgnoreCase(game))</b>
+<b class="nc">&nbsp;                userStats.add(u);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        userStats.sort((o2, o1) -&gt; (int) ((o1.getNet() - o2.getNet()) / (Math.abs(o1.getNet() - o2.getNet()))));</b>
+<b class="nc">&nbsp;        return userStats;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/stats/create/{game}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; createStats(@PathVariable String game, @RequestHeader(&quot;userId&quot;) Long userId ){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        if(!userStatsRepo.existsById(userId + game.toUpperCase())){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;            userStatsRepo.save(new UserStats(userId, Enums.GameEnums.valueOf(game)));</b>
+<b class="nc">&nbsp;            response.put(&quot;Id&quot;, userId + game.toUpperCase());</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;500&quot;);</b>
+<b class="nc">&nbsp;        response.put(&quot;error&quot;, &quot;user already exists&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @DeleteMapping(&quot;/stats/delete/{game}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; delete(@PathVariable String game,@RequestHeader Long userId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        if(userStatsRepo.existsById(userId + game.toUpperCase())){</b>
+<b class="nc">&nbsp;            userStatsRepo.deleteById(userId + game.toUpperCase());</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;404&quot;);</b>
+<b class="nc">&nbsp;        response.put(&quot;error&quot;, &quot;No user with that id&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;    @PutMapping(&quot;/stats/update/{win}/{loss}/{chips}/{game}&quot;)
+&nbsp;    public Map&lt;String, Object&gt; update(@PathVariable int win, @PathVariable int loss, @PathVariable int chips, @PathVariable String game, @RequestHeader(&quot;userId&quot;) Long userId){
+<b class="nc">&nbsp;        Map&lt;String,Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        UserStats u = userStatsRepo.findById(userId + game.toUpperCase()).orElse(null);</b>
+<b class="nc">&nbsp;        if(u != null) {</b>
+<b class="nc">&nbsp;            u.updateWins(win, loss, chips);</b>
+<b class="nc">&nbsp;            userStatsRepo.save(u);</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;userStats&quot;, u);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;404&quot;);</b>
+<b class="nc">&nbsp;        response.put(&quot;error&quot;, &quot;no user found&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 21:23</div>
+</div>
+</body>
+</html>

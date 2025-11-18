@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#CCFFCC">
+
+
+    <TextView
+        android:id="@+id/followingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Following"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- EditText for entering usernames -->
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter username"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:inputType="textPersonName" />
+
+    <!-- Button for following the entered username -->
+    <Button
+        android:id="@+id/followButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Follow"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Button for unfollowing the entered username -->
+    <Button
+        android:id="@+id/unfollowButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unfollow"
+        android:layout_marginBottom="16dp" />
+
+    <!-- TextViews for each user that the user is following -->
+    <TextView
+        android:id="@+id/user1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 1"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 2"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 3"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 4"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 5"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 6"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 7"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 8"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 9"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/user10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User 10"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <Button
+        android:id="@+id/muteNotificationsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change User Notification Setting"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>

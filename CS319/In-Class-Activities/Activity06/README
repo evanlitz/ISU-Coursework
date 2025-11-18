@@ -1,0 +1,101 @@
+# Activity 06 - User Cards Display
+
+A React application that displays user profile cards with biographical and financial information using React Bootstrap components.
+
+## Overview
+
+This project demonstrates core React concepts including component composition, props passing, and JSX syntax. It renders attractive profile cards for notable individuals with their personal and financial details.
+
+## Features
+
+- Reusable `UserCard` component for displaying user profiles
+- Bootstrap-styled cards with shadow effects
+- Responsive flexbox layout
+- Profile images, names, salaries, marital status, and addresses
+- Dark/light theme support via system preferences
+
+## Technologies
+
+- **React** 19.1.1
+- **Vite** 7.1.7
+- **React Bootstrap** 2.10.10
+- **Bootstrap** 5.3.8
+- **ESLint** 9.36.0
+
+## Project Structure
+
+```
+Activity06/
+├── bubaq_Activity06/
+│   ├── src/
+│   │   ├── main.jsx           # React entry point
+│   │   ├── App.jsx            # Main App component
+│   │   ├── UserCards.jsx      # UserCard component
+│   │   └── index.css          # Global styles
+│   ├── public/
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm
+
+### Installation
+
+```bash
+cd bubaq_Activity06
+npm install
+```
+
+### Running the Application
+
+**Development server:**
+```bash
+npm run dev
+```
+Opens at `http://localhost:5173` with hot module replacement.
+
+**Production build:**
+```bash
+npm run build
+```
+
+**Preview production build:**
+```bash
+npm run preview
+```
+
+**Lint code:**
+```bash
+npm run lint
+```
+
+## Component Usage
+
+The `UserCard` component accepts the following props:
+
+```jsx
+<UserCard
+  picture="image-url"
+  name="User Name"
+  amount="$100,000"
+  married={true}
+  address={{
+    street: "123 Main St",
+    city: "City",
+    state: "State"
+  }}
+/>
+```
+
+## Course Information
+
+- **Course:** CS 319 - Construction of User Interfaces
+- **Institution:** Iowa State University
+- **Assignment:** In-Class Activity 06

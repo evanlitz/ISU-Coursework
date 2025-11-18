@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FriendChatActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#35654D">
+
+    <!-- Top Bar with Back Button and Friend's Name -->
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E4D3C"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#8B4513"
+            android:padding="12dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <Button
+            android:id="@+id/friendNameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Friend's Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF0000"
+            android:padding="8dp" />
+
+    </RelativeLayout>
+
+    <!-- Chat Messages Area with White Background -->
+    <ScrollView
+        android:id="@+id/chatScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/topBar"
+        android:layout_above="@id/messageInputLayout"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/chatContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Message Input Area -->
+    <LinearLayout
+        android:id="@+id/messageInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#2E4D3C"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/messageEditText"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Type a message..."
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:background="@drawable/fc_edittext_outline"
+            android:padding="12dp"
+            android:inputType="textMultiLine"
+            android:textColorHint="#D3D3D3" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:text="Send"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#B22222" />
+    </LinearLayout>
+</RelativeLayout>

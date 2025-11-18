@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".WelcomeActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#35654D"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <!-- Welcome Message TextView -->
+    <TextView
+        android:id="@+id/welcome_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome, User!"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/delete_account"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:text="Delete Account"
+        android:backgroundTint="@color/gold"
+        android:textColor="@color/cardinal"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

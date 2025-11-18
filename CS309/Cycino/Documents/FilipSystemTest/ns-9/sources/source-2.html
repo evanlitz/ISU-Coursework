@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Poker</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.Games.poker</a>
+</div>
+
+<h1>Coverage Summary for Class: Poker (coms309.Cycino.Games.poker)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Poker</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (4/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36.8%
+  </span>
+  <span class="absValue">
+    (7/19)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Poker$HibernateInstantiator$O1utega6</td>
+  </tr>
+  <tr>
+    <td class="name">Poker$HibernateProxy$eFw7w04j</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (4/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36.8%
+  </span>
+  <span class="absValue">
+    (7/19)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.Games.poker;
+&nbsp;
+&nbsp;import coms309.Cycino.Games.Game;
+&nbsp;import coms309.Cycino.Games.GameLogic.Deck;
+&nbsp;import coms309.Cycino.Games.GameLogic.PlayerHands;
+&nbsp;import coms309.Cycino.lobby.Lobby;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;@Entity
+&nbsp;public class Poker extends Game {
+&nbsp;
+<b class="fc">&nbsp;    private double pot = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;    private int lastBet = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;    private Set&lt;Long&gt; folded = new HashSet&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;    public Poker(){</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Poker(Lobby l, Deck d){
+<b class="fc">&nbsp;        super(l,d);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void increasePot(double raise){
+<b class="fc">&nbsp;        pot += raise;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getPot(){
+<b class="fc">&nbsp;        return pot;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLastBet(int bet){
+<b class="nc">&nbsp;        lastBet = bet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getLastBet(){
+<b class="nc">&nbsp;        return lastBet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;Long&gt; getFolded(){
+<b class="nc">&nbsp;        return folded;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;Long&gt; getIn(){
+<b class="nc">&nbsp;        Set&lt;Long&gt; temp = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        for(PlayerHands hand: getHands()){</b>
+<b class="nc">&nbsp;            if(!folded.contains(hand.getPlayer().getId())){</b>
+<b class="nc">&nbsp;                temp.add(hand.getPlayer().getId());</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return temp;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void fold(long user){
+<b class="nc">&nbsp;        folded.add(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void reset(){
+<b class="nc">&nbsp;        folded.removeAll(folded);</b>
+<b class="nc">&nbsp;        lastBet = 0;</b>
+<b class="nc">&nbsp;        pot = 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 21:23</div>
+</div>
+</body>
+</html>

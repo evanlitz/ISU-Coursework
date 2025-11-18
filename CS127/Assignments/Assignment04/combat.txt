@@ -1,0 +1,87 @@
+def combat(combatChance, playerHealth, maxHealth, playerAccuracy, playerDamage):
+    enemyName = ""
+    enemyHealth = 0
+    enemyAccuracy = 0
+    enemyDamage = 0
+    # Check to see if we should engage in combat
+    if combatChance > random.randint(0, 9):
+        print("You have engaged in combat!")
+        print()
+
+        # Randomly select an enemy
+        monsterSelection = random.randint(0, 0)
+        if monsterSelection == 0: # SLIME monster
+            enemyName = "SLIME"
+            maxEnemyHealth = 2
+            enemyHealth = maxEnemyHealth
+            enemyAccuracy = 5
+            enemyDamage = 1
+            print("You have encountered an enemy {0} monster...".format(enemyName))
+            print()
+            print("It has {0} HP and {1} ATTACK strength...".format(enemyHealth, enemyDamage))
+            print()
+        else:
+            print("Error - 'combat' function: 'monsterSelection' value is invalid:", monsterSelection)
+
+        # Choose a random turn to go first
+        currentTurn = random.randint(0, 1)
+        if currentTurn == 0:
+            print("You have taken the initiative!")
+        else:
+            print("The enemy {0} monster has struck first!".format(enemyName))
+        print()
+
+        # Take turns
+        while playerHealth > 0 and enemyHealth > 0:
+            if currentTurn == 0: # Human Turn
+                # Get the action the human wants to take
+                action = input("COMBAT: [a]ttack, [f]lee: ")
+                while action != "a" and action != "f":
+                    print("Invalid combat choice...")
+                    action = input("COMBAT: [a]ttack, [f]lee: ")
+                print()
+
+                # Engage in combat depending on the action
+                if action == "a":
+                    if random.randint(0, 9) < playerAccuracy:
+                        enemyHealth -= playerDamage
+                        print("You have HIT the enemy monster! Its HP is: {0} / {1}".format(enemyHealth, maxEnemyHealth))
+                        print()
+                    else:
+                        print("You have MISSED the enemy monster...")
+                        print()
+                elif action == "f":
+                    if random.randint(0, 9) < playerDamage:
+                        print("You have escaped from combat!")
+                        print()
+                        break
+                else:
+                    print("Error - 'combat' function: 'action' value is invalid:", action)
+
+            else: # Computer Turn 
+                if random.randint(0, 9) < enemyAccuracy:
+                    playerHealth -= enemyDamage
+                    print("You have been HIT by the the enemy {0} monster! Your HP is: {1} / {2}".format(enemyName, playerHealth, maxHealth))
+                    print()
+                else:
+                    print("The enemy {0} monster has MISSED you...".format(enemyName))
+                    print()
+            # switch turns
+            currentTurn += 1
+            currentTurn %= 2
+        
+        # Announce the winner
+        if playerHealth > 0 and enemyHealth <= 0:
+            print("Congratulations! You have defeated the enemy {0} monster...".format(enemyName))
+            print()
+        elif playerHealth > 0 and enemyHealth > 0:
+            print("That was a close one! The enemy {0} monster almost got you!".format(enemyName))
+            print()
+        else:
+            print("Sadly, the enemy {0} monster was victorious...".format(enemyName))
+            print()
+    else:
+        print("Fortunately, there were no monsters in this room...")
+        print()
+    
+    return playerHealth

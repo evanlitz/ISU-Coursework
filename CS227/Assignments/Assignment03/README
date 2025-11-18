@@ -1,0 +1,42 @@
+# ConnectGame Assignment README
+
+## Overview
+This project implements the core logic for **Com S 227 Assignment 3**, which recreates a simplified version of the puzzle game *2248*. The assignment consists of three main classes — `ConnectGame`, `Grid`, and `GameFileUtil` — that collectively model the backend for the game. The graphical interface (provided in the `ui` package) interacts with these classes to render gameplay.
+
+The project focuses on practicing Java arrays, loops, file handling, and multi-class design through a functional game implementation.
+
+## Features
+### Core Gameplay
+- Supports connecting sequences of tiles that follow valid power-of-two progression rules.
+- Handles elimination of selected tiles and the drop-down behavior of new tiles into the grid.
+- Implements score tracking based on the value and count of eliminated tiles.
+- Dynamically adjusts the minimum and maximum tile values when higher tiles are created.
+- Provides grid randomization and tile replacement logic.
+
+### Game Classes
+- **`Grid.java`**  
+  Maintains a 2D array of tiles, handling tile storage, retrieval, and board structure. Includes basic getter and setter methods for grid state.
+
+- **`ConnectGame.java`**  
+  Implements all core game mechanics, including selection, tile connection logic, tile upgrades, scoring, and dropping mechanics. Also includes adjacency detection, game state management, and integration points for the GUI.
+
+- **`GameFileUtil.java`**  
+  Provides static methods for saving and loading the current game state to and from a text file.
+
+## Testing
+Testing should be performed using simple, focused test cases rather than the GUI. The provided SpecChecker only validates structure (e.g., method names and signatures) and not functionality.
+
+Example test setup:
+```java
+Grid grid = new Grid(2, 2);
+grid.setTile(new Tile(2), 0, 0);
+grid.setTile(new Tile(4), 1, 0);
+grid.setTile(new Tile(8), 0, 1);
+grid.setTile(new Tile(16), 1, 1);
+
+ConnectGame game = new ConnectGame(2, 2, 1, 4, new Random(0));
+game.setGrid(grid);
+game.tryFirstSelect(0, 0);
+game.tryContinueSelect(1, 0);
+game.tryFinishSelection(1, 0);
+System.out.println(game.getScore());

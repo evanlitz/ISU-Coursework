@@ -1,0 +1,65 @@
+# Olympic 100m Sprinting Analysis
+
+Statistical analysis of Olympic 100-meter dash winning times using multiple linear regression.
+
+## Overview
+
+This project analyzes historical Olympic 100m sprint winning times for men (1900-2004) and women (1928-2004) to:
+- Model the relationship between year and winning time
+- Quantify the difference in performance between genders
+- Predict winning times for specific years
+
+## Dataset
+
+The dataset contains Olympic 100m gold medal winning times:
+- **Men**: 24 observations from 1900 to 2004
+- **Women**: 20 observations from 1928 to 2004 (women's 100m was introduced in 1928)
+
+## Analysis
+
+The project fits a multiple linear regression model:
+
+```
+Time = β₀ + β₁(Year) + β₂(Gender) + ε
+```
+
+Where:
+- `Time` is the winning time in seconds
+- `Year` is the Olympic year
+- `Gender` is a categorical variable (Men as reference, Women as comparison)
+
+### Key Outputs
+
+1. **Gender Difference**: Estimated difference in mean winning times between men and women
+2. **Year Effect**: Estimated change in winning time per year (captures improvement over time)
+3. **Predictions**: Example prediction for women's winning time in 1944 (Olympics cancelled due to WWII)
+
+## Requirements
+
+- R (version 3.6+)
+- Required packages:
+  - `ggplot2`
+  - `tidyr`
+
+## Usage
+
+```r
+source("OlympicSprinting.R")
+```
+
+The script will:
+1. Create and reshape the dataset
+2. Fit the regression model
+3. Display model summary and coefficients
+4. Generate a scatter plot with regression lines for both genders
+
+## Visualization
+
+The script produces a scatter plot showing:
+- Individual winning times by year for each gender
+- Fitted regression lines demonstrating the trend over time
+- Clear visual comparison of men's vs women's performance trends
+
+## Course Context
+
+This analysis was completed as part of STAT 461 (Applied Statistical Methods) coursework at Iowa State University.

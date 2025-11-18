@@ -1,0 +1,66 @@
+@author Evan Litzer
+4/23/2025
+PlayerInventory and PlayerCombat
+
+Commands:
+make
+// RUN MAKE TWICE
+// The make file gives me warnings for using size_t in for loops with integers. I have just ignored them, and if you run make again it will work
+./dungeon
+
+Look Commands:
+h: left
+j: down
+k: up
+l: right
+y: top left
+u: top right
+b: bottom left
+n: bottom right
+
+Note: I have automatic object pickup implemented unless the inventory is full. Player combat with monsters includes prompted messages at the bottom of the dungeon output. Currently for the boss check, I have it checking the monster name for SpongeBob SquarePants. I do not see any passed in condition for making a monster a boss, so I am sticking with that for now. 
+
+Character.h:
+I updated the character file to include HP and damage variables.
+
+PC.h:
+Inventory object array of size ten represents the objects a player is holding but not wearing/using. Equipment object array of size 12 represents the objects a user is wearing but not holding. 
+The equipment array 12 slots are differentiated through the enum Equipmentslot, which includes the outlined equipment slots stated in the directions. 
+Listing methods that output the inventory and equipment are constructed within the listInventory() and listEquipment() methods respectively. 
+The wearItem() function takes in the index of the inventory item a user wants to wear and returns a boolean if the wearing action was completed/valid. 
+The method first checks for the index's validity, then it assigns an object pointer to the object in the inventory attempting to be worn and figures its slot type through the getEquipmentIndexForType() helper method. 
+The slot is checked for validity (-1) from its helper method return. 
+Then, if there is an object in the worn equipment slot, it gets swapped with the item trying to be put on, otherwise the object is put on and the inventory slot is set to null. Finally the equipment slot is set to the object and the method returns true. 
+For the takeOffItem() function, the integer value of the equipIndex that the user states wants to be taken off is passed in and checked for bounds. Then the inventory slot it will be put into is found through the getFirstEmptyInventorySlot() helper method, and if all checks are run through, then the inventory slot is set to the piece of equipment being taken off and the equipment object is set to null, before the method then returns true. 
+The dropItem() function passes in the inventory index integer and the dungeonObjects array. invIndex is checked for bounds, then the object pointer is set to the object in the inventory the user wants dropped. 
+The object position is then set to the current coordinates of the player, and the dungeonObjects array pushes back the object pointer in its array. The temporary object pointer is then deleted and the object in the inventory is set to null through its index. Finally the function returns true.
+The expungeItem() function passes in the inventory index integer and checks it for validity, then simply deletes it from the inventory through its index, and furthermore sets it to null. Finally the function returns true.
+The getEquipmentIndexForType() function passes in the object type and returns it as an int through the enum of EquipmentSlots described and states before in the file. 
+addToInventory() function passes in an object pointer of the item being picked up, its slot in the array determined by the getFirstEmptyInventorySlot function return. 
+The returned integer is checked, then the inventory array's index is set to the object and the function returns true. 
+The getModifiedSpeed and getModifiedDamage functions are very similar in implmentation and function, as they both account for the added speed and damage bonuses applied by the items the PC is currently wearing. 
+It is parsed through the equipment array and the effects are later used for turns and damage to monsters in the game.
+Finally, I have the default HP for the PC set to 100 and the default speed set to 10, along with the damage indicated in the directions.
+
+Input in RealDungeon.cpp:
+Every input type is included in the handlePlayerInput() function. For the inventory input (i), the terminal displays the inventory through the listInventory() method in the PC class. It then returns to the dungeon with any key press from the player.
+If the input is capital I for inspecting an item, the inventory is listed using listInventory() and the user is prompted for a character input. If the character is a valid number for the inventory, then the inventory array is checked to see if it has a nobject currently in it. 
+If it does, then it prints all of the necesscary attributes for the object in the terminal and then commands the user to press a button for the terminal to return to dungeon format.
+If the user presses the 'w' wear key, then the handleWearItemInput() function is called. In this function, it commands the user to input a number between 0 and 9 and the entire user inventory is printed out. 
+Then it calls wearItem and the index in the inventory is passed into the wearItem() PC function.
+If the inputted character is the 't' take off command. I initialize a character poiner labels consisting of letter a-l. I then call the PC listEquipment() function and prompt the PC for a character between a-l. I get the index by strchr and subtracting by labels, then check for valid index before passing the index value into the takeOffItem function. 
+If the input is the 'd' character (drop item), then the code block follows similar logic to the take off block except the dropItem() function is called with the passed in index value.
+THe 'x' character representing expungement of an item also follows the same pseudocode, except the expungeItem() function is called instead.
+If the 'e' show equipment command is inputted, then the listEquipment() function is called and the equipment is printed to screen.
+If the 'L' command is inputted, then lookMode is set to true and the teleportX and teleportY integers are set to the current player coordinates. Then the handleLookMode() function is called.
+In the handleLookMode, the logic is very similar to the handleTeleportMode function. The whole dungeon is fully forced rendered as no fog should be obscuring the map. 
+Then it first checks for a monster in the current cursor position and prints the monster information on its own screen if the monster is alive. Otherwise, if a user inputs a direction then the cursor position is moved accordingly and also checked for bounds.
+
+Combat/Movement:
+If a monster moves onto the tile of another monster, then one of two things can occur. Firstly, displace monster is called with a pointer to the occupant who is on the tile. 
+Then in the displaceMonster() function, every adjacent tile that the monster is next to is checked for openness, and if one is found then the function returns true and the original tile is vacated to '.' and the newly found symbol is updated to the monster's symbol. 
+Also the monster's position variables are updated. If no tiles can be found, nothing happens and the function returns false. Also getMonsterAt() helper function is used to find a monster in a certain tile. 
+If the displaceMonster() function returns true, then the dungeonMap[][] then updated the tile the monster tries to move into with the moving monster's symbol. If it returns false, then the swap function is called out of the standard library and the monster's positions are swapped along with their symbols.
+If a monster moves onto a player, then the monster will not take the player's position but will attack the player. It will roll the monster's damage dice and inflict the damage onto the player, along with displaying an attack message and how much hp the player has left.
+If a player moves onto a monster, the player will not move but instead inflict damage onto the monster. An attack message will display along with a message stating how much health the monster has left.
+

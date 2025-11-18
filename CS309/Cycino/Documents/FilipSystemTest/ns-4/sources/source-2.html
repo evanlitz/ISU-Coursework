@@ -1,0 +1,514 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BlackjackService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.Games.Blackjack</a>
+</div>
+
+<h1>Coverage Summary for Class: BlackjackService (coms309.Cycino.Games.Blackjack)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlackjackService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    6.7%
+  </span>
+  <span class="absValue">
+    (1/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/114)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0.4%
+  </span>
+  <span class="absValue">
+    (1/269)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.Games.Blackjack;
+&nbsp;
+&nbsp;import coms309.Cycino.Games.GameLogic.*;
+&nbsp;import coms309.Cycino.Games.Lobby.GameChat;
+&nbsp;import coms309.Cycino.lobby.Lobby;
+&nbsp;import coms309.Cycino.lobby.LobbyService;
+&nbsp;import coms309.Cycino.stats.GameHistory;
+&nbsp;import coms309.Cycino.stats.GameHistoryService;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import coms309.Cycino.users.UserService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class BlackjackService {</b>
+&nbsp;    @Autowired
+&nbsp;    private HandsRepo repo;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private LobbyService lobbyService;
+&nbsp;    @Autowired
+&nbsp;    private BlackJackRepo blackJackRepo;
+&nbsp;    @Autowired
+&nbsp;    private UserService userService;
+&nbsp;    @Autowired
+&nbsp;    private DeckService ds;
+&nbsp;    @Autowired
+&nbsp;    private GameHistoryService histService;
+&nbsp;
+&nbsp;    public HashSet&lt;PlayerHands&gt; saveRepo(Lobby l, BlackJack bj){
+<b class="nc">&nbsp;        HashSet&lt;PlayerHands&gt; hands = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        for (User player : l.getPlayers()) {</b>
+<b class="nc">&nbsp;            PlayerHands hand = new PlayerHands(player, bj);</b>
+<b class="nc">&nbsp;            hands.add(hand);</b>
+<b class="nc">&nbsp;            repo.save(hand);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        PlayerHands hand = new PlayerHands(bj);</b>
+<b class="nc">&nbsp;        hands.add(hand);</b>
+<b class="nc">&nbsp;        repo.save(hand);</b>
+<b class="nc">&nbsp;        return hands;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; createGame(int decks, Long lobbyId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = (Lobby) lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        Deck d = ds.start(decks);</b>
+&nbsp;        //Long i = histService.startGame(&quot;Blackjack&quot;, l.getPlayers());
+<b class="nc">&nbsp;        BlackJack blackJack = new BlackJack(l, d);</b>
+<b class="nc">&nbsp;        blackJackRepo.save(blackJack);</b>
+<b class="nc">&nbsp;        l.setGameId(blackJack.getId());</b>
+<b class="nc">&nbsp;        blackJack.setHands(saveRepo(l, blackJack));</b>
+<b class="nc">&nbsp;        blackJackRepo.save(blackJack);</b>
+<b class="nc">&nbsp;        blackJack.setOrder();</b>
+<b class="nc">&nbsp;        blackJackRepo.save(blackJack);</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        response.put(&quot;blackjack&quot;, blackJackRepo.findById(blackJack.getId()));</b>
+<b class="nc">&nbsp;        response.put(&quot;players&quot;, l.getPlayers().size());</b>
+<b class="nc">&nbsp;        response.put(&quot;order&quot;, blackJack.getOrder());</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; deleteGame(Long lobbyId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        for(PlayerHands hand: blj.getHands()){</b>
+<b class="nc">&nbsp;            hand.setBlackJack(null);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        repo.deleteAll(blj.getHands());</b>
+<b class="nc">&nbsp;        ds.delete(blj.getCards());</b>
+<b class="nc">&nbsp;        blj.deleteHands();</b>
+<b class="nc">&nbsp;        blackJackRepo.save(blj);</b>
+&nbsp;        //histService.endGame(blj.getGameHist());
+<b class="nc">&nbsp;        blackJackRepo.delete(blj);</b>
+<b class="nc">&nbsp;        lobbyService.updateGameId(null, l);</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; setBet(Long lobby, Long id, int bet){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        User user = userService.getUser(id);</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobby);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(user.getChips() &lt; bet){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, 405);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;not enough chips&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        user.addChips(-1 * bet);</b>
+<b class="nc">&nbsp;        blj.getHand(user).addBet(bet);</b>
+<b class="nc">&nbsp;        repo.save(blj.getHand(user));</b>
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, 200);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; hit(Long lobbyId, Long id){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        User user = userService.getUser(id);</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response = BlackJackLogic.hit(blj.getHand(user),blj.getCards());</b>
+<b class="nc">&nbsp;        for(PlayerHands hand: blj.getHands()){</b>
+<b class="nc">&nbsp;            repo.save(hand);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(end(blj, id) &amp;&amp; response.containsKey(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            response.putAll(finish(lobbyId));</b>
+<b class="nc">&nbsp;            String temp = (String) response.get(&quot;string&quot;);</b>
+<b class="nc">&nbsp;            temp += &quot; finish&quot;;</b>
+<b class="nc">&nbsp;            response.put(&quot;string&quot;, temp);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(response.containsValue(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            GameChat.broadcast(lobbyId, (String) response.get(&quot;string&quot;));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean end(BlackJack blj, Long id){
+<b class="nc">&nbsp;        return Objects.equals(blj.getOrder().get(blj.getOrder().size() - 1), id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; stand(Long lobbyId, Long id){
+<b class="nc">&nbsp;        User user = userService.getUser(id);</b>
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response = BlackJackLogic.stand(blj.getHand(user));</b>
+<b class="nc">&nbsp;        if(end(blj, id) &amp;&amp; response.containsKey(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            response.putAll(finish(lobbyId));</b>
+<b class="nc">&nbsp;            String temp = (String) response.get(&quot;string&quot;);</b>
+<b class="nc">&nbsp;            temp += &quot; finish&quot;;</b>
+<b class="nc">&nbsp;            response.put(&quot;string&quot;, temp);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(response.containsValue(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            GameChat.broadcast(lobbyId, (String) response.get(&quot;string&quot;));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; dou(Long lobbyId, Long id){
+<b class="nc">&nbsp;        User user = userService.getUser(id);</b>
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response = BlackJackLogic.doubleBJ(blj.getHand(user),blj.getCards() ,user);</b>
+<b class="nc">&nbsp;        for(PlayerHands hand: blj.getHands()){</b>
+<b class="nc">&nbsp;            repo.save(hand);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(end(blj, id) &amp;&amp; response.containsKey(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            response.putAll(finish(lobbyId));</b>
+<b class="nc">&nbsp;            String temp = (String) response.get(&quot;string&quot;);</b>
+<b class="nc">&nbsp;            temp += &quot; finish&quot;;</b>
+<b class="nc">&nbsp;            response.put(&quot;string&quot;, temp);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        if(response.containsValue(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            GameChat.broadcast(lobbyId, (String) response.get(&quot;string&quot;));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; split(Long lobbyId, Long id){
+<b class="nc">&nbsp;        User user = userService.getUser(id);</b>
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response =  BlackJackLogic.split(blj.getHand(user), blj,user);</b>
+<b class="nc">&nbsp;        if(response.containsValue(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            GameChat.broadcast(lobbyId, (String) response.get(&quot;string&quot;));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        repo.save((PlayerHands) response.get(&quot;hand&quot;));</b>
+<b class="nc">&nbsp;        repo.save((PlayerHands) response.get(&quot;hand1&quot;));</b>
+<b class="nc">&nbsp;        blackJackRepo.save(blj);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; getHand(Long lobbyId, Long id){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        User user = userService.getUser(id);</b>
+<b class="nc">&nbsp;        if(blj.getHand(user) == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;That user is not in this game&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        PlayerHands hand = blj.getHand(user);</b>
+<b class="nc">&nbsp;        int i = 0;</b>
+<b class="nc">&nbsp;        for(Card c: hand.getHand()){</b>
+<b class="nc">&nbsp;            response.put(&quot;card&quot; + (i + 1), hand.getHand().get(i));</b>
+<b class="nc">&nbsp;            i++;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;score&quot;, hand.getScore());</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; start(Long lobbyId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack bj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(bj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        for(PlayerHands hands: bj.getHands()){</b>
+<b class="nc">&nbsp;            if(hands.getPlayer() != null &amp;&amp; hands.getBet() == 0.0){</b>
+<b class="nc">&nbsp;                response.put(&quot;error&quot;, &quot;not all players bet&quot;);</b>
+<b class="nc">&nbsp;                response.put(&quot;status&quot;, 405);</b>
+<b class="nc">&nbsp;                return response;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJackLogic.start(bj.getHands(), bj);</b>
+<b class="nc">&nbsp;        for(PlayerHands hand: bj.getHands()){</b>
+<b class="nc">&nbsp;            repo.save(hand);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        GameChat.broadcast(lobbyId, &quot;next: &quot; + bj.getOrder().get(0));</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; getDealer(Long lobbyId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack bj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(bj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        for(PlayerHands hand: bj.getHands()){</b>
+<b class="nc">&nbsp;            if(hand.getPlayer() == null) {</b>
+<b class="nc">&nbsp;                int i = 0;</b>
+<b class="nc">&nbsp;                for(Card c: hand.getHand()){</b>
+<b class="nc">&nbsp;                    response.put(&quot;card&quot; + (i + 1), hand.getHand().get(i));</b>
+<b class="nc">&nbsp;                    i++;</b>
+&nbsp;                }
+<b class="nc">&nbsp;                response.put(&quot;score&quot;, hand.getScore());</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; getHands(Long lobbyId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        Set&lt;PlayerHands&gt; hands = blj.getHands();</b>
+<b class="nc">&nbsp;        response.put(&quot;hands&quot;, hands);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, Object&gt; finish(long lobbyId){
+<b class="nc">&nbsp;        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Lobby l = lobbyService.getLobby(lobbyId);</b>
+<b class="nc">&nbsp;        if(l == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;no lobby with that id&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        BlackJack blj = blackJackRepo.findById(l.getId()).orElse(null);</b>
+<b class="nc">&nbsp;        if(blj == null){</b>
+<b class="nc">&nbsp;            response.put(&quot;status&quot;, &quot;404 not found&quot;);</b>
+<b class="nc">&nbsp;            response.put(&quot;error&quot;, &quot;game not started yet&quot;);</b>
+<b class="nc">&nbsp;            return response;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;status&quot;, &quot;200 ok&quot;);</b>
+<b class="nc">&nbsp;        PlayerHands playerHands = null;</b>
+<b class="nc">&nbsp;        for(PlayerHands hand: blj.getHands()){</b>
+<b class="nc">&nbsp;            if(hand.isDealer()) {</b>
+<b class="nc">&nbsp;                playerHands = hand;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        while(playerHands.getScore() &lt; 17){</b>
+<b class="nc">&nbsp;            BlackJackLogic.hit(playerHands, blj.getCards());</b>
+<b class="nc">&nbsp;            repo.save(playerHands);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        response.put(&quot;dealer&quot;, playerHands.getHand());</b>
+<b class="nc">&nbsp;        response.put(&quot;dscore&quot;, playerHands.getScore());</b>
+<b class="nc">&nbsp;        for(PlayerHands hand: blj.getHands()){</b>
+<b class="nc">&nbsp;            if(hand == playerHands)</b>
+&nbsp;                continue;
+<b class="nc">&nbsp;            if(hand.getScore() &gt; 21 || hand.getScore() &lt; playerHands.getScore() &amp;&amp; playerHands.getScore() &lt;= 21)</b>
+<b class="nc">&nbsp;                response.put(hand.getPlayer().getId() + &quot;&quot;, &quot;lose&quot;);</b>
+<b class="nc">&nbsp;            else if(hand.getScore() &gt; playerHands.getScore()) {</b>
+<b class="nc">&nbsp;                response.put(hand.getPlayer().getId() + &quot;&quot;, &quot;win&quot;);</b>
+<b class="nc">&nbsp;                response.put(&quot;won&quot;, hand.getBet());</b>
+<b class="nc">&nbsp;                hand.getPlayer().addChips(hand.getBet() * 2);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            else if(hand.getScore() == playerHands.getScore()) {</b>
+<b class="nc">&nbsp;                response.put(hand.getPlayer().getId() + &quot;&quot;, &quot;push&quot;);</b>
+<b class="nc">&nbsp;                hand.getPlayer().addChips(hand.getBet());</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        if(response.containsValue(&quot;string&quot;)){</b>
+<b class="nc">&nbsp;            GameChat.broadcast(lobbyId, &quot;finish&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 21:23</div>
+</div>
+</body>
+</html>

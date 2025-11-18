@@ -1,0 +1,83 @@
+# Activity 03 - CSS Stylesheet Methods
+
+**Course:** CS319 - Construction of User Interfaces
+**Author:** Evan Litzer (bubaq@iastate.edu)
+**Date:** September 4-5, 2025
+
+## Overview
+
+This activity demonstrates three different methods of applying CSS styles to HTML documents:
+- Inline CSS
+- Internal (Embedded) CSS
+- External CSS
+
+## Project Structure
+
+```
+Activity03/
+├── Demo (PDF)/
+│   ├── bubaq_Activity03_inline_CSS.html       # Inline styling example
+│   ├── bubaq_Activity03_internal_CSS.html     # Internal stylesheet example
+│   ├── bubaq_Activity03_external_CSS.html     # External stylesheet example
+│   ├── bubaq_Activity03_external.css          # External CSS file
+│   ├── bubaq_Activity03_challenge.html        # Combined styling challenge
+│   └── bubaq_Activity03_challenge.css         # Challenge external styles
+└── Superhero (HTML)/
+    └── bubaq_Activity03_superhero_challenge.html  # Advanced CSS challenge
+```
+
+## Files Description
+
+### Demo Files
+
+1. **Inline CSS** (`bubaq_Activity03_inline_CSS.html`)
+   - Demonstrates styling directly within HTML elements using the `style` attribute
+   - Simple examples with colored headings and paragraphs
+
+2. **Internal CSS** (`bubaq_Activity03_internal_CSS.html`)
+   - Shows CSS rules defined within `<style>` tags in the document head
+   - Combines external and internal stylesheet references
+
+3. **External CSS** (`bubaq_Activity03_external_CSS.html`)
+   - Links to an external stylesheet file
+   - Demonstrates CSS class selectors (`.myh1class`, `.mypclass`)
+
+4. **Challenge Demo** (`bubaq_Activity03_challenge.html`)
+   - Combines all three CSS methods in a single document
+   - Shows external styles for header section
+   - Internal styles for "About Us" section
+   - Inline styles for "Contact Us" section
+
+### Superhero Challenge
+
+**Superhero Profiles** (`bubaq_Activity03_superhero_challenge.html`)
+- Advanced CSS styling exercise featuring superhero profiles
+- Demonstrates:
+  - Element selectors (`h1`, `h2`, `p`)
+  - Class selectors (`.abilities`, `.bio`, `.superhero-title`, `.details-btn`)
+  - ID selectors (`#wonder-woman`, `#spider-man`)
+  - Pseudo-class selectors (`:hover`)
+  - Various CSS properties: colors, borders, shadows, padding, fonts, and button styling
+
+## Key Concepts Covered
+
+- **CSS Specificity**: Understanding how inline > internal > external styles are applied
+- **CSS Selectors**: Element, class, and ID selectors
+- **Box Model**: Padding, borders, and margins
+- **Typography**: Font families, sizes, weights, and text styling
+- **Colors**: Hex codes, RGB values, and named colors
+- **Interactive States**: Hover effects and cursor changes
+- **Layout**: Text alignment and centering
+
+## How to Run
+
+1. Open any `.html` file in a web browser
+2. For external CSS examples, ensure the corresponding `.css` files are in the same directory
+3. Interact with elements (hover over headings, buttons) to see dynamic styles
+
+## Learning Objectives
+
+- Understand the three methods of applying CSS to HTML
+- Practice using different CSS selector types
+- Learn CSS specificity and cascade rules
+- Apply common CSS properties for text, colors, and layout

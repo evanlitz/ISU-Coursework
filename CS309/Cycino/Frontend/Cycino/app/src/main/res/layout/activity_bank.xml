@@ -1,0 +1,132 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC3E58"
+    android:padding="16dp">
+
+    <!-- Chip Balance Display with Icon -->
+    <LinearLayout
+        android:id="@+id/chipBalanceContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Chip Icon -->
+        <ImageView
+            android:id="@+id/chipIcon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/cychip"
+            android:contentDescription="Chip Icon"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Chip Count -->
+        <TextView
+            android:id="@+id/chipBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="500"
+            android:textSize="48sp"
+            android:textColor="#FFD700"/>
+    </LinearLayout>
+
+    <!-- Chip Input Field -->
+    <EditText
+        android:id="@+id/chipInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter chip amount"
+        android:inputType="number"
+        android:layout_marginTop="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFB6C1"
+        android:backgroundTint="#FFD700"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/chipBalanceContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Add Chips Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addChipsButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Add Chips"
+        app:layout_constraintTop_toBottomOf="@id/chipInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#06402B"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <!-- Remove Chips Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/removeChipsButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Remove Chips"
+        app:layout_constraintTop_toBottomOf="@id/addChipsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#3C0008"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <!-- Large ImageView with Reduced Size -->
+    <ImageView
+        android:id="@+id/bottomImage"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cycino"
+        app:layout_constraintTop_toBottomOf="@id/removeChipsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Limit Information Text -->
+    <TextView
+        android:id="@+id/limitInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You are only allowed to add up to ten-thousand CyChips at a time."
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/bottomImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Back Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="🏠 Back to Home 🏠"
+        app:layout_constraintTop_toBottomOf="@id/limitInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#FFD700"
+        android:textColor="#C41E3A"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,3840 @@
+
+Test Case 1  		(Key = 1.1.1.1.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 2  		(Key = 1.1.1.1.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 3  		(Key = 1.1.1.1.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 4  		(Key = 1.1.1.1.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 5  		(Key = 1.1.1.1.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 6  		(Key = 1.1.1.1.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 7  		(Key = 1.1.1.1.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 8  		(Key = 1.1.1.1.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 9  		(Key = 1.1.1.1.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 10 		(Key = 1.1.1.1.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 11 		(Key = 1.1.1.1.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 12 		(Key = 1.1.1.1.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 13 		(Key = 1.1.1.2.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 14 		(Key = 1.1.1.2.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 15 		(Key = 1.1.1.2.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 16 		(Key = 1.1.1.2.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 17 		(Key = 1.1.1.2.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 18 		(Key = 1.1.1.2.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 19 		(Key = 1.1.1.2.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 20 		(Key = 1.1.1.2.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 21 		(Key = 1.1.1.2.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 22 		(Key = 1.1.1.2.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 23 		(Key = 1.1.1.2.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 24 		(Key = 1.1.1.2.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 25 		(Key = 1.1.2.1.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 26 		(Key = 1.1.2.1.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 27 		(Key = 1.1.2.1.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 28 		(Key = 1.1.2.1.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 29 		(Key = 1.1.2.1.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 30 		(Key = 1.1.2.1.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 31 		(Key = 1.1.2.1.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 32 		(Key = 1.1.2.1.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 33 		(Key = 1.1.2.1.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 34 		(Key = 1.1.2.1.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 35 		(Key = 1.1.2.1.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 36 		(Key = 1.1.2.1.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 37 		(Key = 1.1.2.2.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 38 		(Key = 1.1.2.2.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 39 		(Key = 1.1.2.2.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 40 		(Key = 1.1.2.2.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 41 		(Key = 1.1.2.2.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 42 		(Key = 1.1.2.2.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 43 		(Key = 1.1.2.2.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 44 		(Key = 1.1.2.2.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 45 		(Key = 1.1.2.2.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 46 		(Key = 1.1.2.2.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 47 		(Key = 1.1.2.2.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 48 		(Key = 1.1.2.2.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 49 		(Key = 1.1.3.1.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 50 		(Key = 1.1.3.1.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 51 		(Key = 1.1.3.1.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 52 		(Key = 1.1.3.1.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 53 		(Key = 1.1.3.1.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 54 		(Key = 1.1.3.1.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 55 		(Key = 1.1.3.1.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 56 		(Key = 1.1.3.1.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 57 		(Key = 1.1.3.1.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 58 		(Key = 1.1.3.1.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 59 		(Key = 1.1.3.1.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 60 		(Key = 1.1.3.1.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 61 		(Key = 1.1.3.2.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 62 		(Key = 1.1.3.2.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 63 		(Key = 1.1.3.2.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 64 		(Key = 1.1.3.2.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 65 		(Key = 1.1.3.2.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 66 		(Key = 1.1.3.2.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 67 		(Key = 1.1.3.2.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 68 		(Key = 1.1.3.2.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 69 		(Key = 1.1.3.2.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 70 		(Key = 1.1.3.2.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 71 		(Key = 1.1.3.2.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 72 		(Key = 1.1.3.2.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 73 		(Key = 1.1.4.1.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 74 		(Key = 1.1.4.1.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 75 		(Key = 1.1.4.1.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 76 		(Key = 1.1.4.1.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 77 		(Key = 1.1.4.1.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 78 		(Key = 1.1.4.1.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 79 		(Key = 1.1.4.1.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 80 		(Key = 1.1.4.1.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 81 		(Key = 1.1.4.1.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 82 		(Key = 1.1.4.1.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 83 		(Key = 1.1.4.1.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 84 		(Key = 1.1.4.1.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 85 		(Key = 1.1.4.2.1.1.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 86 		(Key = 1.1.4.2.1.1.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 87 		(Key = 1.1.4.2.1.2.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 88 		(Key = 1.1.4.2.1.2.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 89 		(Key = 1.1.4.2.1.3.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 90 		(Key = 1.1.4.2.1.3.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 91 		(Key = 1.1.4.2.2.1.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 92 		(Key = 1.1.4.2.2.1.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 93 		(Key = 1.1.4.2.2.2.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 94 		(Key = 1.1.4.2.2.2.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 95 		(Key = 1.1.4.2.2.3.1.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 96 		(Key = 1.1.4.2.2.3.2.)
+   help          :  on
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 97 		(Key = 1.2.1.1.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 98 		(Key = 1.2.1.1.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 99 		(Key = 1.2.1.1.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 100		(Key = 1.2.1.1.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 101		(Key = 1.2.1.1.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 102		(Key = 1.2.1.1.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 103		(Key = 1.2.1.1.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 104		(Key = 1.2.1.1.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 105		(Key = 1.2.1.1.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 106		(Key = 1.2.1.1.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 107		(Key = 1.2.1.1.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 108		(Key = 1.2.1.1.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 109		(Key = 1.2.1.2.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 110		(Key = 1.2.1.2.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 111		(Key = 1.2.1.2.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 112		(Key = 1.2.1.2.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 113		(Key = 1.2.1.2.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 114		(Key = 1.2.1.2.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 115		(Key = 1.2.1.2.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 116		(Key = 1.2.1.2.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 117		(Key = 1.2.1.2.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 118		(Key = 1.2.1.2.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 119		(Key = 1.2.1.2.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 120		(Key = 1.2.1.2.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 121		(Key = 1.2.2.1.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 122		(Key = 1.2.2.1.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 123		(Key = 1.2.2.1.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 124		(Key = 1.2.2.1.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 125		(Key = 1.2.2.1.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 126		(Key = 1.2.2.1.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 127		(Key = 1.2.2.1.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 128		(Key = 1.2.2.1.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 129		(Key = 1.2.2.1.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 130		(Key = 1.2.2.1.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 131		(Key = 1.2.2.1.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 132		(Key = 1.2.2.1.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 133		(Key = 1.2.2.2.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 134		(Key = 1.2.2.2.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 135		(Key = 1.2.2.2.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 136		(Key = 1.2.2.2.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 137		(Key = 1.2.2.2.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 138		(Key = 1.2.2.2.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 139		(Key = 1.2.2.2.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 140		(Key = 1.2.2.2.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 141		(Key = 1.2.2.2.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 142		(Key = 1.2.2.2.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 143		(Key = 1.2.2.2.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 144		(Key = 1.2.2.2.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 145		(Key = 1.2.3.1.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 146		(Key = 1.2.3.1.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 147		(Key = 1.2.3.1.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 148		(Key = 1.2.3.1.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 149		(Key = 1.2.3.1.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 150		(Key = 1.2.3.1.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 151		(Key = 1.2.3.1.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 152		(Key = 1.2.3.1.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 153		(Key = 1.2.3.1.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 154		(Key = 1.2.3.1.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 155		(Key = 1.2.3.1.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 156		(Key = 1.2.3.1.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 157		(Key = 1.2.3.2.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 158		(Key = 1.2.3.2.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 159		(Key = 1.2.3.2.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 160		(Key = 1.2.3.2.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 161		(Key = 1.2.3.2.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 162		(Key = 1.2.3.2.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 163		(Key = 1.2.3.2.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 164		(Key = 1.2.3.2.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 165		(Key = 1.2.3.2.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 166		(Key = 1.2.3.2.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 167		(Key = 1.2.3.2.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 168		(Key = 1.2.3.2.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 169		(Key = 1.2.4.1.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 170		(Key = 1.2.4.1.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 171		(Key = 1.2.4.1.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 172		(Key = 1.2.4.1.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 173		(Key = 1.2.4.1.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 174		(Key = 1.2.4.1.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 175		(Key = 1.2.4.1.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 176		(Key = 1.2.4.1.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 177		(Key = 1.2.4.1.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 178		(Key = 1.2.4.1.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 179		(Key = 1.2.4.1.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 180		(Key = 1.2.4.1.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 181		(Key = 1.2.4.2.1.1.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 182		(Key = 1.2.4.2.1.1.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 183		(Key = 1.2.4.2.1.2.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 184		(Key = 1.2.4.2.1.2.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 185		(Key = 1.2.4.2.1.3.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 186		(Key = 1.2.4.2.1.3.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 187		(Key = 1.2.4.2.2.1.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 188		(Key = 1.2.4.2.2.1.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 189		(Key = 1.2.4.2.2.2.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 190		(Key = 1.2.4.2.2.2.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 191		(Key = 1.2.4.2.2.3.1.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 192		(Key = 1.2.4.2.2.3.2.)
+   help          :  on
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 193		(Key = 2.1.1.1.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 194		(Key = 2.1.1.1.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 195		(Key = 2.1.1.1.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 196		(Key = 2.1.1.1.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 197		(Key = 2.1.1.1.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 198		(Key = 2.1.1.1.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 199		(Key = 2.1.1.1.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 200		(Key = 2.1.1.1.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 201		(Key = 2.1.1.1.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 202		(Key = 2.1.1.1.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 203		(Key = 2.1.1.1.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 204		(Key = 2.1.1.1.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 205		(Key = 2.1.1.2.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 206		(Key = 2.1.1.2.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 207		(Key = 2.1.1.2.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 208		(Key = 2.1.1.2.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 209		(Key = 2.1.1.2.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 210		(Key = 2.1.1.2.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 211		(Key = 2.1.1.2.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 212		(Key = 2.1.1.2.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 213		(Key = 2.1.1.2.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 214		(Key = 2.1.1.2.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 215		(Key = 2.1.1.2.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 216		(Key = 2.1.1.2.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 217		(Key = 2.1.2.1.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 218		(Key = 2.1.2.1.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 219		(Key = 2.1.2.1.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 220		(Key = 2.1.2.1.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 221		(Key = 2.1.2.1.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 222		(Key = 2.1.2.1.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 223		(Key = 2.1.2.1.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 224		(Key = 2.1.2.1.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 225		(Key = 2.1.2.1.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 226		(Key = 2.1.2.1.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 227		(Key = 2.1.2.1.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 228		(Key = 2.1.2.1.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 229		(Key = 2.1.2.2.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 230		(Key = 2.1.2.2.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 231		(Key = 2.1.2.2.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 232		(Key = 2.1.2.2.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 233		(Key = 2.1.2.2.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 234		(Key = 2.1.2.2.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 235		(Key = 2.1.2.2.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 236		(Key = 2.1.2.2.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 237		(Key = 2.1.2.2.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 238		(Key = 2.1.2.2.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 239		(Key = 2.1.2.2.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 240		(Key = 2.1.2.2.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 241		(Key = 2.1.3.1.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 242		(Key = 2.1.3.1.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 243		(Key = 2.1.3.1.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 244		(Key = 2.1.3.1.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 245		(Key = 2.1.3.1.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 246		(Key = 2.1.3.1.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 247		(Key = 2.1.3.1.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 248		(Key = 2.1.3.1.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 249		(Key = 2.1.3.1.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 250		(Key = 2.1.3.1.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 251		(Key = 2.1.3.1.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 252		(Key = 2.1.3.1.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 253		(Key = 2.1.3.2.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 254		(Key = 2.1.3.2.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 255		(Key = 2.1.3.2.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 256		(Key = 2.1.3.2.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 257		(Key = 2.1.3.2.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 258		(Key = 2.1.3.2.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 259		(Key = 2.1.3.2.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 260		(Key = 2.1.3.2.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 261		(Key = 2.1.3.2.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 262		(Key = 2.1.3.2.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 263		(Key = 2.1.3.2.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 264		(Key = 2.1.3.2.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 265		(Key = 2.1.4.1.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 266		(Key = 2.1.4.1.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 267		(Key = 2.1.4.1.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 268		(Key = 2.1.4.1.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 269		(Key = 2.1.4.1.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 270		(Key = 2.1.4.1.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 271		(Key = 2.1.4.1.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 272		(Key = 2.1.4.1.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 273		(Key = 2.1.4.1.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 274		(Key = 2.1.4.1.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 275		(Key = 2.1.4.1.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 276		(Key = 2.1.4.1.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 277		(Key = 2.1.4.2.1.1.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 278		(Key = 2.1.4.2.1.1.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 279		(Key = 2.1.4.2.1.2.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 280		(Key = 2.1.4.2.1.2.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 281		(Key = 2.1.4.2.1.3.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 282		(Key = 2.1.4.2.1.3.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 283		(Key = 2.1.4.2.2.1.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 284		(Key = 2.1.4.2.2.1.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 285		(Key = 2.1.4.2.2.2.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 286		(Key = 2.1.4.2.2.2.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 287		(Key = 2.1.4.2.2.3.1.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 288		(Key = 2.1.4.2.2.3.2.)
+   help          :  off
+   version       :  on
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 289		(Key = 2.2.1.1.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 290		(Key = 2.2.1.1.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 291		(Key = 2.2.1.1.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 292		(Key = 2.2.1.1.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 293		(Key = 2.2.1.1.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 294		(Key = 2.2.1.1.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 295		(Key = 2.2.1.1.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 296		(Key = 2.2.1.1.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 297		(Key = 2.2.1.1.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 298		(Key = 2.2.1.1.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 299		(Key = 2.2.1.1.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 300		(Key = 2.2.1.1.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 301		(Key = 2.2.1.2.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 302		(Key = 2.2.1.2.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 303		(Key = 2.2.1.2.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 304		(Key = 2.2.1.2.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 305		(Key = 2.2.1.2.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 306		(Key = 2.2.1.2.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 307		(Key = 2.2.1.2.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 308		(Key = 2.2.1.2.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 309		(Key = 2.2.1.2.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 310		(Key = 2.2.1.2.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 311		(Key = 2.2.1.2.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 312		(Key = 2.2.1.2.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  numeric
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 313		(Key = 2.2.2.1.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 314		(Key = 2.2.2.1.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 315		(Key = 2.2.2.1.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 316		(Key = 2.2.2.1.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 317		(Key = 2.2.2.1.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 318		(Key = 2.2.2.1.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 319		(Key = 2.2.2.1.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 320		(Key = 2.2.2.1.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 321		(Key = 2.2.2.1.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 322		(Key = 2.2.2.1.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 323		(Key = 2.2.2.1.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 324		(Key = 2.2.2.1.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 325		(Key = 2.2.2.2.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 326		(Key = 2.2.2.2.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 327		(Key = 2.2.2.2.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 328		(Key = 2.2.2.2.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 329		(Key = 2.2.2.2.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 330		(Key = 2.2.2.2.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 331		(Key = 2.2.2.2.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 332		(Key = 2.2.2.2.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 333		(Key = 2.2.2.2.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 334		(Key = 2.2.2.2.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 335		(Key = 2.2.2.2.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 336		(Key = 2.2.2.2.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  default(alpha)
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 337		(Key = 2.2.3.1.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 338		(Key = 2.2.3.1.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 339		(Key = 2.2.3.1.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 340		(Key = 2.2.3.1.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 341		(Key = 2.2.3.1.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 342		(Key = 2.2.3.1.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 343		(Key = 2.2.3.1.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 344		(Key = 2.2.3.1.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 345		(Key = 2.2.3.1.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 346		(Key = 2.2.3.1.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 347		(Key = 2.2.3.1.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 348		(Key = 2.2.3.1.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 349		(Key = 2.2.3.2.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 350		(Key = 2.2.3.2.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 351		(Key = 2.2.3.2.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 352		(Key = 2.2.3.2.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 353		(Key = 2.2.3.2.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 354		(Key = 2.2.3.2.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 355		(Key = 2.2.3.2.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 356		(Key = 2.2.3.2.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 357		(Key = 2.2.3.2.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 358		(Key = 2.2.3.2.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 359		(Key = 2.2.3.2.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 360		(Key = 2.2.3.2.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  random
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 361		(Key = 2.2.4.1.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 362		(Key = 2.2.4.1.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 363		(Key = 2.2.4.1.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 364		(Key = 2.2.4.1.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 365		(Key = 2.2.4.1.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 366		(Key = 2.2.4.1.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 367		(Key = 2.2.4.1.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 368		(Key = 2.2.4.1.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 369		(Key = 2.2.4.1.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 370		(Key = 2.2.4.1.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 371		(Key = 2.2.4.1.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 372		(Key = 2.2.4.1.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  yes
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 373		(Key = 2.2.4.2.1.1.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 374		(Key = 2.2.4.2.1.1.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 375		(Key = 2.2.4.2.1.2.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 376		(Key = 2.2.4.2.1.2.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 377		(Key = 2.2.4.2.1.3.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 378		(Key = 2.2.4.2.1.3.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  yes
+   file_contents :  unsorted
+   duplicates    :  no
+
+
+Test Case 379		(Key = 2.2.4.2.2.1.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  yes
+
+
+Test Case 380		(Key = 2.2.4.2.2.1.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_alphabetically
+   duplicates    :  no
+
+
+Test Case 381		(Key = 2.2.4.2.2.2.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  yes
+
+
+Test Case 382		(Key = 2.2.4.2.2.2.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  sorted_numerically
+   duplicates    :  no
+
+
+Test Case 383		(Key = 2.2.4.2.2.3.1.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  yes
+
+
+Test Case 384		(Key = 2.2.4.2.2.3.2.)
+   help          :  off
+   version       :  off
+   order         :  reverse
+   check         :  no
+   unique        :  no
+   file_contents :  unsorted
+   duplicates    :  no
+

@@ -1,0 +1,315 @@
+_start:
+        ADDI     X0, XZR, #0x0000      // X0 points to the array start address
+        ADDI     X1, XZR, #10        // X1 = N = 10
+
+        BL      fill   // Go to fill procedure/method
+
+        LDUR X11, [X0, #0]
+        LDUR X12, [X0, #8]
+        LDUR X13, [X0, #16]
+        LDUR X14, [X0, #24]
+        LDUR X15, [X0, #32]
+        LDUR X16, [X0, #40]
+        LDUR X17, [X0, #48]
+        LDUR X18, [X0, #56]
+        LDUR X19, [X0, #64]
+        LDUR X20, [X0, #72]
+
+        PRNT X11
+        PRNT X12
+        PRNT X13
+        PRNT X14
+        PRNT X15
+        PRNT X16
+        PRNT X17
+        PRNT X18
+        PRNT X19
+        PRNT X20
+
+        ORR     X0, X0, XZR
+        ORR     X1, X1, XZR
+        BL quicksort
+
+        LDUR X11, [X0, #0]
+        LDUR X12, [X0, #8]
+        LDUR X13, [X0, #16]
+        LDUR X14, [X0, #24]
+        LDUR X15, [X0, #32]
+        LDUR X16, [X0, #40]
+        LDUR X17, [X0, #48]
+        LDUR X18, [X0, #56]
+        LDUR X19, [X0, #64]
+        LDUR X20, [X0, #72]
+
+        PRNT X11
+        PRNT X12
+        PRNT X13
+        PRNT X14
+        PRNT X15
+        PRNT X16
+        PRNT X17
+        PRNT X18
+        PRNT X19
+        PRNT X20
+
+        HALT
+
+// Passed in X0 = a, X1 = f, X2 = l
+// X19 = p, X20 = i, X21 = j, X22 = f, X23 = l, X24 = a
+partition:
+        SUBI    SP, SP, #72          // Allocate stack space
+        STUR    X30, [SP, #0]         // Save LR
+        STUR    X29, [SP, #8]         // Save FP
+        STUR    X19, [SP, #16]          // Store other registers that will be used in partition.
+        STUR    X20, [SP, #24]
+        STUR    X21, [SP, #32]
+        STUR    X14, [SP, #40]
+        STUR    X26, [SP, #48]
+        STUR    X27, [SP, #56]
+        STUR    X24, [SP, #64]
+        ADDI    X22, X1, #0             // X22 = f = X1
+        ADDI    X23, X2, #0             // X23 = l = X2
+        ADD     X29, SP, XZR          // Set FP
+        ORR     X24, X0, XZR            // X24 = X0 = base address of array
+        LSL     X26, X22, #3    // Shift f by 3 to get offset
+        ADD     X26, X24, X26   // Get address of a[f]
+        LDUR    X19, [X26, #0]  // Load p = a[f] = X19
+
+        ADDI    X20, X22, #1    //(X20) i = f + 1
+        ORR     X21, X23, XZR   //(X21) j = l
+        B       partition_loop  // Branch to start of loop
+
+partition_loop:
+        SUBS    X27, X20, X21
+        B.GT    partition_post_loop
+
+        ORR     X0, X24, XZR    // X0 = X24 in next_i
+        ORR     X1, X20, XZR    // X1 = X20 = i in next_i
+        ORR     X2, X23, XZR    // X2 = X23 = l in next_i
+        ORR     X3, X19, XZR    // X3 = X19 = p in next_i
+
+        BL      next_i                // Call next_i
+        ORR     X20, X7, XZR
+
+        ORR     X0, X24, XZR            // X0 = X24 = a in next_j
+        ORR     X1, X21, XZR            // X1 = X21 = j in next_j
+        ORR     X2, X22, XZR            // X2 = X22 = f in next_j
+        ORR     X3, X19, XZR            // X3 = X19 = p in next_j
+        BL      next_j                // Call next_j
+        ORR     X21, X7, XZR
+
+        SUBS    X27, X20, X21           // If i is biiger than j
+        B.GE    partition_loop          // Return to while loop.
+
+        ORR     X0, X24, XZR            // X0 = X24 = a in swap
+        ORR     X1, X20, XZR            // X1 = X20 = i in swap
+        ORR     X2, X21, XZR            // X2 = X21 = j in swap
+        BL      swap                  // Call swap
+        B       partition_loop          // Start partition loop.
+
+partition_post_loop:
+        SUBS    X27, X21, X22           // Check if j is equal to f and set flags
+        B.EQ    partition_end           // Branch to partition end if so.
+
+        ORR     X0, X24, XZR            // X0 = X24 = a in swap
+        ORR     X1, X21, XZR            // X1 = X21 = j in swap
+        ORR     X2, X22, XZR            // X2 = X22 = f in swap
+        BL      swap                    // Branch to swap with params
+        B       partition_end           // Branch to end of partition.
+
+partition_end:
+        ORR     X7, X21, XZR    // Set final pivot index to j's final position
+        LDUR    X30, [SP, #0]   // Reset LR
+        LDUR    X29, [SP, #8]   // Reset FP
+        LDUR    X19, [SP, #16]  // Load register values from  stack
+        LDUR    X20, [SP, #24]
+        LDUR    X21, [SP, #32]
+        LDUR    X14, [SP, #40]
+        LDUR    X26, [SP, #48]
+        LDUR    X27, [SP, #56]
+        LDUR    X24, [SP, #64]
+        ADDI    SP, SP, #72     //Deallocate stack space
+        BR      X30             // Return to caller (quicksort_recurse)
+
+quicksort:
+        SUBI    SP, SP, #8              // Allocate stack space
+        STUR    X30, [SP, #0]           // Store the return to caller for later
+        ADDI    X21, X0, #0             // Set X21 = X0 = base array address
+        ADDI    X22, X1, #0             // Set X22 = X1 = array size
+        SUBI    X2, X22, #1            //X2 = l = n - 1
+        ORR     X0, X21, XZR            // Set X0 = X21 = a
+        SUB     X1, XZR, XZR            // Set f = 0
+        ORR     X2, X2, XZR             // Set l to n-1
+
+        BL      quicksort_recurse     // Call quicksort_recurse
+        LDUR    X30, [SP, #0]           // Load the return address stored earlier
+        ADDI    SP, SP, #8              // Deallocate stack space
+        BR      X30                   // Branch to the address in LR to return to caller
+
+// Passed in X0 = a, X1 = f, X2 = l
+// X22 = f, X23 = l, X0 = a, X24 = p
+quicksort_recurse:
+    // Set up the stack frame
+        ADD     X29, SP, XZR           // Set FP to point to current stack frame
+        ADDI    X22, X1, #0             // Set X22 = X1 = f
+        ADDI    X23, X2, #0             // Set X23 = X2 = l
+        ADDI    X25, X0, #0             // Set X25 to X0
+        SUBI    SP, SP, #48          // Allocate 32 bytes of stack space
+        STUR    X30, [SP, #0]        // Save LR (Link Register)
+        STUR    X29, [SP, #8]         // Save FP (Frame Pointer)
+        STUR    X22, [SP, #16]          // Store X22 (f) into the stack at #16
+        STUR    X23, [SP, #24]          // Store X23 (l) into the stack at #24
+        STUR    X24, [SP, #32]          // Store partition value into 32nd offset of stack
+        STUR    X25, [SP, #40]
+
+    // Base case: if f >= l, return
+        SUBS    X27, X22, X23            // Subtract l from f and set flags
+        B.GE    quicksort_recurse_end    // If f >= l, return
+
+    // Call partition(a, f, l)
+        ORR     X0, X25, XZR            //Set X0 = X25 = a
+        ORR     X1, X22, XZR            //Set X1 = X22 = f
+        ORR     X2, X23, XZR            //Set X2 = X23 = l
+        BL      partition             // Call partition
+        ORR     X15, X7, XZR            // X15 = X7 = p after calling partition
+
+        LDUR    X30, [SP, #0]        // Load registers out of stack
+        LDUR    X29, [SP, #8]
+        LDUR    X22, [SP, #16]
+        LDUR    X23, [SP, #24]
+        LDUR    X24, [SP, #32]
+        LDUR    X25, [SP, #40]
+
+        ADDI    SP, SP, #48     // Deallocate stack space
+        ORR     X24, X15, XZR   // Update partition value
+
+        SUBI    SP, SP, #48     // Allocate stack space
+        STUR    X30, [SP, #0]   // Store register valuesi n stack
+        STUR    X29, [SP, #8]
+        STUR    X22, [SP, #16]
+        STUR    X23, [SP, #24]
+        STUR    X24, [SP, #32]
+        STUR    X25, [SP, #40]
+
+    // Recursively call quicksort_recurse on left partition
+        ORR     X0, X25, XZR            // Pass array a unchanged
+        ORR     X1, X22, XZR            // Pass f into recurse
+        SUBI    X26, X24, #1            // Subtract pivot by 1 and assign to X26
+        ORR     X2, X26, XZR            // Pass in j as pivot index - 1
+        BL      quicksort_recurse     // Call quicksort_recurse(a, f, p - 1)
+
+        LDUR    X30, [SP, #0]           // Load registers from stack
+        LDUR    X29, [SP, #8]
+        LDUR    X22, [SP, #16]
+        LDUR    X23, [SP, #24]
+        LDUR    X24, [SP, #32]
+        LDUR    X25, [SP, #40]
+
+        ADDI    SP, SP, #48             // Deallocate stack space
+
+        SUBI    SP, SP, #48             // Allocate stack space
+        STUR    X30, [SP, #0]           // Restore registers
+        STUR    X29, [SP, #8]
+        STUR    X22, [SP, #16]
+        STUR    X23, [SP, #24]
+        STUR    X24, [SP, #32]
+        STUR    X25, [SP, #40]
+
+    // Recursively call quicksort_recurse on right partition
+        ORR     X0, X25, XZR            // Pass array a unchanged
+        ADDI    X26, X24, #1            // Pass p + 1 in as f
+        ORR     X1, X26, XZR            // Set X1 to p + f
+        ORR     X2, X23, XZR            // Set X2 to l for q.r
+        BL      quicksort_recurse     // Call quicksort_recurse(a, p + 1, l)
+
+quicksort_recurse_end:
+    // Restore the stack frame
+        LDUR    X30, [SP, #0]        // Restore LR
+        LDUR    X29, [SP, #8]         // Restore FP
+        LDUR    X22, [SP, #16]          // Restore other registers in stack
+        LDUR    X23, [SP, #24]
+        LDUR    X24, [SP, #32]
+        LDUR    X25, [SP, #40]
+        ADDI    SP, SP, #48           // Deallocate stack space
+        BR      X30                   // Branch to the address in LR to return to caller
+
+fill:
+        ORR     X25, X1, XZR            // Set X25 to the array size n
+        SUBI    X9, X25, #1             // Decrement array size n by 1 and store in X9
+        SUB     X10, XZR, XZR           // Set X10 = 0
+        B       loop_start              // Branch to start of fill loop.
+
+loop_start:
+        SUBS    X11, X25, X10   // Check i - n and set flags
+        B.LE    loop_end        // If i is less than or equal to n, exit loop
+
+        LSL     X12, X10, #3    // I * 8 = X12
+        ADD     X12, X0, X12    // Calculate address a + (i*8) = X12
+        STUR    X9, [X12, #0]   // Store (n-i-1) at a[i] = X9
+
+        SUBI    X9, X9, #1      // Substitute store vaue by 1
+        ADDI    X10, X10, #1    // Increment i by 1
+
+        B       loop_start      // Jump back to start of loop
+
+loop_end:
+        BR      X30             // Return to caller
+
+
+// X0 = base array address, X5 = index i of array, X6 = index j of array, X7, X8, X9 are temps
+swap:
+        ADDI    X22, X1, #0     //Assign X1 (i) to X22
+        ADDI    X23, X2, #0     //Assign X2 (j) to X23
+
+        LSL     X12, X22, #3    //X12 = i * 8
+        ADD     X12, X0, X12    // X12 = base address + i *8
+        LDUR    X13, [X12, #0]  // X13 = a[i]
+
+        LSL     X14, X23, #3    // X14 = j * 8
+        ADD     X14, X0, X14    // X14 = base + i * 8
+        LDUR    X15, [X14, #0]  // X15 = a[j]
+
+        STUR    X15, [X12, #0]  // a[i] = a[j] (store a[j] in position i of array)
+        STUR    X13, [X14, #0]  // a[j] = a[i]
+
+        BR      X30             // Return to caller
+
+next_j:
+        B       j_loop          // Go to start of j loop
+j_loop:
+        SUBS    X15, X1, X2   // XZR = j - f
+        B.LE    j_done          // If j <= f, then the loop is exited
+
+        LSL     X12, X1, #3    // X12 = 8j --> memory offset for a[j]
+        ADD     X12, X0, X12    // X12 = a[j] address
+        LDUR    X13, [X12, #0]  // X13 = a[j]
+
+        SUBS    X15, X13, X3   // If a[j] is smaller than p, then end loop
+        B.LT    j_done          // End loop if so.
+
+        SUBI    X1, X1, #1    // j -= 1
+        B       j_loop          // Go back to start of loop
+j_done:
+        ORR     X7, X1, XZR     // Store the final j value in X7 to be returned
+        BR      X30             // Return to partition.
+next_i:
+        B       i_loop          // Branch to start of i loop
+
+i_loop:
+        SUBS    X15, X1, X2         // Check if i > l
+        B.GT    i_done         // If i > l, exit and return i (which will be l + 1)
+
+        LSL     X12, X1, #3          // X12 = i * 8 (each element is 8 bytes)
+        ADD     X12, X0, X12          // X12 = base address + i * 8
+        LDUR    X13, [X12, #0]        // X13 = a[i]
+
+        SUBS    X15, X13, X3           // Check if a[i] < p
+        B.GE    i_done                  // If it isn't, return i
+
+        ADDI    X1, X1, #1          // i++
+
+        B       i_loop                  // Branch to start of i loop
+
+i_done:
+        ORR     X7, X1, XZR             // Store the next j value in return X7
+        BR      X30                 // Return to caller, with result in X7

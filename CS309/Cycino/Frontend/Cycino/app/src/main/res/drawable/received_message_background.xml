@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#A52A2A" /> <!-- Red felt-like color -->
+    <corners android:radius="8dp" /> <!-- Rounded corners for a chat bubble effect -->
+    <padding
+        android:left="10dp"
+        android:top="5dp"
+        android:right="10dp"
+        android:bottom="5dp" />
+</shape>

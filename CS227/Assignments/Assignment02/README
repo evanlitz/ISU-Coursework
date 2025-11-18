@@ -1,0 +1,57 @@
+# ThreeCushion Assignment README
+
+## Overview
+This project implements the `ThreeCushion` class for Com S 227 Assignment 2. The class models a simplified version of three cushion billiards as described in the assignment specification. The focus is on managing game state across innings, player turns, scoring, fouls, cushion impacts, object ball strikes, and detection of special shots such as bank shots.
+
+The implementation demonstrates the use of conditional logic, enums (`BallType` and `PlayerPosition`), state tracking, and method interactions to simulate gameplay.
+
+## Features
+- Full simulation of three cushion billiards according to the provided rules
+- Support for lag winner selection of break shot and cue ball assignment
+- Tracking of innings, inning players, cue ball ownership, and break shot status
+- Detection of valid and invalid shots based on cushion impacts and object ball order
+- Detection of fouls including striking the wrong cue ball, break shot violations, and motion violations
+- Tracking of cushions, object ball strikes, and scoring logic
+- Detection of valid bank shots
+- Detection of game end when a player reaches the designated point goal
+- String representation of current game state
+
+## Key Concepts and Requirements
+- Correct use of enums (`BallType` and `PlayerPosition`)
+- Accessor methods do not modify internal state
+- Proper handling of game progression including:
+  - Starting shots
+  - Ending shots
+  - Switching innings
+  - Updating cue ball ownership
+- Managing permanent state with private instance variables
+- Clear separation between game events such as cushion impacts, ball strikes, and foul conditions
+- Javadoc documentation for all public methods and fields
+- No console output in the final version
+
+## Files Included
+- `ThreeCushion.java`  
+  Full implementation of the game model
+- `BallType.java`  
+  Enum defining ball types
+- `PlayerPosition.java`  
+  Enum defining player sides
+
+## How to Test
+Create a separate test file with a `main` method. Example:
+
+```java
+public class SimpleTests {
+    public static void main(String[] args) {
+        ThreeCushion game = new ThreeCushion(PlayerPosition.PLAYER_A, 3);
+        game.lagWinnerChooses(true, BallType.WHITE);
+        game.cueStickStrike(BallType.WHITE);
+        game.cueBallImpactCushion();
+        game.cueBallImpactCushion();
+        game.cueBallImpactCushion();
+        game.cueBallStrike(BallType.RED);
+        game.cueBallStrike(BallType.YELLOW);
+        game.endShot();
+        System.out.println(game);
+    }
+}

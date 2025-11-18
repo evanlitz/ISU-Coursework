@@ -1,0 +1,49 @@
+# CS319 In-Class Activity 05 - Movie Gallery
+
+**Author:** Evan Litzer
+**Email:** bubaq@iastate.edu
+**Date:** 10/9/25
+**Course:** CS319 - Construction of User Interfaces
+
+## Description
+
+A dynamic movie gallery web application that fetches movie data from a JSON file and displays it as interactive Bootstrap cards. Users can toggle the visibility of individual movie cards using checkboxes.
+
+## Features
+
+- Fetches movie data asynchronously from a local JSON file
+- Dynamically generates Bootstrap-styled card components for each movie
+- Displays movie poster, title, and release year
+- Individual visibility toggles for each movie card
+- Responsive grid layout (1-4 columns depending on screen size)
+
+## Files
+
+- `bubaq_activity05.html` - Main HTML page with Bootstrap integration
+- `bubaq_activity05.js` - JavaScript for fetching data and DOM manipulation
+- `movies.json` - Movie data (titles, years, poster URLs)
+
+## Technologies
+
+- HTML5
+- JavaScript (ES6+ Fetch API)
+- Bootstrap 5.3.3
+
+## Usage
+
+1. Open `bubaq_activity05.html` in a web browser
+2. Movie cards will automatically load from the JSON data
+3. Use checkboxes to show/hide individual movie cards
+
+**Note:** Due to fetch API usage, this must be served from a web server (not opened directly as a file) to avoid CORS issues.
+
+## Movies Included
+
+- Avengers: Endgame (2019)
+- Spider-Man: No Way Home (2021)
+- Top Gun: Maverick (2022)
+- Oppenheimer (2023)
+- Black Panther (2018)
+- Parasite (2019)
+- F1: The Movie (2025)
+- Avatar: Fire & Ash (2025)

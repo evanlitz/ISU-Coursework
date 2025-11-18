@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="games_array">
+        <item>Baccarat</item>
+        <item>Blackjack</item>
+        <item>Coinflip</item>
+        <item>Poker</item>
+
+    </string-array>
+
+
+</resources>

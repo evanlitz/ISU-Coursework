@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* v4: define tokens -> utilities like bg-brand-dark, text-brand-light */
+@theme {
+  --color-brand-dark: #0f0f0f;
+  --color-brand-light: #f5f5f5;
+  --color-brand-accent: #dc2626;
+}
+
+/* global styles */
+html { scroll-behavior: smooth; } /* your scrollBehavior from config */
+body {
+  @apply bg-brand-dark text-brand-light;
+  font-family: Inter, system-ui, sans-serif;
+}

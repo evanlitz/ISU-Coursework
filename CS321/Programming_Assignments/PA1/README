@@ -1,0 +1,232 @@
+# CS 321 – Programming Assignment 1
+## LEGv8 Quicksort Implementation
+
+This repository contains my solution for **CS 321 (Fall 2024) – Programming Assignment 1**, where the goal is to translate a C implementation of quicksort into **LEGv8 assembly**.
+
+You are essentially acting as the **compiler**: each C function in the provided reference program must be implemented as a corresponding LEGv8 procedure, following ARMv8 calling conventions and using the stack properly. fileciteturn4file0
+
+---
+
+## Repository Contents
+
+- `quicksort.c`  
+  Provided C reference implementation of quicksort and its helper functions. This file **is not** to be modified for the assignment; it serves as the specification for what your assembly must do.
+
+- `assignment1.legv8asm`  
+  My LEGv8 assembly implementation of:
+  - `next_i`
+  - `next_j`
+  - `swap`
+  - `partition`
+  - `quicksort_recurse`
+  - `quicksort`
+  - `fill`
+  - main-equivalent startup code  
+  written as a direct, faithful translation of the C reference.
+
+---
+
+## Assignment Overview
+
+The C file implements quicksort on an array of integers of size `N`:
+
+```c
+#define N 512
+```
+
+The functions are:
+
+- `int next_i(int *a, int i, int l, int p);`
+- `int next_j(int *a, int j, int f, int p);`
+- `void swap(int *a, int i, int j);`
+- `int partition(int *a, int f, int l);`
+- `void quicksort_recurse(int *a, int f, int l);`
+- `void quicksort(int *a, int n);`
+- `void fill(int *a, int n);`
+- `int main(int argc, char *argv[]);`
+
+Your job in the assignment (and what this repo’s assembly file implements):
+
+1. **Allocate and initialize an array** in memory using `fill` (reverse sorted order).
+2. **Sort the array** with `quicksort`, which calls `quicksort_recurse` and `partition`.
+3. Use the **HALT** instruction so that the emulator dumps core and you (and the TAs) can inspect memory to confirm the array is sorted. fileciteturn4file0
+
+The C version uses 32-bit `int`, but the LEGv8 solution uses **64-bit integers / pointers everywhere**. All data in your assembly should be treated as 64-bit values. fileciteturn4file0
+
+---
+
+## Function Behavior Summary
+
+### `next_i(int *a, int i, int l, int p)`
+
+Scans forward from index `i` up to `l` looking for the next element **not less than** the partition value `p`:
+
+```c
+while ((i <= l) && (a[i] < p)) {
+  i++;
+}
+return i;
+```
+
+- Returns `i` where either `i > l` or `a[i] >= p`.
+
+### `next_j(int *a, int j, int f, int p)`
+
+Scans backward from index `j` down to `f` looking for the next element **less than** the partition value:
+
+```c
+while ((j > f) && (a[j] >= p)) {
+  j--;
+}
+return j;
+```
+
+- Returns `j` where either `j == f` or `a[j] < p`.
+
+### `swap(int *a, int i, int j)`
+
+Swaps `a[i]` and `a[j]`:
+
+```c
+int tmp = a[i];
+a[i] = a[j];
+a[j] = tmp;
+```
+
+### `partition(int *a, int f, int l)`
+
+Rearranges elements from index `f` to `l` around pivot `p = a[f]`:
+
+```c
+p = a[f];
+i = f + 1;
+j = l;
+
+while (i <= j) {
+  i = next_i(a, i, l, p);
+  j = next_j(a, j, f, p);
+
+  if (i < j) {
+    swap(a, i, j);
+  }
+}
+
+if (j != f) {
+  swap(a, j, f);
+}
+
+return j;
+```
+
+- Returns the final pivot position `j`.
+
+### `quicksort_recurse(int *a, int f, int l)`
+
+Recursive quicksort on the subarray `[f, l]`:
+
+```c
+if (f >= l) {
+  return;
+}
+
+p = partition(a, f, l);
+quicksort_recurse(a, f, p - 1);
+quicksort_recurse(a, p + 1, l);
+```
+
+### `quicksort(int *a, int n)`
+
+Convenience wrapper:
+
+```c
+quicksort_recurse(a, 0, n - 1);
+```
+
+### `fill(int *a, int n)`
+
+Initializes the array with reverse sorted data (`n - 1` down to `0`):
+
+```c
+for (i = 0; i < n; i++) {
+  a[i] = n - i - 1;
+}
+```
+
+---
+
+## main / Startup Code in LEGv8
+
+In C, `main`:
+
+```c
+int a[N];
+
+fill(a, N);
+quicksort(a, N);
+return 0;
+```
+
+In LEGv8 assembly:
+
+- There is no true `main` procedure. Execution starts at the **top of the file**.
+- You must:
+  1. Reserve space in memory for `a` (up to 512 8-byte integers).
+  2. Pass the address of `a` and `N` into `fill`.
+  3. Call `quicksort` with `a` and `N`.
+  4. Execute a `HALT` instruction so the emulator dumps memory.
+
+---
+
+## Calling Conventions & Stack Usage
+
+A major learning objective of this assignment is correct use of **ARMv8 / LEGv8 calling conventions**:
+
+- Arguments are passed in `X0–X7` (beyond that, on the stack).
+- Return values are in `X0`.
+- Callee-saved registers must be pushed on entry and popped on exit.
+- Every procedure must:
+  - Save and restore the link register (`LR`) if it makes further calls.
+  - Use the stack frame correctly for local storage and saved registers.
+- Each function may **only** know what is provided via its parameters and global constants. Even if you, as the programmer, know that no one else touches a register, you must still save/restore it according to convention. fileciteturn4file0
+
+You should treat each procedure as if it were written by a different person who only has the specification and the calling convention, not the rest of your code.
+
+---
+
+## How to Build and Run (Emulator)
+
+The exact steps depend on your LEGv8 toolchain/emulator, but the general workflow is:
+
+1. **Open `assignment1.legv8asm` in the emulator or assemble it** using the provided tools.
+2. **Run** the program:
+   - It will allocate the array.
+   - Call `fill`.
+   - Call `quicksort`.
+   - Execute `HALT`.
+3. Inspect memory where the array is stored to confirm that:
+   - It started as reverse sorted (`N-1 ... 0`).
+   - It ends up sorted in ascending order (`0 ... N-1`).
+
+If supplied by your instructor, you may use their test scripts and/or core dumps to validate correctness.
+
+---
+
+## Notes
+
+- `partition_reference_do_not_implement()` in the C file is **for reference only** and is **not** translated to assembly.
+- All variables in the assembly version are treated as **64-bit integers or pointers to 64-bit integers**. fileciteturn4file0
+- You must not refactor or change the algorithm’s structure; the goal is a faithful, low-level translation, not redesign.
+
+---
+
+## Summary
+
+This assignment exercises:
+
+- Translating non-trivial C code into **LEGv8 assembly**.
+- Implementing multiple, interacting procedures.
+- Correctly using the **stack** and **calling conventions**.
+- Reasoning about arrays and indexes in a low-level setting.
+- Verifying program behavior by inspecting memory after `HALT`.
+
+This README documents the intent and structure of the assignment and how my `assignment1.legv8asm` solves it.

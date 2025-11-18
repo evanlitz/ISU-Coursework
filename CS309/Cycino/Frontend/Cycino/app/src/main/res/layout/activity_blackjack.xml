@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#35654d"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/bCurrChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chips: 0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/dealerCards"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/dealerCard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                tools:srcCompat="@drawable/diamonds_ace" />
+
+            <ImageView
+                android:id="@+id/dealerCard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:maxWidth="100dp"
+                android:padding="2dp"
+                app:srcCompat="@drawable/clubs_2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardsR1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/player1Cards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/player1Card1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:maxWidth="100dp"
+                    app:srcCompat="@drawable/clubs_10" />
+
+                <ImageView
+                    android:id="@+id/player1Card2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:maxWidth="100dp"
+                    app:srcCompat="@drawable/clubs_2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/player2Cards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/player2Card1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:maxWidth="100dp"
+                    app:srcCompat="@drawable/clubs_10" />
+
+                <ImageView
+                    android:id="@+id/player2Card2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:maxWidth="100dp"
+                    app:srcCompat="@drawable/clubs_2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardsR2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <LinearLayout
+                android:id="@+id/player3Cards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/player3Card1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxWidth="100dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/clubs_10" />
+
+                <ImageView
+                    android:id="@+id/player3Card2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxWidth="100dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/clubs_2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/player4Cards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/player4Card1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxWidth="100dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/clubs_10" />
+
+                <ImageView
+                    android:id="@+id/player4Card2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxWidth="100dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/clubs_2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:id="@+id/playButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/doubleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="DOUBLE"
+                android:textColor="@color/cardinal" />
+
+            <Button
+                android:id="@+id/bbetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="BET"
+                android:textColor="@color/cardinal" />
+
+            <Button
+                android:id="@+id/dealButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="DEAL"
+                android:textColor="@color/cardinal" />
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="START GAME"
+                android:textColor="@color/cardinal" />
+
+            <Button
+                android:id="@+id/hitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="HIT"
+                android:textColor="@color/cardinal" />
+
+            <Button
+                android:id="@+id/standButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="STAND"
+                android:textColor="@color/cardinal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pBetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bLowerBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lower Bet"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+            <TextView
+                android:id="@+id/bCurrBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/bRaiseBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Raise Bet"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bbackMainBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"
+                android:text="Close Chat" />
+
+            <Button
+                android:id="@+id/bbackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"
+                android:text="Back to Lobby" />
+
+
+        </LinearLayout>
+
+
+
+        <ScrollView
+            android:id="@+id/bchatView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/btx1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:hint="The Conversation will appear here:\n"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/bmsgEdt"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="message"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bsendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"
+                android:text="Send" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

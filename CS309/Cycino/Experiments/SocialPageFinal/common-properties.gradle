@@ -1,0 +1,11 @@
+android.buildTypes {
+    mock {
+        buildConfigField "String", "BASE_API_URL", "\"https://e430b778-bb3d-4c74-847b-3b9cf4fefc54.mock.pstmn.io\""
+    }
+    debug {
+        buildConfigField "String", "BASE_API_URL", "\"https://e430b778-bb3d-4c74-847b-3b9cf4fefc54.mock.pstmn.io\""
+    }
+    release {
+        buildConfigField "String", "BASE_API_URL", "\"https://e430b778-bb3d-4c74-847b-3b9cf4fefc54.mock.pstmn.io\""
+    }
+}

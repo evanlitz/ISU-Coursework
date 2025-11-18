@@ -1,0 +1,262 @@
+# COM S 228 – Homework 2
+## Sorting 2D Integer Points
+
+This repository contains my implementation of Homework 2 for **COM S 228 (Fall 2023)**: reading a set of 2D integer points, sorting them with multiple algorithms, and computing their **median coordinate point**. The project also compares the performance of four classic sorting algorithms on the same dataset.
+
+---
+
+## Assignment Summary
+
+Given a set of points in the plane with integer coordinates in the range **[-50, 50] × [-50, 50]**, the goal is to:
+
+1. **Read** the input points from:
+   - A file of integers, or  
+   - A randomly generated set of points.
+2. **Sort** the points twice (by `x` and by `y`) using each of the following algorithms:
+   - Selection Sort  
+   - Insertion Sort  
+   - Merge Sort  
+   - Quick Sort  
+3. **Compute the median coordinate point (MCP)**:
+   - Median `x` = median of all x-coordinates  
+   - Median `y` = median of all y-coordinates  
+4. **Compare performance** (runtime) of the four sorting algorithms on the same input.
+
+Duplicates among points are allowed and handled correctly.
+
+---
+
+## Project Structure
+
+All classes are in the package:
+
+```java
+edu.iastate.cs228.hw2
+```
+
+### `Point`
+
+- Represents a 2D point with integer coordinates `(x, y)`.
+- Implements `Comparable<Point>`.
+- `compareTo` can compare by **x** or **y** depending on the current comparator:
+  - If the primary coordinate is equal, it falls back to the other coordinate.
+- Used as the fundamental data type for sorting.
+
+### `AbstractSorter`
+
+Abstract base class for all sorter implementations.
+
+**Key fields:**
+
+- `Point[] points` – internal array of points to sort.
+- `Algorithm algorithm` – which sorting algorithm this sorter represents.
+- `Comparator<Point> pointComparator` – set via `setComparator()` to decide whether to sort by `x` or `y`.
+
+**Important methods:**
+
+- `protected AbstractSorter(Point[] pts)`  
+  - Copies an existing `Point[] pts` into `points[]`.  
+  - Throws `IllegalArgumentException` if `pts == null` or `pts.length == 0`.
+- `public void setComparator(int order)`  
+  - Sets the comparator to sort either by `x` or `y`.
+- `public abstract void sort()`  
+  - Implemented by subclasses using their specific algorithm.
+- `public Point[] getPoints()`  
+  - Returns the sorted array.
+- `public Point getMedian()`  
+  - Returns the element at index `points.length / 2` after sorting.
+
+### Sorting Algorithm Implementations
+
+Each of these extends `AbstractSorter` and implements `sort()`:
+
+- `SelectionSorter`
+- `InsertionSorter`
+- `MergeSorter`
+- `QuickSorter`
+
+Each constructor calls `super(pts)` and sets `algorithm` to the appropriate `Algorithm` enum value.
+
+### `Algorithm` (enum)
+
+Enum representing the sorting algorithm in use:
+
+- `SelectionSort`  
+- `InsertionSort`  
+- `MergeSort`  
+- `QuickSort`
+
+Used by `PointScanner` and `CompareSorters` to select which sorter to construct.
+
+### `PointScanner`
+
+`PointScanner` is responsible for:
+
+- Reading points from:
+  - An existing `Point[]`, or  
+  - A file of integers where every pair `(x, y)` is one point.
+- Running **two rounds of sorting** with the chosen algorithm:
+  1. Sort by `x`, get median `x`.
+  2. Sort by `y`, get median `y`.
+- Computing the **median coordinate point** and storing it as `medianCoordinatePoint`.
+
+**Important fields:**
+
+- `Point[] points` – input set of points.
+- `Point medianCoordinatePoint` – final MCP.
+- `Algorithm sortingAlgorithm` – selected algorithm.
+- `long scanTime` – total time (in nanoseconds) across both sorting rounds.
+
+**Key methods:**
+
+- Constructors:
+  - `PointScanner(Point[] pts, Algorithm algo)`
+  - `PointScanner(String inputFileName, Algorithm algo)`  
+    - Throws `FileNotFoundException` if the file doesn’t exist.  
+    - Throws `InputMismatchException` if an odd number of integers is found.
+- `public void scan()`  
+  - Sorts by x, then by y, times each sort, and records `medianCoordinatePoint`.
+- `public String stats()`  
+  - Returns a formatted line: `algorithm size time(ns)` for the final report.
+- `public String toString()`  
+  - Can be used to display the median coordinate point and related information.
+
+### `CompareSorters`
+
+`CompareSorters` contains the `main` method and compares running times of the four algorithms on the same input data.
+
+It presents a simple **menu**:
+
+- `1` – generate random points  
+- `2` – load from a file  
+- `3` – exit  
+
+For each trial, it:
+
+1. Builds the same `Point[]` input.
+2. Constructs four `PointScanner` instances, one per algorithm.
+3. Calls `scan()` on each.
+4. Prints an aligned stats table of algorithm, size, and time (in nanoseconds).
+
+Sample output format:
+
+```text
+Performances of Four Sorting Algorithms in Point Scanning
+keys:  1 (random integers)  2 (file input)  3 (exit)
+
+Trial 1: 1
+Enter number of random points: 1000
+
+algorithm      size   time (ns)
+----------------------------------
+SelectionSort  1000   49631547
+InsertionSort  1000   22604220
+MergeSort      1000   2057874
+QuickSort      1000   1537183
+----------------------------------
+```
+
+---
+
+## Input Format
+
+### File Input
+
+- File contains **integers only**; each pair of integers is `(x, y)` for one point.
+- Integers may be separated by spaces, tabs, and/or newlines.
+- The file must contain an **even** number of integers:
+  - If there is an odd number, `InputMismatchException` is thrown.
+- Coordinate range: `-50` to `50`, but the program does not strictly enforce that for file input; the spec assumes this range for test data.
+
+Example file:
+
+```text
+0  0 -3 -9  0 -10 
+8 4 3 3 -6 
+3 -2 1 
+10 5 -7 -10  
+5 -2  
+7 3  10 5  
+-7 -10 0 8
+-1 -6
+-10 0
+5 5
+```
+
+### Random Input
+
+When choosing option `1`, the program:
+
+- Asks for the number of random points.
+- Uses (typically) `java.util.Random` to generate points in `[-50, 50] × [-50, 50]`.
+
+---
+
+## How to Build and Run
+
+### Prerequisites
+
+- Java (JDK) installed (version 8+ should be fine).
+- Source files organized under `edu/iastate/cs228/hw2/`.
+
+### Compile
+
+From the root of the project (where `src/` is your source directory):
+
+```bash
+javac -d out src/edu/iastate/cs228/hw2/*.java
+```
+
+(Adapt the command as needed for your own directory structure or IDE.)
+
+### Run
+
+```bash
+java -cp out edu.iastate.cs228.hw2.CompareSorters
+```
+
+Then follow the on-screen menu:
+
+1. `1` – Enter the number of random points.
+2. `2` – Enter the input filename for points.
+3. `3` – Exit the program.
+
+Each trial prints a performance table for all four algorithms.
+
+---
+
+## Median Coordinate Point
+
+After two sorts (once by x, once by y):
+
+- `median x` = element at index `n / 2` in the x-sorted list.
+- `median y` = element at index `n / 2` in the y-sorted list.
+- The **median coordinate point** is `(median x, median y)`.
+
+Notes:
+
+- The median point does **not** have to be one of the original input points.
+- This point is used as a summary statistic of the distribution of the input set.
+
+---
+
+## Testing
+
+This project can be tested by:
+
+- Feeding small, hand-crafted point sets and verifying:
+  - Sorted order by x and by y.
+  - Correct median coordinate point.
+- Testing with:
+  - All points equal.
+  - Already sorted inputs.
+  - Reverse-sorted inputs.
+  - Duplicate-heavy datasets.
+- Comparing runtimes of algorithms for larger numbers of points (e.g., 1,000, 5,000, 10,000).
+
+---
+
+## Notes
+
+- This README is based on the official **COM S 228 Homework 2: Sorting 2D Integer Points** specification (Fall 2023).
+- The implementation is designed for clarity and correctness in an educational setting, not micro-optimized production performance.

@@ -1,0 +1,197 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Deck</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.Games.GameLogic</a>
+</div>
+
+<h1>Coverage Summary for Class: Deck (coms309.Cycino.Games.GameLogic)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Deck</td>
+<td class="coverageStat">
+  <span class="percent">
+    57.1%
+  </span>
+  <span class="absValue">
+    (4/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (12/16)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Deck$HibernateInstantiator$n7UN44rS</td>
+  </tr>
+  <tr>
+    <td class="name">Deck$HibernateProxy$nRVHZWz7</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    57.1%
+  </span>
+  <span class="absValue">
+    (4/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (12/16)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.Games.GameLogic;
+&nbsp;
+&nbsp;import coms309.Cycino.Enums;
+&nbsp;import coms309.Cycino.Games.Blackjack.BlackJack;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;@Entity
+&nbsp;public class Deck {
+&nbsp;
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    private Long id;
+&nbsp;
+<b class="fc">&nbsp;    @OneToMany(mappedBy = &quot;deck&quot;, cascade = CascadeType.REMOVE, orphanRemoval = true)</b>
+&nbsp;    private Set&lt;Card&gt; cards = new HashSet&lt;&gt;();
+&nbsp;
+&nbsp;    @OneToOne
+&nbsp;    private BlackJack blackJack;
+&nbsp;
+<b class="fc">&nbsp;    public Deck(){</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;Card&gt; getCards(){
+<b class="nc">&nbsp;        return cards;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Card&gt; shuffle(){
+<b class="fc">&nbsp;        ArrayList&lt;Card&gt; cardList = new ArrayList&lt;&gt;(cards);</b>
+<b class="fc">&nbsp;        Collections.shuffle(cardList);</b>
+<b class="fc">&nbsp;        return cardList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void resetDeck(){
+<b class="nc">&nbsp;        cards.removeAll(cards);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addCard(Card c){
+<b class="fc">&nbsp;        cards.add(c);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Card draw(){
+<b class="pc">&nbsp;        if(cards.isEmpty()){</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        ArrayList&lt;Card&gt; cards = shuffle();</b>
+<b class="fc">&nbsp;        Card c = (Card) cards.remove(0);</b>
+<b class="fc">&nbsp;        Collections.shuffle(cards);</b>
+<b class="fc">&nbsp;        this.cards.remove(c);</b>
+<b class="fc">&nbsp;        return c;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBlackJack(BlackJack blackJack){
+<b class="nc">&nbsp;        this.blackJack = blackJack;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>

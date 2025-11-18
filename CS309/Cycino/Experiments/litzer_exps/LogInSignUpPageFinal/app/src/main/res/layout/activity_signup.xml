@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#35654D"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Signup to the Cysino!"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="80dp"
+        android:textSize="30dp"
+        android:textColor="@color/gold">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USERNAME: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/cardinal">
+        </TextView>
+
+        <EditText
+            android:id="@+id/signup_username_edt"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:hint="Enter Username Here"
+            android:textStyle="bold"
+            android:textColor="@color/gold">
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/cardinal">
+        </TextView>
+
+        <EditText
+            android:id="@+id/signup_password_edt"
+            android:layout_width="wrap_content"
+            android:inputType="textPassword"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:textColor="@color/gold"
+            android:hint="Enter Password Here">
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="70sp"
+            android:text="CONFIRM\nPASSWORD: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/cardinal">
+        </TextView>
+
+        <EditText
+            android:id="@+id/signup_confirm_edt"
+            android:layout_width="wrap_content"
+            android:inputType="textPassword"
+            android:layout_height="70dp"
+            android:textStyle="bold"
+            android:textColor="@color/gold"
+            android:hint="Enter Password Again">
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/signup_login_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="LOG IN"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:backgroundTint="@color/gold"
+            android:textColor="@color/cardinal">
+        </Button>
+
+        <Button
+            android:id="@+id/signup_signup_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="SIGN UP"
+            android:textStyle="bold"
+            android:backgroundTint="@color/gold"
+            android:textSize="20sp"
+            android:textColor="@color/cardinal">
+        </Button>
+
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

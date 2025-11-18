@@ -1,0 +1,132 @@
+Follow currently has 4 endpoints for the frontend:
+
+ENDPOINT 1: READ
+@GetMapping("/users/{uid}/following")
+    public List<Follow> getFollowingList(@PathVariable long uid) {
+        return followService.getFollowingList(uid);
+    }
+
+PATH: /users/{uid}/following
+PARAMETERS: {uid}
+BODY: NONE
+
+It takes the {uid} form the path and uses that user ID to fetch and return all users
+that user "UID" is currently following.
+
+EXAMPLE:
+REQUEST: http://coms-3090-052.class.las.iastate.edu:8080/users/5/following
+RESPONSE:
+[
+    {
+        "id": 2,
+        "followingID": 3
+    },
+    {
+        "id": 3,
+        "followingID": 4
+    },
+    {
+        "id": 4,
+        "followingID": 6
+    }
+]
+The "id" is simply the primary key for the entry into the follow database table and can be ignored.
+The "followingID" is the user ID of the people that user {5} is following.
+
+
+ENDPOINT 2: UPDATE
+@PostMapping("/users/{uid}/follow")
+public Map<String, Object> addToFollowList(@RequestBody Follow follow, @PathVariable long uid){
+    Map<String, Object> result = new HashMap<>();
+    if (followService.addToFollowList(follow, uid)){
+        result.put("status", "200 OK");
+    } else {
+        result.put("status", "400 Bad Request");
+    }
+    return result;
+}
+PATH: /users/{uid}/follow
+PARAMETERS: {uid}
+BODY: follow pojo
+
+It takes the {uid} form the path and uses that user ID to fetch the follow list of that
+specific user. It then uses the BODY to add to that list.
+
+EXAMPLE:
+REQUEST: http://coms-3090-052.class.las.iastate.edu:8080/users/{5}/follow
+BODY:
+{
+    "followingID":"6"
+}
+RESPONSE - if user 5 can correctly follow user 6:
+{
+    "status": "200 OK"
+}
+ALTERNATIVE RESPONSE - if user 5 fails to follow user 6, ie they already follow user 6:
+{
+    "status": "400 Bad Request"
+}
+
+ENDPOINT 3: DELETE
+@DeleteMapping("/users/{uid}/unfollow")
+public Map<String, Object> removeFromFollowList(@RequestBody Follow follow, @PathVariable long uid){
+    Map<String, Object> result = new HashMap<>();
+    if (followService.removeFromFollowList(follow, uid)){
+        result.put("status", "200 OK");
+    } else {
+        result.put("status", "400 Bad Request");
+    }
+    return result;
+}
+PATH: /users/{uid}/unfollow/{unfollowID}
+PARAMETERS: {uid}
+BODY: NONE
+
+It takes the {uid} form the path and uses that user ID to fetch the follow list of that
+specific user. It then uses the {unfollowID} to remove that from the list.
+
+EXAMPLE:
+REQUEST: http://coms-3090-052.class.las.iastate.edu:8080/users/{5}/unfollow/{6}
+
+RESPONSE - if user 5 can correctly unfollow user 6:
+{
+    "status": "200 OK"
+}
+ALTERNATIVE RESPONSE - if user 5 fails to unfollow user 6, ie they already do not follow user 6:
+{
+    "status": "400 Bad Request"
+}
+
+ENDPOINT 4: UPDATE
+@PutMapping("/users/{uid}/follow/update")
+    public Map<String, Object> updateFollowing(@RequestBody Follow follow, @PathVariable long uid){
+        Map<String, Object> result = new HashMap<>();
+        if (followService.updateFollowing(follow, uid)){
+            result.put("status", "200 OK");
+        } else {
+            result.put("status", "400 Bad Request");
+        }
+        return result;
+    }
+PATH: /users/{uid}/follow/update
+PARAMETERS: {uid}
+BODY: follow pojo with 1 field
+
+It takes the {uid} form the path and uses that user ID to fetch the follow list of that
+specific user. It then uses the BODY to update the muteNotifications of that specific follow that the user follows.
+It always switches the muteNotifications on/off from true/false.
+
+EXAMPLE:
+REQUEST: http://coms-3090-052.class.las.iastate.edu:8080/users/{1}/follow/update
+BODY:
+{
+    "followingID":"2"
+}
+RESPONSE - if user 1 can correctly update user 2 notifications:
+{
+    "status": "200 OK"
+}
+ALTERNATIVE RESPONSE - if user 1 fails to update notifications for user 2, ie they already do not follow user 6:
+{
+    "status": "400 Bad Request"
+}

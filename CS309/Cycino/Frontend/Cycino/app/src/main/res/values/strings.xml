@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cycino</string>
+    <string name="btn_blackjack_text">Blackjack</string>
+    <string name="btn_poker_text">Poker</string>
+    <string name="btn_baccarat_text">Baccarat</string>
+    <string name="btn_coin_flip_text">Coin Flip</string>
+    <string name="btn_app_info_text">App Info</string>
+</resources>

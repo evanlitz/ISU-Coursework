@@ -1,0 +1,195 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > UserStats</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.stats</a>
+</div>
+
+<h1>Coverage Summary for Class: UserStats (coms309.Cycino.stats)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserStats</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/19)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">UserStats$HibernateInstantiator$qD2LjLpI</td>
+  </tr>
+  <tr>
+    <td class="name">UserStats$HibernateProxy$i2DSWRam</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/19)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.stats;
+&nbsp;
+&nbsp;import coms309.Cycino.Enums;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;@Entity
+&nbsp;public class UserStats {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    private String userStatsId;
+&nbsp;
+&nbsp;    private long user_Id;
+&nbsp;    private String game;
+&nbsp;    private int wins;
+&nbsp;    private int losses;
+&nbsp;    private double percentage;
+&nbsp;    private double net;
+&nbsp;    @ManyToOne(fetch = FetchType.EAGER)
+&nbsp;    @JoinColumn(name = &quot;Id&quot;)
+&nbsp;    private User users;
+&nbsp;
+<b class="nc">&nbsp;    public UserStats(){}</b>
+&nbsp;
+<b class="nc">&nbsp;    public UserStats(long userId, Enums.GameEnums game){</b>
+<b class="nc">&nbsp;        this.user_Id = userId;</b>
+<b class="nc">&nbsp;        this.userStatsId = userId + game.toString();</b>
+<b class="nc">&nbsp;        this.game = game.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setWinsLosses(int wins, int losses){
+<b class="nc">&nbsp;        this.wins = wins;</b>
+<b class="nc">&nbsp;        this.losses = losses;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateWins(int w, int l, int chips){
+<b class="nc">&nbsp;        wins += w;</b>
+<b class="nc">&nbsp;        losses += l;</b>
+<b class="nc">&nbsp;        net += chips;</b>
+<b class="nc">&nbsp;        update();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void update(){
+<b class="nc">&nbsp;        this.percentage = ((double)wins)/(losses+wins);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getWins(){
+<b class="nc">&nbsp;        return wins;</b>
+&nbsp;    }
+&nbsp;    public int getLosses(){
+<b class="nc">&nbsp;        return losses;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getNet() {
+<b class="nc">&nbsp;        return net;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getPercentage() {
+<b class="nc">&nbsp;        return percentage;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getUserStatsId() {
+<b class="nc">&nbsp;        return userStatsId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public long getUserId(){
+<b class="nc">&nbsp;        return user_Id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getGame() {
+<b class="nc">&nbsp;        return game;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 21:23</div>
+</div>
+</body>
+</html>

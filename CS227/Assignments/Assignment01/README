@@ -1,0 +1,35 @@
+# CameraBattery Assignment README
+
+## Overview
+This project implements the `CameraBattery` class described in the Com S 227 Assignment 1 specification. The class models a removable and rechargeable camera battery with support for charging, draining, external charger settings, and battery movement between devices. The implementation focuses on correct state management, proper use of variables, and adherence to the constraints provided in the assignment.
+
+## Features
+- Models a camera battery with a defined starting charge and maximum capacity
+- Simulates camera charging at a fixed rate
+- Simulates external charging with adjustable charger settings
+- Supports draining based on camera power consumption
+- Supports moving the battery between camera, external charger, and removal
+- Tracks total drain since last reset
+- Provides accessor methods for all relevant state information
+
+## Key Concepts and Requirements
+- No conditional statements or loops were used unless absolutely necessary
+- All calculations use basic arithmetic, `Math.min`, `Math.max`, and modular arithmetic
+- Proper encapsulation with private instance variables and public methods
+- Includes methods to modify state cleanly without side effects in accessors
+- Correct handling of edge cases such as exceeding capacity, wrapping charger settings, and preventing charge or drain when the battery is not connected to a device
+
+## Files Included
+- `CameraBattery.java`  
+  Main implementation of the battery simulation
+
+## How to Test
+Create a separate test class with a `main` method. Example:
+
+```java
+public static void main(String[] args) {
+    CameraBattery cb = new CameraBattery(1000, 2000);
+    cb.moveBatteryCamera();
+    double drained = cb.drain(100);
+    System.out.println("Drain amount: " + drained);
+}

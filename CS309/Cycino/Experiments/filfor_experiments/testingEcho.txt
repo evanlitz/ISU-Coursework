@@ -1,0 +1,42 @@
+trying echo
+appending line number 2 by using echo and >> in terminal (git bash)
+appending a file after this line
+Hi!
+I am typing a 
+text file with Nano.
+hello
+hello
+hello
+hello
+hello
+hello
+hello 10?
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+awesome

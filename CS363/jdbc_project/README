@@ -1,0 +1,59 @@
+# JDBC College Database Project
+
+A Java database application demonstrating JDBC connectivity with MySQL for managing a college database system.
+
+## Overview
+
+This project implements a complete database management workflow for a college system, including student records, departments, degrees, courses, and registrations.
+
+## Features
+
+- **Schema Management**: Create and drop database tables with proper foreign key relationships
+- **Data Import**: Bulk insert records from CSV files using prepared statements
+- **Complex Queries**: Execute analytical queries (average grades, student demographics, degree statistics)
+- **Data Modification**: Update, insert, and delete records with cascading operations
+- **Performance Analysis**: Compare query execution time with and without indexing
+
+## Database Schema
+
+- `students` - Student personal information (SSN, SID, name, contact details)
+- `departments` - Academic departments with college affiliations
+- `degrees` - Degree programs offered by departments
+- `courses` - Course catalog with credit hours and levels
+- `register` - Student course registrations and grades
+- `major` / `minor` - Student degree associations
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `CreateTables.java` | Creates all database tables with constraints |
+| `DropTables.java` | Removes all tables from the database |
+| `InsertRecords.java` | Loads data from CSV files into tables |
+| `Query.java` | Executes analytical queries on the data |
+| `ModifyRecords.java` | Performs UPDATE and DELETE operations |
+| `Index.java` | Demonstrates index performance benefits |
+
+## Prerequisites
+
+- Java JDK 8+
+- MySQL Server
+- MySQL JDBC Driver
+
+## Setup
+
+1. Create a MySQL database named `collegedb`
+2. Create user `coms363` with password `password`
+3. Update file paths in `InsertRecords.java` to point to your CSV data files
+4. Compile and run in order:
+   ```bash
+   javac -cp .:mysql-connector-java.jar coms363/*.java
+   java -cp .:mysql-connector-java.jar coms363.CreateTables
+   java -cp .:mysql-connector-java.jar coms363.InsertRecords
+   java -cp .:mysql-connector-java.jar coms363.Query
+   ```
+
+## Course
+
+CS 363 - Introduction to Database Management Systems
+Iowa State University

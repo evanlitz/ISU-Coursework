@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="18" failures="0" name="PrimeNumberFinderTest" time="0.267" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="21.0.8+9"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk/lib"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/bubaq/cs417/jacoco-0.8.12/examples/prime"/>
+    <property name="java.vm.vendor" value="Red Hat, Inc."/>
+    <property name="java.vendor.url" value="https://www.redhat.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/bubaq/cs417/jacoco-0.8.12/examples/prime"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="java.runtime.version" value="21.0.8+9"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="maven.conf" value="/usr/share/maven/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.16.5-200.fc42.x86_64"/>
+    <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
+    <property name="user.home" value="/home/bubaq"/>
+    <property name="user.timezone" value="America/Chicago"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="21"/>
+    <property name="user.name" value="bubaq"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.8.0.jar"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.home" value="/usr/lib/jvm/java-21-openjdk"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="21.0.8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Red Hat, Inc."/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.vendor.url.bug" value="https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora&amp;component=java-21-openjdk&amp;version=41"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="(Red_Hat-21.0.8.0.9-1)"/>
+  </properties>
+  <testcase classname="PrimeNumberFinderTest" name="sumofP1" time="0.23"/>
+  <testcase classname="PrimeNumberFinderTest" name="compositeCaughtByLoop_iPlus2Branch" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="divideByTwoIsNotPrime" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="sumMultiplePrimes_true_multipleAdds" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="loopRunsMultipleIters_prime" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="sumprimes_emptyList_falsereturnzero" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="testFindPrimes1" time="0.024"/>
+  <testcase classname="PrimeNumberFinderTest" name="compositeCaughtByLoop_iBranch" time="0.001"/>
+  <testcase classname="PrimeNumberFinderTest" name="noLoopEntryStillPrime" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="instantiateClass" time="0.011"/>
+  <testcase classname="PrimeNumberFinderTest" name="testIsPrime1" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="testIsPrime2" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="sumsingleprime_falseBranch" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="divideByThreeIsNotPrime" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="smallPrimesTrue" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="loopRunsButRemainsPrime_singleIter" time="0"/>
+  <testcase classname="PrimeNumberFinderTest" name="negNumbers" time="0.001"/>
+  <testcase classname="PrimeNumberFinderTest" name="sumprimes_true_getFirstElement" time="0"/>
+</testsuite>

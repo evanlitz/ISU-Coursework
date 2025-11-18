@@ -1,0 +1,120 @@
+[
+  {
+    "id": "B1",
+    "title": "Cooking 101: Kitchen Basics to Advanced",
+    "instructor": "James Makinson",
+    "category": "Beginner",
+    "duration": "5 Hours",
+    "price": 79.99,
+    "thumbnail": "/images/B1.jpg",
+    "description": "Culinary Skills for Home Cooks and Aspiring Chefs",
+    "trailerUrl": "https://youtu.be/RAv14zAk-6g",
+    "courseUrl": "https://www.udemy.com/course/chefjames/"
+  },
+
+  {
+    "id": "B2",
+    "title": "Absolute Beginners Cooking Course",
+    "instructor": "John Keith",
+    "category": "Beginner",
+    "duration": "2 Hours, 30 Minutes",
+    "price": 54.99,
+    "thumbnail": "/images/B2.jpg",
+    "description": "Easy meals for the complete novice. A series of short videos that makes it easy for anyone to learn..",
+    "trailerUrl": "https://youtu.be/LHWXdLiP8G4",
+    "courseUrl": "https://www.udemy.com/course/absolute-beginners-cooking-course/"
+  },
+
+  {
+    "id": "B3",
+    "title": "Nutrition Kitchen: Basics of Cooking for Busy People",
+    "instructor": "Katie Kormanik, Brad Kunkel",
+    "category": "Beginner",
+    "duration": "3 Hours, 30 Minutes",
+    "price": 79.99,
+    "thumbnail": "/images/B3.jpg",
+    "description": "Simple techniques for cooking healthy and delicious food at home",
+    "trailerUrl": "https://youtu.be/ZtrTrEQSe7U",
+    "courseUrl": "https://www.udemy.com/course/nutrition-kitchen-cooking-basics/"
+  },
+
+  {
+    "id": "I1",
+    "title": "Essential Cooking Skills",
+    "instructor": "Viorel Copolovici",
+    "category": "Intermediate",
+    "duration": "1 Hour, 15 Minutes",
+    "price": 69.99,
+    "thumbnail": "/images/I1.jpg",
+    "description": "Cook like a pro, master the basic techniques used in the World's culinary industry!",
+    "trailerUrl": "https://youtu.be/FVXTDcTmRnY",
+    "courseUrl": "https://www.udemy.com/course/essential-cooking-skills/"
+  },
+
+  {
+    "id": "I2",
+    "title": "BBQ - From Beginner to pro: Grilling, Smoking and Cooking",
+    "instructor": "Techspring Learning, DNB BBQing",
+    "category": "Intermediate",
+    "duration": "3 Hours",
+    "price": 74.99,
+    "thumbnail": "/images/I2.jpg",
+    "description": "Join professional BBQ Chef Mike, as he teaches you how to get more out of your BBQ.",
+    "trailerUrl": "https://youtu.be/r10f8jq_w34",
+    "courseUrl": "https://www.udemy.com/course/bbq-cooking/"
+  },
+
+  {
+    "id": "I3",
+    "title": "Indian Culinary World - Master the art of Indian Cooking",
+    "instructor": "Jyoti Sawant",
+    "category": "Intermediate",
+    "duration": "4 Hours, 15 Minutes",
+    "price": 84.99,
+    "thumbnail": "/images/I3.jpg",
+    "description": "Secrets of cooking delicious Indian food, from SizzlingPots - join 11000+ students in 125 countries in this masterclass!",
+    "trailerUrl": "https://youtu.be/9ig7IFTHRXw",
+    "courseUrl": "https://www.udemy.com/course/indianculinaryworld/"
+  },
+
+  {
+    "id": "A1",
+    "title": "Master Chef Cooking Course - 12 Episodes - Cook Like a Pro!",
+    "instructor": "Eric Jacques Crowley",
+    "category": "Advanced",
+    "duration": "4 Hours, 20 Minutes",
+    "price": 74.99,
+    "thumbnail": "/images/A1.jpg",
+    "description": "Master knife skills, sautéing, and seasoning.",
+    "trailerUrl": "https://youtu.be/Q_VL4k8avdk",
+    "courseUrl": "https://www.udemy.com/course/master-chef-cooking-course-12-episodes/"
+  },
+
+  {
+    "id": "A2",
+    "title": "Commis Chef Essential Training Guide (Pro Kitchen skills)",
+    "instructor": "Emmanuel Kibot",
+    "category": "Advanced",
+    "duration": "9 Hours, 10 Minutes",
+    "price": 49.99,
+    "thumbnail": "/images/A2.jpg",
+    "description": "How to work like a commis chef in a professional kitchen",
+    "trailerUrl": "https://youtube.com/shorts/mx_8gVknRTw",
+    "courseUrl": "https://www.udemy.com/course/commis-chef-essential-training-guide-for-job-seekers-vol-2/"
+  },
+
+  {
+    "id": "A3",
+    "title": "Cook Your 6 Favourite Chinese Restaurant Dishes At Home",
+    "instructor": "Yang Peng",
+    "category": "Advanced",
+    "duration": "1 Hour, 10 Minutes",
+    "price": 49.99,
+    "thumbnail": "/images/A3.jpg",
+    "description": "Advance your Chinese cooking skills, via 6 classic Chinese Restaurant Recipes. Tap into the Cantonese & Sichuan Cuisine.",
+    "trailerUrl": "https://youtu.be/qa4W88BxE4I",
+    "courseUrl": "https://www.udemy.com/course/cook-your-6-favourite-chinese-restaurant-dishes-at-home/"
+  }
+]
+
+

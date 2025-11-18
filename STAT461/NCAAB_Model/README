@@ -1,0 +1,153 @@
+# NCAAB March Madness Bracket Prediction Model
+
+A machine learning project for predicting NCAA Division I Men's Basketball tournament outcomes using historical data, team statistics, and Elo ratings.
+
+**Course:** STAT461 - Statistical Learning, Iowa State University
+
+## Overview
+
+This project builds predictive models to simulate complete March Madness brackets and score them against actual tournament results. It uses ensemble methods and round-specific modeling to achieve competitive bracket predictions.
+
+## Features
+
+- **Multiple Model Architectures**: Random Forest and XGBoost classifiers
+- **Round-Specific Models**: Separate models optimized for each tournament round (R1-R6)
+- **Ensemble Methods**: Majority voting across multiple models
+- **Elo Rating System**: Custom rating calculation with margin of victory and home court advantage
+- **Complete Bracket Simulation**: Simulates all tournament games from Round of 64 to Championship
+- **Feature Importance Analysis**: Visualizations showing which factors drive predictions
+
+## Data Sources
+
+Data sourced from Kaggle's March Madness datasets (2003-2024):
+- Tournament game results with detailed box scores
+- Tournament seeds and bracket structure
+- Regular season game statistics
+- Team rankings (AP Poll, Massey Ordinals)
+
+## Model Features
+
+The models use 14 engineered features:
+
+| Feature | Description |
+|---------|-------------|
+| SeedDiff | Tournament seed difference |
+| EloDiff | Elo rating difference |
+| fg_pct_diff | Field goal percentage difference |
+| 3p_pct_diff | 3-point percentage difference |
+| ft_pct_diff | Free throw percentage difference |
+| reb_diff | Total rebounds difference |
+| ast_diff | Assists difference |
+| to_diff | Turnovers difference |
+| stl_diff | Steals difference |
+| pf_diff | Personal fouls difference |
+| avg_pts_scored_diff | Average points scored difference |
+| avg_pts_allowed_diff | Average points allowed difference |
+| avg_point_margin_diff | Point differential difference |
+
+## Installation
+
+```bash
+pip install pandas numpy scikit-learn xgboost joblib matplotlib seaborn networkx
+```
+
+## Usage
+
+### 1. Data Preparation
+
+```bash
+python calculate_elos.py           # Generate Elo ratings
+python doubledataset.py            # Create mirrored datasets
+python seed_difference.py          # Add seed features
+python team_season_stats.py        # Compute team statistics
+```
+
+### 2. Model Training
+
+```bash
+# Train Random Forest model
+python main_rforest.py
+
+# Train XGBoost model
+python main_xgboost.py
+
+# Train round-specific models
+python RF_Round_Model.py
+
+# Train ensemble models
+python train_ensemble_regular_season.py
+```
+
+### 3. Make Predictions
+
+```bash
+# Load best model and predict 2025 bracket
+python loadmodel.py
+
+# Round-by-round predictions
+python RbyR_predict_bracket.py --season 2025
+
+# Ensemble predictions
+python RF_ensemble.py
+```
+
+### 4. Visualizations
+
+```bash
+python visualize_bracket.py    # Bracket network graph
+python RbyRChart.py            # Feature importance heatmap
+python seedbyround.py          # Historical seed advancement
+```
+
+## Project Structure
+
+```
+NCAAB_Model/
+├── mmdata/                      # Tournament and season data
+├── models/                      # Saved ensemble models
+├── RbyRModels/                  # Round-specific models
+├── main_rforest.py              # Random Forest training
+├── main_xgboost.py              # XGBoost training
+├── predict_bracket.py           # Bracket simulation logic
+├── calculate_elos.py            # Elo rating calculation
+├── team_season_stats.py         # Feature engineering
+├── visualize_bracket.py         # Bracket visualization
+├── best_bracket_model.pkl       # Best Random Forest model
+├── best_xgbracket_model.pkl     # Best XGBoost model
+├── ensemble_bracket_2025.json   # 2025 predictions
+├── Report.pdf                   # Detailed analysis
+└── Poster.pptx                  # Presentation slides
+```
+
+## Scoring
+
+Uses official March Madness bracket scoring:
+- Round of 64: 1 point per correct pick
+- Round of 32: 2 points per correct pick
+- Sweet 16: 4 points per correct pick
+- Elite 8: 8 points per correct pick
+- Final Four: 16 points per correct pick
+- Championship: 32 points per correct pick
+
+**Maximum possible score: 192 points**
+
+## Key Implementation Details
+
+- **Training Data**: 2003-2015 tournament games
+- **Testing Data**: 2016-2024 (excluding 2020)
+- **Hyperparameter Optimization**: 50 random trials per model type
+- **Play-In Game Handling**: Custom logic for varying tournament structures
+- **Data Augmentation**: Mirrored datasets to balance training classes
+
+## Results
+
+Model outputs and analysis are documented in:
+- `Report.pdf` - Detailed methodology and results
+- `Poster.pptx` - Visual summary of findings
+
+## Author
+
+Evan Litzer
+Iowa State University
+STAT461 - Statistical Learning
+Fall 2024

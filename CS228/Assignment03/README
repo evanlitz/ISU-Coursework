@@ -1,0 +1,473 @@
+# COM S 228 – Project 3
+## A Stout List
+
+This repository contains my solution for **COM S 228 (Fall 2023) – Project 3: A Stout List**.  
+The assignment implements a custom linked list data structure, `StoutList<E>`, that stores elements in
+**blocks (nodes) of fixed capacity** instead of one element per node.
+
+The goals of the project are:
+
+- Practice working with a **linked data structure**.
+- Gain a deep understanding of the **`List`** and **`ListIterator`** interfaces.
+- Implement and debug non-trivial iterator behavior and structural invariants.
+- Implement **sorting** over the custom list structure.
+
+---
+
+## High-Level Overview
+
+A `StoutList<E>` is a **doubly-linked list with dummy head and tail nodes**, but each node contains
+an **array of up to `M` elements** (where `M` is a fixed positive even integer). This means:
+
+- The number of *linked nodes* is not the same as the number of *elements*.
+- A node contains:
+  - Up to `M` non-null elements in a compact prefix of the array (indices `[0 .. count-1]`).
+  - Remaining cells are `null`.
+- The list is required to maintain the following invariant:
+  - **Every node except possibly the last one has at least `M/2` elements.**
+
+Conceptually, each logical index in the list corresponds to:
+- A particular **node**, and
+- An **offset** into that node’s internal array.
+
+Example (for `M = 4`):
+
+- A list of 6 elements might be stored as:
+  - Node 1: `[A, B, -, -]` (2 elements)
+  - Node 2: `[C, D, E, F]` (4 elements)
+- The logical index `4` corresponds to Node 2 at offset `0` (depending on layout).
+
+---
+
+## Class Structure
+
+All code for this assignment lives in a **single class file**:
+
+```text
+edu/iastate/cs228/hw3/StoutList.java
+```
+
+You implement:
+
+```java
+package edu.iastate.cs228.hw3;
+
+public class StoutList<E extends Comparable<? super E>>
+    extends AbstractSequentialList<E> {
+    // ...
+}
+```
+
+### Core Features
+
+- Extends `AbstractSequentialList<E>`, which:
+  - Implements most `List` operations via a list iterator.
+  - Requires you to implement `size()` and `listIterator(int index)`.
+- Uses a **doubly-linked list** of internal `Node` objects.
+- Does **not allow `null` elements**:
+  - Any `add` method must throw `NullPointerException` when `item == null`.
+
+---
+
+## Node Inner Class
+
+Each `Node` represents one block in the stout list:
+
+- Fields typically include:
+  - `E[] data` – fixed-length array of size `M`.
+  - `int count` – number of active elements in this node.
+  - `Node prev, next` – links in the doubly-linked structure.
+- Empty cells in `data` must always be set to `null` at indices `[count .. M-1]`.
+
+Helper methods (provided in skeleton and/or completed by you):
+
+- `void addItem(int offset, E item)`  
+  Inserts an item at position `offset` in the node’s array, shifting elements to the right.
+
+- `E removeItem(int offset)`  
+  Removes the element at position `offset`, shifting remaining elements left and setting the last
+  used cell to `null`.
+
+You may add additional helpers if useful, but must preserve invariants.
+
+---
+
+## Methods to Override (List API)
+
+These methods must be overridden **without** using the iterator:
+
+- `int size()`
+- `boolean add(E item)`
+- `void add(int pos, E item)`
+- `E remove(int pos)`
+- `Iterator<E> iterator()`
+- `ListIterator<E> listIterator()`
+- `ListIterator<E> listIterator(int pos)`
+
+**Additional rules:**
+
+- All `add` methods must throw `NullPointerException` if `item == null`.
+- Index-based methods must throw `IndexOutOfBoundsException` for invalid `pos`.
+- `remove(int pos)` returns the element removed from the list.
+
+### Efficient Index Location
+
+You must **not** traverse every element to find a node/offset.  
+Instead, walk **node-by-node** summing each node’s `count` until you locate the node
+that contains the desired logical index.
+
+A common pattern is a small helper inner class:
+
+```java
+private class NodeInfo {
+    Node node;
+    int offset;
+    NodeInfo(Node node, int offset) {
+        this.node = node;
+        this.offset = offset;
+    }
+}
+```
+
+And a helper:
+
+```java
+// Returns the node and offset for the given logical index `pos`.
+private NodeInfo find(int pos) {
+    // ...
+}
+```
+
+---
+
+## Iterators
+
+You must implement:
+
+- `StoutIterator` – implements `Iterator<E>`
+  - Only needs `hasNext()` and `next()`; `remove()` may throw `UnsupportedOperationException`.
+- `StoutListIterator` – implements `ListIterator<E>`
+  - Supports full bidirectional traversal and structural modification.
+
+### `StoutIterator`
+
+- Simple forward-only iterator.
+- Tracks:
+  - Current node.
+  - Current offset within that node.
+- `hasNext()` returns `true` if there is another element.
+- `next()` returns current element and advances cursor.
+- You can optionally skip this and just return a `StoutListIterator` from `iterator()`,
+  but starting with a simple iterator often makes debugging easier.
+
+### `StoutListIterator`
+
+Implements:
+
+- Navigation:
+  - `boolean hasNext()`
+  - `E next()`
+  - `boolean hasPrevious()`
+  - `E previous()`
+  - `int nextIndex()`
+  - `int previousIndex()`
+- Modification:
+  - `void set(E e)`
+  - `void add(E e)`
+  - `void remove()`
+
+Key points:
+
+- Must respect the **cursor rules** of `ListIterator`:
+  - `set` and `remove` are only valid **immediately after** a successful `next()` or `previous()`,
+    and **not** after `add()` or another `set()`/`remove()` without moving again.
+  - Throw `IllegalStateException` when these rules are violated.
+- Must carefully track whether the last movement was forward or backward to know:
+  - Whether to act on the element before or after the cursor.
+  - How to update the cursor after `add` or `remove`, especially around merges/splits.
+
+The provided `toStringInternal(ListIterator<E> iter)` helper (from the skeleton)
+is extremely useful for confirming that the iterator’s logical position matches expectations.
+
+---
+
+## Adding Elements – Rules
+
+Adding an element `X` at logical index `i` must follow the rules in the spec to preserve the
+node size invariant:
+
+Assume:
+- `i` is between `0` and `size()`.
+- `find(i)` tells you:
+  - Node `n` and offset `off` where the new element should logically be placed,  
+    or `(tail, 0)` if `i == size()` (end of list).
+
+Rules (simplified):
+
+1. **Empty list**  
+   - Create a new node.
+   - Put `X` at offset `0`.
+
+2. **Case: `off == 0` (inserting at the front of a node)**
+   - Let `p = n.prev` (predecessor node, ignoring head).
+   - If `p` exists and `p.count < M` **and `p` is not the dummy head**, insert `X` into `p`.
+   - Else if `n` is the dummy tail *and* its predecessor `p` has `M` elements:
+     - Create a new node just before tail.
+     - Put `X` at offset `0` in that new node.
+
+3. **Case: there is space in `n`** (`n.count < M`)  
+   - Insert `X` in `n` at offset `off`, shifting existing elements as needed.
+
+4. **Case: `n` is full (`n.count == M`) – Split**
+   - Allocate a new node `n'` **after** `n`.
+   - Move the last `M/2` elements of `n` into `n'`.
+   - Now:
+     - If `off <= M/2`, insert `X` into `n` at offset `off`.
+     - Otherwise, insert `X` into `n'` at offset `off - M/2`.
+
+These rules ensure that, after insertion, all nodes except possibly the last one keep at least `M/2` elements.
+
+A good design is to encapsulate these rules in a helper:
+
+```java
+private NodeInfo addIntoNode(Node n, int off, E item) {
+    // performs insertion and split logic
+    // returns the NodeInfo where `item` actually ended up
+}
+```
+
+That helper can be reused both by `add(int pos, E item)` and by `StoutListIterator.add(E e)`.
+
+---
+
+## Removing Elements – Rules
+
+Removing element `X` at logical index `i` also must preserve the node invariant.
+
+Let `(n, off)` be the node and offset for index `i`:
+
+1. **If `n` is the last node and has only 1 element**  
+   - Remove `X` and delete node `n`.
+
+2. **Else if `n` is the last node (and has ≥ 2 elements), or `n.count > M/2`**  
+   - Remove `X` from `n`, shifting leftover elements left; return the removed value.
+
+3. **Else (`n.count <= M/2` and `n` is not the last node) – Merge with successor**
+   - Let `n' = n.next` (successor node, not tail).
+   - If `n'.count > M/2` (**mini-merge**):
+     - Move the first element of `n'` into the end of `n`.
+     - Then remove `X` from within `n` (after shifting if necessary).
+   - Else (`n'.count <= M/2`) (**full merge**):
+     - Move all elements from `n'` into `n` (appending).
+     - Delete node `n'`.
+     - Then remove `X` from `n`, shifting as required.
+
+As with add, it is helpful to encapsulate removal logic in a helper:
+
+```java
+private E removeFromNode(Node n, int off) {
+    // performs removal + merge logic and returns removed element
+}
+```
+
+The iterator’s `remove()` method should use the same underlying logic while updating cursor state
+appropriately.
+
+---
+
+## Sorting
+
+The `StoutList` class must implement two public sort methods:
+
+```java
+public void sort();         // non-decreasing order (ascending)
+public void sortReverse();  // non-increasing order (descending)
+```
+
+### `sort()`
+
+- Must sort elements in **non-decreasing** order.
+- Must leave the stout list in a **canonical node layout**:
+  - Every node except possibly the last one is **full** (i.e., has `M` elements).
+- Uses **insertion sort** via a private generic method:
+
+```java
+private void insertionSort(E[] arr, Comparator<? super E> comp);
+```
+
+A recommended overall strategy:
+
+1. Traverse the list and copy all elements into a temporary array.
+2. Clear/destroy all nodes (reset to an empty list with just dummy head/tail).
+3. Call `insertionSort(arr, comparator)` to sort the array.
+4. Rebuild the list by filling nodes in order from the sorted array, enforcing the capacity constraints.
+
+### `sortReverse()`
+
+- Must sort in **non-increasing** order (descending).
+- Also must end with every node except possibly the last one being **full**.
+- Uses **bubble sort** via:
+
+```java
+private void bubbleSort(E[] arr);
+```
+
+- `bubbleSort` compares elements using their `compareTo` method:
+  - `E` is expected to implement `Comparable<? super E>`.
+- After sorting, rebuild the list from the array the same way as `sort()`.
+
+---
+
+## Provided Debugging Helpers
+
+The skeleton includes:
+
+```java
+public String toStringInternal();
+public String toStringInternal(ListIterator<E> iter);
+```
+
+They output the internal node structure, for example:
+
+```text
+[(A, B, -, -), (C, D, E, -)]
+```
+
+and with an iterator position:
+
+```text
+[(A, B, -, -), (C, | D, E, -)]
+```
+
+Where:
+
+- `-` denotes a `null` cell in the node’s array.
+- `|` shows the iterator cursor position according to `nextIndex()`.
+
+These methods are **vital** for testing split/merge correctness and iterator behavior.  
+Do **not** modify them.
+
+---
+
+## Suggested Implementation Order
+
+A practical incremental plan:
+
+1. **`add(E item)` (append)**  
+   - Implement appending to the end of the list without splits.  
+   - Test using `toStringInternal()`.
+
+2. **`StoutIterator` with `hasNext` / `next` and `iterator()`**  
+   - Confirm `contains` and `toString()` work on small lists.
+
+3. **Basic `StoutListIterator` navigation**  
+   - Implement `nextIndex`, `previousIndex`, `hasPrevious`, `previous`.  
+   - Implement `listIterator()` and verify forward/backward iteration.  
+   - Use `toStringInternal(iter)` to validate cursor placement.
+
+4. **`StoutListIterator.set(E e)`**  
+   - Track whether you last called `next` or `previous`.  
+   - Throw `IllegalStateException` when invalid.
+
+5. **Efficient `find(int pos)` and `listIterator(int pos)`**  
+   - After this, `get(int pos)` and index-based operations should work.
+
+6. **`add(int pos, E item)` using full add rules**  
+   - Implement node-split logic.  
+   - Consider a helper like `addIntoNode`.
+
+7. **`remove(int pos)` using full remove rules**  
+   - Implement mini-merge and full-merge with successor nodes.
+
+8. **`StoutListIterator.add(E e)`**  
+   - Use the same helper as `add(int pos, E item)`.  
+   - Correctly advance the cursor to the element after the inserted one.
+
+9. **`StoutListIterator.remove()`**  
+   - Most delicate. Handle both forward/backward removal and merges.
+
+10. **`sort()` and `sortReverse()`**  
+    - Implement array-based insertion sort and bubble sort.  
+    - Rebuild the list to respect node capacity constraints.
+
+---
+
+## Usage Example (Conceptual)
+
+Here’s a small example of how `StoutList` might be used in a test:
+
+```java
+StoutList<String> list = new StoutList<>();
+
+list.add("A");
+list.add("B");
+list.add("C");
+list.add(1, "X");  // A, X, B, C
+
+System.out.println(list);                // logical order
+System.out.println(list.toStringInternal()); // internal node layout
+
+ListIterator<String> it = list.listIterator();
+while (it.hasNext()) {
+    String s = it.next();
+    if (s.equals("B")) {
+        it.set("Y");
+    }
+}
+
+list.sort();         // ascending
+list.sortReverse();  // descending
+```
+
+Your actual test code may differ, but this illustrates basic operations.
+
+---
+
+## Building and Running
+
+This project is a **library-style class**, not a standalone program. Typical setup:
+
+1. Place `StoutList.java` in:
+
+   ```text
+   src/edu/iastate/cs228/hw3/StoutList.java
+   ```
+
+2. Compile with:
+
+   ```bash
+   javac -d out src/edu/iastate/cs228/hw3/StoutList.java
+   ```
+
+3. Write your own `main` or JUnit tests that import and use:
+
+   ```java
+   import edu.iastate.cs228.hw3.StoutList;
+   ```
+
+   and run them from your IDE or command line.
+
+---
+
+## Turn-In Requirements (Original Assignment)
+
+- Submit a **zip** containing only your **source code** in the correct package structure:
+
+  ```text
+  edu/iastate/cs228/hw3/StoutList.java
+  ```
+
+- Do **not** submit `.class` files or IDE metadata.
+- Verify your submission by **re-downloading** it from Canvas and checking the contents.
+
+---
+
+## Notes
+
+- This README summarizes the design and requirements of the original **COM S 228 – Project 3: A Stout List** assignment.
+- The implementation focuses on:
+  - Correctness of the `List` and `ListIterator` APIs.
+  - Maintaining the node size invariants via split/merge rules.
+  - Correct iterator-based structural modification.
+  - Proper behavior of the `sort()` and `sortReverse()` methods.
+

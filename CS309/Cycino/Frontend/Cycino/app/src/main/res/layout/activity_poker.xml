@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#35654d"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/pCurrChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chips: 0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/pDCards"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/pDCard1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                app:srcCompat="@drawable/black_joker" />
+
+            <ImageView
+                android:id="@+id/pDCard2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                app:srcCompat="@drawable/black_joker" />
+
+            <ImageView
+                android:id="@+id/pDCard3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                app:srcCompat="@drawable/black_joker" />
+
+            <ImageView
+                android:id="@+id/pDCard4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                app:srcCompat="@drawable/black_joker" />
+
+            <ImageView
+                android:id="@+id/pDCard5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                app:srcCompat="@drawable/black_joker" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pPCardsR1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <LinearLayout
+                android:id="@+id/pP1Cards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/pP1Card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/black_joker" />
+
+                <ImageView
+                    android:id="@+id/pP1Card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/red_joker" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pP2Cards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/pP2Card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/black_joker" />
+
+                <ImageView
+                    android:id="@+id/pP2Card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    tools:srcCompat="@drawable/red_joker" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pPCardsR2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <LinearLayout
+                android:id="@+id/pP3Cards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/pP3Card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/black_joker" />
+
+                <ImageView
+                    android:id="@+id/pP3Card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/red_joker" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pP4Cards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/pP4Card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/black_joker" />
+
+                <ImageView
+                    android:id="@+id/pP4Card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    tools:srcCompat="@drawable/red_joker" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pPCardsR3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <LinearLayout
+                android:id="@+id/pP5Cards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/pP5Card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/black_joker" />
+
+                <ImageView
+                    android:id="@+id/pP5Card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/red_joker" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pP6Cards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/pP6Card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/black_joker" />
+
+                <ImageView
+                    android:id="@+id/pP6Card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    tools:srcCompat="@drawable/red_joker" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pokerButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/pCheckButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Check"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+            <Button
+                android:id="@+id/pRaiseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Raise"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+            <Button
+                android:id="@+id/pFoldButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fold"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+            <Button
+                android:id="@+id/pStartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Start"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pBetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pLowerBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="Lower Bet"
+                android:textColor="@color/cardinal" />
+
+            <TextView
+                android:id="@+id/pCurrBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/pRaiseBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gold"
+                android:text="Raise Bet"
+                android:textColor="@color/cardinal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pbackMainBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Close Chat"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+            <Button
+                android:id="@+id/pbackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Back to Lobby"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/pchatView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/ptx1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:hint="The Conversation will appear here:\n"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pmsgEdt"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="message"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/psendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/cardinal"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

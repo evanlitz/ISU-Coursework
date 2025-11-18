@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".UsernameQueryActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#35654D"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Forgot Password TextView -->
+    <TextView
+        android:id="@+id/forgot_password_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:paddingBottom="24dp"/>
+
+    <!-- Username EditText -->
+    <EditText
+        android:id="@+id/username_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your username"
+        android:textStyle="bold"
+        android:inputType="text"
+        android:padding="12dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Reset Password Button -->
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset Password:"
+        android:backgroundTint="@color/gold"
+        android:textColor="@color/cardinal"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:padding="5dp"/>
+    <!-- Space (for now) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Back button -->
+    <Button
+        android:id="@+id/go_back_to_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Sign In"
+        android:backgroundTint="#FFC107"
+        android:textColor="@color/cardinal"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:padding="5dp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

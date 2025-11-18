@@ -1,0 +1,26 @@
+#tsl for sort
+Parameters:
+	help:
+	  help_on.	[single]
+        version:
+	  version_on.	[single]
+	order:
+	   numeric.
+	   default(alpha).
+	   random.
+	   reverse.
+	check:
+	   yes.
+	   no.
+	unique:
+	   yes.
+	   no.
+Environments:
+	file_contents:
+	    sorted_alphabetically.
+	    sorted_numerically.
+	    unsorted.
+        duplicates:
+	    yes.
+	    no.
+		  

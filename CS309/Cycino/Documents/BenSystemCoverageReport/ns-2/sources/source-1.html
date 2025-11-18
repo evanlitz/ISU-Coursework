@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BlackJackSettings</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Cycino.GameSettings.BlackJack</a>
+</div>
+
+<h1>Coverage Summary for Class: BlackJackSettings (coms309.Cycino.GameSettings.BlackJack)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlackJackSettings</td>
+<td class="coverageStat">
+  <span class="percent">
+    7.1%
+  </span>
+  <span class="absValue">
+    (1/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.6%
+  </span>
+  <span class="absValue">
+    (1/18)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">BlackJackSettings$HibernateInstantiator$mP62kG5m</td>
+  </tr>
+  <tr>
+    <td class="name">BlackJackSettings$HibernateProxy$SCgFCQEv</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    7.1%
+  </span>
+  <span class="absValue">
+    (1/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.6%
+  </span>
+  <span class="absValue">
+    (1/18)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Cycino.GameSettings.BlackJack;
+&nbsp;import coms309.Cycino.GameSettings.BlackJack.BlackJackSettingsRepository;
+&nbsp;
+&nbsp;import coms309.Cycino.users.User;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;@Entity
+&nbsp;public class BlackJackSettings {
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    private Long id;
+&nbsp;
+&nbsp;    @OneToOne
+&nbsp;    @JoinColumn(name = &quot;user_id&quot;)
+&nbsp;    private User user;
+&nbsp;
+&nbsp;    private int dealerStandOn;
+&nbsp;    private int maxBet;
+&nbsp;    private int minBet;
+&nbsp;    private int amountOfDecks;
+&nbsp;
+&nbsp;    // Constructors
+<b class="fc">&nbsp;    public BlackJackSettings() {}</b>
+<b class="nc">&nbsp;    public BlackJackSettings(int dealerStandOn, int maxBet, int minBet, int amountOfDecks) {</b>
+<b class="nc">&nbsp;        this.dealerStandOn = dealerStandOn;</b>
+<b class="nc">&nbsp;        this.maxBet = maxBet;</b>
+<b class="nc">&nbsp;        this.minBet = minBet;</b>
+<b class="nc">&nbsp;        this.amountOfDecks = amountOfDecks;</b>
+&nbsp;    }
+&nbsp;    // Getters &amp; Setters
+&nbsp;    public Long getId() {
+<b class="nc">&nbsp;        return this.id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setId(Long id) {
+<b class="nc">&nbsp;        this.id = id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setUser(User user) {
+<b class="nc">&nbsp;        this.user = user;</b>
+&nbsp;    }
+&nbsp;/*
+&nbsp;    public User getUser() {
+&nbsp;        return user;
+&nbsp;    }
+&nbsp;*/
+&nbsp;    public Long getUserId() {
+<b class="nc">&nbsp;        return this.user.getId();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getDealerStandOn() {
+<b class="nc">&nbsp;        return dealerStandOn;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDealerStandOn(int dealerStandOn) {
+<b class="nc">&nbsp;        this.dealerStandOn = dealerStandOn;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getMaxBet() {
+<b class="nc">&nbsp;        return maxBet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMaxBet(int maxBet) {
+<b class="nc">&nbsp;        this.maxBet = maxBet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getMinBet() {
+<b class="nc">&nbsp;        return minBet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMinBet(int minBet) {
+<b class="nc">&nbsp;        this.minBet = minBet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getAmountOfDecks() {
+<b class="nc">&nbsp;        return amountOfDecks;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAmountOfDecks(int amountOfDecks) {
+<b class="nc">&nbsp;        this.amountOfDecks = amountOfDecks;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 15:53</div>
+</div>
+</body>
+</html>
