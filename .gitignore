@@ -4,6 +4,17 @@
 *.avi
 *.mkv
 
+# CS402 - chess vision training data and trained model weights
+CS402/Project/Backend/vision_module/data/
+CS402/Project/Backend/vision_module/Model/
+
+# CS474 - CIFAR-10 dataset batches
+CS474/HW6/code/data/
+
+# ML model weights
+*.pt
+*.pth
+
 # Python cache
 __pycache__/
 *.pyc
@@ -13,3 +24,6 @@ node_modules/
 
 # macOS
 .DS_Store
+
+# Claude Code
+.claude/
