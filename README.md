@@ -1,12 +1,12 @@
 # My Coursework Directory
 
-A collection of various assignments and other resources from my time as a student at Iowa State University. All compiled into one repository, sorted by class.
+A collection of various assignments and other resources from my time as a student at Iowa State University (2022-2026). All compiled into one repository, sorted by class.
 
 ---
 
 ## Relevant Coursework Catalogue
 
-Here is a list of courses that I took that I found to be directly relevant to my career. Each course lasted one semester. Use this as a reference when navigating the folders in the repository. 
+Here is a list of courses that I took during my undergraduate degree. I graduated with a 3.52 total GPA and Cum Laude honors. Use this as a reference when navigating the folders in the repository. 
 
 | Course Number | Course Title                         |
 |--------------|---------------------------------------|
@@ -22,7 +22,11 @@ Here is a list of courses that I took that I found to be directly relevant to my
 | COM S 331    | Theory of Computing                   |
 | COM S 352    | Operating Systems                     |
 | COM S 363    | Introduction to Database Management Systems                     |
+| COM S 402    | Senior Design Capstone Project  |
 | COM S 417    | Software Testing & Quality Assurance  |
+| COM S 418    | Computational Geometry  |
+| COM S 459    | Security and Privacy in Cloud Computing  |
 | COM S 472    | Principles of Artificial Intelligence |
+| COM S 474    | Introduction to Machine Learning  |
 | STAT 461     | Sports Analytics          |
 
