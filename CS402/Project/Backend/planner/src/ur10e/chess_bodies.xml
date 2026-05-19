@@ -1,0 +1,45 @@
+<mujoco model="chess_pieces">
+    <worldbody>
+        <geom name="board_geom" type="box" size="0.3 0.3 0.01" pos="0.6 0 0.01" 
+              material="board_mat" condim="3" friction="1 0.05 0.001"/>
+
+        <!-- Standard start squares: 32 cylinders (ranks 1–2 white, 7–8 black). Static markers, no collision. -->
+        <!-- Positions match motion_planner grid (world X = rank axis, world Y = file axis). -->
+        <!-- White back rank (rank 1) -->
+        <geom name="start_a1" type="cylinder" pos="0.3375 0.2625 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_b1" type="cylinder" pos="0.3375 0.1875 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_c1" type="cylinder" pos="0.3375 0.1125 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_d1" type="cylinder" pos="0.3375 0.0375 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_e1" type="cylinder" pos="0.3375 -0.0375 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_f1" type="cylinder" pos="0.3375 -0.1125 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_g1" type="cylinder" pos="0.3375 -0.1875 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_h1" type="cylinder" pos="0.3375 -0.2625 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <!-- White pawns (rank 2) -->
+        <geom name="start_a2" type="cylinder" pos="0.4125 0.2625 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_b2" type="cylinder" pos="0.4125 0.1875 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_c2" type="cylinder" pos="0.4125 0.1125 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_d2" type="cylinder" pos="0.4125 0.0375 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_e2" type="cylinder" pos="0.4125 -0.0375 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_f2" type="cylinder" pos="0.4125 -0.1125 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_g2" type="cylinder" pos="0.4125 -0.1875 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <geom name="start_h2" type="cylinder" pos="0.4125 -0.2625 0.05" size="0.02 0.03" material="white_piece" contype="0" conaffinity="0"/>
+        <!-- Black pawns (rank 7) -->
+        <geom name="start_a7" type="cylinder" pos="0.7875 0.2625 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_b7" type="cylinder" pos="0.7875 0.1875 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_c7" type="cylinder" pos="0.7875 0.1125 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_d7" type="cylinder" pos="0.7875 0.0375 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_e7" type="cylinder" pos="0.7875 -0.0375 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_f7" type="cylinder" pos="0.7875 -0.1125 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_g7" type="cylinder" pos="0.7875 -0.1875 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_h7" type="cylinder" pos="0.7875 -0.2625 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <!-- Black back rank (rank 8) -->
+        <geom name="start_a8" type="cylinder" pos="0.8625 0.2625 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_b8" type="cylinder" pos="0.8625 0.1875 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_c8" type="cylinder" pos="0.8625 0.1125 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_d8" type="cylinder" pos="0.8625 0.0375 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_e8" type="cylinder" pos="0.8625 -0.0375 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_f8" type="cylinder" pos="0.8625 -0.1125 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_g8" type="cylinder" pos="0.8625 -0.1875 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+        <geom name="start_h8" type="cylinder" pos="0.8625 -0.2625 0.05" size="0.02 0.03" material="black_piece" contype="0" conaffinity="0"/>
+    </worldbody>
+</mujoco>

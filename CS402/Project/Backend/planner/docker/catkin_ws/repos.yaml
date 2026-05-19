@@ -1,0 +1,35 @@
+repositories:
+  geometry2:
+    type: git
+    url: https://github.com/ros/geometry2.git
+    version: noetic-devel
+
+  robot_state_publisher:
+    type: git
+    url: https://github.com/ros/robot_state_publisher.git
+    version: 1.15.3
+
+  ros_control:
+    type: git
+    url: https://github.com/ros-controls/ros_control.git
+    version: noetic-devel
+
+  universal_robot:
+    type: git
+    url: https://github.com/ros-industrial/universal_robot.git
+    version: 1.5.0
+
+  Universal_Robots_ROS_scaled_controllers:
+    type: git
+    url: https://github.com/UniversalRobots/Universal_Robots_ROS_scaled_controllers.git
+    version: main
+
+  ur_client_library:
+    type: git
+    url: https://github.com/UniversalRobots/Universal_Robots_Client_Library.git
+    version: master
+
+  ur_robot_driver:
+    type: git
+    url: https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git
+    version: master

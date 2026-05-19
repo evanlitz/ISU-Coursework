@@ -1,0 +1,29 @@
+services:
+  robot:
+    build:
+      context: ..               # Backend/planner/ — includes both src/ and docker/
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../src:/chess            # robotics source, live-editable
+      - ../../shared:/shared     # JSON queue shared with host
+    devices:
+      - "${GRIPPER_PORT:-/dev/ttyACM0}:${GRIPPER_PORT:-/dev/ttyACM0}"
+    privileged: true              # full device access (standard for ROS/robotics)
+    network_mode: host            # required for ROS master; ports are shared directly
+    environment:
+      # Gripper
+      - GRIPPER_PORT=/dev/ttyACM0
+      - GRIPPER_MOTOR_ID=1
+      - GRIPPER_OPEN_POS=3931
+      - GRIPPER_CLOSE_POS=3566
+      # Camera index passed to OpenCV (0, 1, 2 ... try if detection fails)
+      - CAMERA_INDEX=1
+      # UR10e address and port
+      - ROBOT_IP=192.168.56.100       # robot's IP (we connect to it)
+      - ROBOT_PORT=50002
+      # IP the robot calls back to (this machine on the robot's subnet)
+      - REVERSE_IP=192.168.56.1
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+

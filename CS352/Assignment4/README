@@ -1,0 +1,69 @@
+COM S 352 Project 2
+@author Evan Litzer
+December 7th, 2025
+
+Documentation for journal.c can be found in the comments of the file.
+
+Testing Results:
+issue write bitmap 12
+issue write inode 12
+test write complete 12
+[stage3] got 13
+issue write bitmap 13
+issue write inode 13
+test write complete 13
+[stage3] got 14
+issue write bitmap 14
+issue write inode 14
+test write complete 14
+[stage3] got 15
+issue write bitmap 15
+issue write inode 15
+issue write bitmap 12
+issue write inode 12
+test write complete 12
+[stage3] got 13
+issue write bitmap 13
+issue write inode 13
+test write complete 13
+[stage3] got 14
+issue write bitmap 14
+issue write inode 14
+issue write bitmap 12
+issue write inode 12
+test write complete 12
+[stage3] got 13
+issue write bitmap 13
+issue write inode 13
+test write complete 13
+issue write bitmap 12
+issue write inode 12
+test write complete 12
+[stage3] got 13
+issue write bitmap 13
+issue write bitmap 12
+issue write inode 12
+test write complete 12
+issue write inode 12
+test write complete 12
+[stage3] got 13
+issue write bitmap 13
+test write complete 12
+[stage3] got 13
+issue write bitmap 13
+issue write inode 13
+[stage3] got 13
+issue write bitmap 13
+issue write inode 13
+issue write bitmap 13
+issue write inode 13
+issue write inode 13
+test write complete 13
+[stage3] got 14
+issue write bitmap 14
+issue write inode 14
+test write complete 14
+[stage3] got 15
+issue write bitmap 15
+issue write inode 15
+test write complete 15

@@ -1,0 +1,18 @@
+# catkin source packages; fetched by vcs import, not tracked here
+catkin_ws/src/*/
+
+# Runtime-only IPC directory
+shared/
+
+# MuJoCo logs
+src/planner/MJDATA.txt
+src/planner/MUJOCO_LOG.txt
+
+# Runtime logs
+src/game_manager/engine_log.txt
+src/game_manager/last_crash.txt
+
+# Vision runtime outputs
+src/vision/test_results/automatic_capture/
+src/vision/gameplay_data/
+src/vision/live_detection/

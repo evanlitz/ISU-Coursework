@@ -1,0 +1,9 @@
+<mujoco model="chess_assets">
+    <asset>
+        <texture name="chess_grid" type="2d" builtin="checker" rgb1=".1 .1 .1" rgb2=".9 .9 .9" width="512" height="512"/>
+        <!-- Builtin checker: each texrepeat unit is one dark+light band; 4 repeats/axis → 8×8 cells on the face. 8×8 repeats → 16×16. -->
+        <material name="board_mat" texture="chess_grid" texrepeat="4 4" reflectance="0.2"/>
+        <material name="white_piece" rgba="0.9 0.9 0.9 1"/>
+        <material name="black_piece" rgba="0.2 0.2 0.2 1"/>
+    </asset>
+</mujoco>

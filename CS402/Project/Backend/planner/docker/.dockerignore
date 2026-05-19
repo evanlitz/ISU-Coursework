@@ -1,0 +1,8 @@
+# catkin cloned sources (downloaded during docker build by vcs import)
+docker/catkin_ws/src/
+
+# Artifacts
+**/__pycache__/
+**/*.pyc
+**/.DS_Store
+**/.venv/

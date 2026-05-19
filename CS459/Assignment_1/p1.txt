@@ -1,0 +1,3 @@
+URL: https://evan-cs459-a1-2004.s3.us-east-2.amazonaws.com/index.html
+
+Part 1 of assignment 1 is in the URL above. 
