@@ -4,6 +4,8 @@ Integrated stack for **camera-based chess board perception**, **game logic**, an
 
 This repository is organized by role. Use the sections below to find where to run things; **subfolder READMEs** are linked where they exist.
 
+The Final Demo Video can be found with the link below:
+https://youtu.be/dqPGt-fecFE?si=bK0mOEL9zTEeLaWg
 ---
 
 ## Quick navigation — documentation in this repo
